@@ -78,5 +78,8 @@
             @yield('content')
         </main>
     </div>
+<footer>
+    <script type="text/javascript" src="https://unpkg.com/imask"></script>
+</footer>
 </body>
 </html>
