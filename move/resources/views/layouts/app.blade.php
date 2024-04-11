@@ -11,13 +11,14 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link href="/resources/css/app.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Marck+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">  <link href="/resources/css/app.css" rel="stylesheet">
     <!-- Scripts -->
 
     <!-- Scripts -->
 
-    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/js/sign_form.js', 'resources/css/app.css'])
 </head>
 <body>
 <div id="app">
@@ -28,7 +29,7 @@
             <div class="navbar__wrap">
                 <ul class="menu" id="menu">
                     <li>
-                        <a href="#">Расписание</a>
+                        <a href="/schedule">Расписание</a>
                     </li>
                     <li>
                         <a href="#">Направления</a>
@@ -37,7 +38,7 @@
                         <a href="#">Преподаватели</a>
                     </li>
                     <li>
-                        <a href="#">Тарифы</a>
+                        <a href="/tariffs">Тарифы</a>
                     </li>
                     <li>
                         <a href="#">О нас</a>
@@ -47,11 +48,14 @@
                     </li>
                 </ul>
             </div>
-            <a href="{{ url('/') }}"> <img class="account_icon" src="{{asset('images/account_icon.png')}}"></a>
-
+            <?php if ( Auth ::check() )
+            {?>
+            <a href="{{ url('/account') }}"> <img class="account_icon" src="{{asset('images/account_icon.png')}}"></a>
+            <?php } else {?>
+                <a href="{{ url('/login') }}"> <img class="account_icon" src="{{asset('images/account_icon.png')}}"></a>
+            <?php }  ?>
             <div class="menu_burger">
-                <a href="{{ url('/') }}"> <img class="account_icon_burger"
-                                               src="{{asset('images/account_icon.png')}}"></a>
+                <a href="{{ url('/') }}"> <img class="account_icon_burger" src="{{asset('images/account_icon.png')}}"></a>
                 <div class="menu_burger__field" id="menu_burger">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -71,7 +75,7 @@
         <div class="container footer__wrap">
             <ul class="menu" id="menu">
                 <li>
-                    <a href="#">Расписание</a>
+                    <a href="/schedule">Расписание</a>
                 </li>
                 <li>
                     <a href="#">Направления</a>

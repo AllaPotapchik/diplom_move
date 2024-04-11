@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\TariffController;
+use App\Http\Controllers\User_subscriptionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +17,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
-Auth::routes();
+Route::get('/account', function () {
+    return view('account');
+});
+Route::get('/success', function () {
+    return view('success');
+});
 
+
+Route::get('/schedule', 'App\Http\Controllers\ScheduleController@index');
+Route::get('/tariffs', 'App\Http\Controllers\TariffController@index');
+Route::get('/tariffs/offline/create_sub', 'App\Http\Controllers\TariffController@index')->name('createSubscription');
+Route::get('/tariffs/offline/{id}', [SubscriptionController::class,'getSubscription'])->name('getSubscription');
+Route::post('/save', [User_subscriptionController::class,'createSubscription'])->name('createSubscription');
+Route::get('/subscriptions', 'App\Http\Controllers\SubscriptionController@index');
+//Route::resource('subscription', User_subscriptionController::class);
+
+
+Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

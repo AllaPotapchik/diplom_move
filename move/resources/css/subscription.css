@@ -1,0 +1,46 @@
+.subscription_card{
+    /*width: 30%;*/
+    height: auto;
+    background: #E9D5F7;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+    padding: 2rem;
+    font-family: "Montserrat";
+    color: #704D8A;
+    margin: 1rem;
+}
+.card_wrap{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width: 990px) {
+    .card_wrap{
+
+        flex-direction: column;
+
+    }
+}
+button{
+    background: #92ABFC;
+}
+.subscription_name{
+    text-transform: uppercase;
+    color:  #92ABFC;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+.subscription_price{
+    font-weight: 900;
+    font-size: 20px;
+}
+
+

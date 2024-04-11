@@ -1,13 +1,9 @@
 body {
-    background: #9eeaf9;
+    background: #F8F2FC;
     margin: 0;
+    /*font-size: 20px;*/
+    font-family: "Montserrat";
 }
-
-/*@media (min-width: 768px) {*/
-/*    .container {*/
-/*        max-width: 920px !important;*/
-/*    }*/
-/*}*/
 
 /*header*/
 header {
@@ -253,3 +249,13 @@ footer a:hover {
         font-size: 13px;
     }
 }
+
+button{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 0.5rem 1.3rem;
+    text-align: center;
+    color: white;
+    max-width: 15rem;
+}
+

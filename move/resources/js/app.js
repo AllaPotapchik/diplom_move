@@ -1,25 +1,6 @@
 //import bootstrap
 import './bootstrap';
 
-//create template fot phone mask
-// let element = document.getElementById('phone');
-// let maskOptions = {
-//     mask: '+{375}(00) 000-00-00'
-// };
-// IMask(element, maskOptions);
-
-//burger toggle
-// const burger = document.querySelector('.burger');
-// if(burger){
-//     console.log('burger')
-// }
-// const menu = document.querySelector('.menu');
-// if(menu){
-//     console.log("menu")
-// }
-// burger.addEventListener('click', () => {
-//     console.log('click burger')
-//     menu.classList.toggle('active');
 // });
 const menu_burger = document.querySelector("#menu_burger");
 const popup = document.querySelector("#popup");
