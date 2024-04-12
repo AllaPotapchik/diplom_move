@@ -1,5 +1,5 @@
 .subscription_card{
-    /*width: 30%;*/
+    max-width: 25rem;
     height: auto;
     background: #E9D5F7;
     border-radius: 2rem;
@@ -22,9 +22,8 @@
 
 @media (max-width: 990px) {
     .card_wrap{
-
         flex-direction: column;
-
+        align-content: center;
     }
 }
 button{

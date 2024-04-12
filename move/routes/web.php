@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\RecordController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TariffController;
 use App\Http\Controllers\User_subscriptionController;
@@ -34,8 +36,12 @@ Route::get('/tariffs/offline/create_sub', 'App\Http\Controllers\TariffController
 Route::get('/tariffs/offline/{id}', [SubscriptionController::class,'getSubscription'])->name('getSubscription');
 Route::post('/save', [User_subscriptionController::class,'createSubscription'])->name('createSubscription');
 Route::get('/subscriptions', 'App\Http\Controllers\SubscriptionController@index');
-//Route::resource('subscription', User_subscriptionController::class);
+//Route::get('/programs', 'App\Http\Controllers\ProgramController@index');
 
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/{schedule_id}', [RecordController::class,'createRecord'])->name('createRecord');
+Route::get('/tariffs/program/{tariff_id}', [TariffController::class,'programs'])->name('programs');
+Route::get('/tariffs/program/{tariff_id}/{dance_type_id}', [ProgramController::class,'createProgramRecord'])->name('createProgramRecord');
+

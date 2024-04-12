@@ -68,3 +68,6 @@ td{
 td .not_authorized{
     font-size: 13px;
 }
+.disabled{
+    background: #E9D5F7;
+}

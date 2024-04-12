@@ -12,7 +12,7 @@
             </h1>
             @foreach($dance_types as $el)
                 <label>
-                    <input type="checkbox" name="dance_type" value="{{$el->dance_type_id}}">{{$el->title}}
+                    <input type="radio" name="dance_type" value="{{$el->dance_type_id}}">{{$el->title}}
                 </label>
             @endforeach
             <h1>

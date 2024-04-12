@@ -18,7 +18,7 @@
 
     <!-- Scripts -->
 
-    @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/js/sign_form.js', 'resources/css/app.css'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
 </head>
 <body>
 <div id="app">
@@ -126,8 +126,9 @@
         </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script type="text/javascript" src="https://unpkg.com/imask"></script>
+        <script src="https://unpkg.com/imask"></script>
     </footer>
 </div>
+
 </body>
 </html>

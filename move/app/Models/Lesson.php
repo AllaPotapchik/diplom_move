@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Schedule extends Model
+class Lesson extends Model
 {
     use HasFactory;
-    protected $table = 'schedule';
+    protected $table = 'lessons';
 
-    function dance_type(){
-        return $this->belongsTo(Dance_type::class);
+    public function program()
+    {
+        return $this->belongsTo(Program::class);
     }
 }

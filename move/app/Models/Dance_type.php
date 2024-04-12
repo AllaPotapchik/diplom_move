@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Dance_type extends Model
 {
     use HasFactory;
+
+    public function schedule()
+    {
+        return $this->hasOne(Schedule::class);
+    }
 }

@@ -1,0 +1,41 @@
+.faq-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 3px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.faq-question {
+    font-weight: 600;
+    cursor: pointer;
+}
+.faq-question h3{
+    margin-right: 2rem;
+}
+.faq-answer {
+    display: none;
+    transition: opacity 0.3s ease;
+    margin-top: 3rem;
+}
+
+.faq-toggle {
+    position: absolute;
+    top: -30px;
+    right: 10px;
+    font-size: 70px;
+    cursor: pointer;
+    font-weight: 100;
+}
+.show{
+    display: block;
+    transition: opacity 0.3s ease;
+
+}
+.program_btn{
+    background: white;
+}
