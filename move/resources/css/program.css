@@ -14,9 +14,11 @@
     font-weight: 600;
     cursor: pointer;
 }
-.faq-question h3{
+
+.faq-question h3 {
     margin-right: 2rem;
 }
+
 .faq-answer {
     display: none;
     transition: opacity 0.3s ease;
@@ -31,11 +33,13 @@
     cursor: pointer;
     font-weight: 100;
 }
-.show{
+
+.show {
     display: block;
     transition: opacity 0.3s ease;
 
 }
-.program_btn{
+
+.program_btn {
     background: white;
 }

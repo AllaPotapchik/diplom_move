@@ -15,6 +15,15 @@
                     <input type="radio" name="dance_type" value="{{$el->dance_type_id}}">{{$el->title}}
                 </label>
             @endforeach
+
+            <h1>
+                Выберите уровень
+            </h1>
+            @foreach($levels as $el)
+                <label>
+                    <input type="radio" name="level_id" value="{{$el->level_id}}">{{$el->level_name}}
+                </label>
+            @endforeach
             <h1>
                 Подтвердите данные
             </h1>

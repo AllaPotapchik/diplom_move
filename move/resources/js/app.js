@@ -2,13 +2,6 @@
 import './bootstrap';
 import IMask from 'imask'
 
-//create template fot phone mask
-let element = document.getElementById('phone');
-let maskOptions = {
-    mask: '+{375}(00) 000-00-00'
-};
-IMask(element, maskOptions);
-// });
 const menu_burger = document.querySelector("#menu_burger");
 const popup = document.querySelector("#popup");
 const account = document.getElementById("#icon");
@@ -50,3 +43,10 @@ function closeOnClick() {
     menu_burger.classList.remove("active");
     body.classList.remove("noscroll");
 }
+
+//create template fot phone mask
+let element = document.getElementById('phone');
+let maskOptions = {
+    mask: '+{375}(00) 000-00-00'
+};
+IMask(element, maskOptions);

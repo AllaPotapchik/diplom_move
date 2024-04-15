@@ -1,0 +1,49 @@
+.my_programs{
+    display: none;
+}
+.my_subscriptions{
+    display: none;
+}
+#lesson_btn{
+    background: #BA80E6;
+}
+
+.back_color{
+    width: 90%;
+}
+.program_card{
+    background: #BA80E6;
+    padding: 2rem;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    border-radius: 2rem;
+    color: white;
+    font-family: 'Montserrat';
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.program_title{
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.size{
+    font-size: 14.4px;
+}
+.user_head{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.update_profile{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}

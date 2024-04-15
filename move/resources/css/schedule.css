@@ -22,7 +22,7 @@ table{
 }
 thead{
     background: #BA80E6;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
 }
 
 th{
@@ -31,8 +31,6 @@ th{
     color: white;
     padding: 0.5rem;
     text-align: center;
-    /*border-right: 1px solid #704D8A;*/
-
 }
 
 .schedule_btn{
@@ -71,3 +69,15 @@ td .not_authorized{
 .disabled{
     background: #E9D5F7;
 }
+
+.no_lessons{
+    background: white;
+    text-align: center;
+    padding: 2rem;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #704d8a;
+    margin: 1rem 0;
+}
+

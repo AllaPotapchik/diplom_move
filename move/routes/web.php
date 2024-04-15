@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TariffController;
 use App\Http\Controllers\User_subscriptionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,30 +20,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/account', function () {
-    return view('account');
-});
-Route::get('/success', function () {
-    return view('success');
-});
+Route ::get( '/', function () {
+    return view( 'index' );
+} );
 
 
-Route::get('/schedule', 'App\Http\Controllers\ScheduleController@index');
-Route::get('/tariffs', 'App\Http\Controllers\TariffController@index');
-Route::get('/tariffs/offline/create_sub', 'App\Http\Controllers\TariffController@index')->name('createSubscription');
-Route::get('/tariffs/offline/{id}', [SubscriptionController::class,'getSubscription'])->name('getSubscription');
-Route::post('/save', [User_subscriptionController::class,'createSubscription'])->name('createSubscription');
-Route::get('/subscriptions', 'App\Http\Controllers\SubscriptionController@index');
-//Route::get('/programs', 'App\Http\Controllers\ProgramController@index');
+Route ::get( '/success', function () {
+    return view( 'success' );
+} );
 
 
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/{schedule_id}', [RecordController::class,'createRecord'])->name('createRecord');
-Route::get('/tariffs/program/{tariff_id}', [TariffController::class,'programs'])->name('programs');
-Route::get('/tariffs/program/{tariff_id}/{dance_type_id}', [ProgramController::class,'createProgramRecord'])->name('createProgramRecord');
+Route ::get( '/schedule', 'App\Http\Controllers\ScheduleController@index' );
+Route ::get( '/tariffs', 'App\Http\Controllers\TariffController@index' );
+Route ::get( '/tariffs/offline/create_sub', 'App\Http\Controllers\TariffController@index' ) -> name( 'createSubscription' );
+Route ::get( '/tariffs/offline/{id}', [SubscriptionController::class,'getSubscription'] ) -> name( 'getSubscription' );
+Route ::post( '/save', [ User_subscriptionController::class, 'createSubscription' ] ) -> name( 'createSubscription' );
+Route ::get( '/subscriptions', 'App\Http\Controllers\SubscriptionController@index' );
 
+Auth ::routes();
+Route ::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] ) -> name( 'home' );
+Route ::get( '/account', [ UserController::class, 'accountType' ] ) -> name( 'accountType' );
+Route ::get( '/{schedule_id}', [ RecordController::class, 'createRecord' ] ) -> name( 'createRecord' );
+Route ::get( '/tariffs/program/{tariff_id}', [ TariffController::class, 'programs' ] ) -> name( 'programs' );
+Route ::get( '/tariffs/program/{tariff_id}/{dance_type_id}/{program_id}', [ProgramController::class,'createProgramRecord'] ) -> name( 'createProgramRecord' );
+Route ::get( '/account/program/{program_id}', [LessonController::class,'showLessons'] ) -> name( 'showLessons' );
+Route ::get( '/account/program/{program_id}/{lesson_id}', [LessonController::class,'startLesson'] ) -> name( 'startLesson' );
+Route::post('/upload-video', [LessonController::class, 'uploadVideo'])->name('uploadVideo');
+Route::get('/update_profile/{user_id}', [UserController::class, 'updateProfile'])->name('updateProfile');
+Route::post('/change_password', [UserController::class, 'changePassword'])->name('changePassword');

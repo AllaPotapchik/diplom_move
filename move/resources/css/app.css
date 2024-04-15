@@ -25,6 +25,9 @@ header {
     justify-content: space-between;
 }
 
+li{
+    list-style: none;
+}
 
 .header_container {
     margin-left: 150px;
@@ -257,5 +260,6 @@ button{
     text-align: center;
     color: white;
     max-width: 15rem;
+    background: white;
 }
 

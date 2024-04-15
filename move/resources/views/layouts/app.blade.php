@@ -13,7 +13,10 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Marck+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">  <link href="/resources/css/app.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Marck+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="/resources/css/app.css" rel="stylesheet">
     <!-- Scripts -->
 
     <!-- Scripts -->
@@ -49,13 +52,20 @@
                 </ul>
             </div>
             <?php if ( Auth ::check() )
-            {?>
-            <a href="{{ url('/account') }}"> <img class="account_icon" src="{{asset('images/account_icon.png')}}"></a>
-            <?php } else {?>
-                <a href="{{ url('/login') }}"> <img class="account_icon" src="{{asset('images/account_icon.png')}}"></a>
-            <?php }  ?>
+            {
+                ?>
+            <a href="{{ route('accountType') }}"> <img class="account_icon" src="{{asset('images/account_icon.png')}}"></a>
+            <?php } else { ?>
+            <a href="{{ url('/login') }}"> <img class="account_icon" src="{{asset('images/account_icon.png')}}"></a>
+            <?php } ?>
             <div class="menu_burger">
-                <a href="{{ url('/') }}"> <img class="account_icon_burger" src="{{asset('images/account_icon.png')}}"></a>
+                <?php if ( Auth ::check() )
+                {
+                    ?>
+                <a href="{{ route('accountType') }}"> <img  src="{{asset('images/account_icon.png')}}"></a>
+                <?php } else { ?>
+                <a href="{{ url('/login') }}"> <img class="account_icon" src="{{asset('images/account_icon.png')}}"></a>
+                <?php } ?>
                 <div class="menu_burger__field" id="menu_burger">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -63,7 +73,6 @@
                 </div>
             </div>
         </div>
-        <!-- </div> -->
         <div class="popup" id="popup"></div>
     </header>
 
@@ -93,42 +102,41 @@
                     <a href="#">Контакты</a>
                 </li>
             </ul>
-<div class="info__wrap">
-            <div>
-                <a href="{{ url('/') }}"> <img class="socials" src="{{asset('images/inst.png')}}"></a>
-                <a href="{{ url('/') }}"> <img class="socials" src="{{asset('images/telegram.png')}}"></a>
-                <a href="{{ url('/') }}"> <img class="socials" src="{{asset('images/tiktok.png')}}"></a>
+            <div class="info__wrap">
+                <div>
+                    <a href="{{ url('/') }}"> <img class="socials" src="{{asset('images/inst.png')}}"></a>
+                    <a href="{{ url('/') }}"> <img class="socials" src="{{asset('images/telegram.png')}}"></a>
+                    <a href="{{ url('/') }}"> <img class="socials" src="{{asset('images/tiktok.png')}}"></a>
+                </div>
+                <div>
+                    <p>
+                        <b>Адресс</b>
+                        <br>
+                        <br>
+                        г. Минск
+                        ул. Скрыганова д.16
+                    </p>
+                </div>
+                <div><p><b>Телефон</b>
+                        <br>
+                        <br>
+                        МТС <a href="tel:+375 33 6993616">+375 33 6993616</a>
+                        <br>
+                        А1 <a href="tel:+375 29 6993616">+375 29 6993616</a>
+                    </p>
+                </div>
+                <div>
+                    <p><b>Email</b>
+                        <br>
+                        <br>
+                        <a href="mailto:movedance@gmail.com">movedance@gmail.com</a>
+                    </p>
+                </div>
             </div>
-            <div>
-                <p>
-                    <b>Адресс</b>
-                    <br>
-                    <br>
-                    г. Минск
-                    ул. Скрыганова д.16
-                </p>
-            </div>
-            <div><p><b>Телефон</b>
-                    <br>
-                    <br>
-                    МТС <a href="tel:+375 33 6993616">+375 33 6993616</a>
-                    <br>
-                    А1 <a href="tel:+375 29 6993616">+375 29 6993616</a>
-                </p>
-            </div>
-            <div>
-                <p><b>Email</b>
-                    <br>
-                    <br>
-                    <a href="mailto:movedance@gmail.com">movedance@gmail.com</a>
-                </p>
-            </div>
-        </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="https://unpkg.com/imask"></script>
     </footer>
 </div>
-
 </body>
 </html>

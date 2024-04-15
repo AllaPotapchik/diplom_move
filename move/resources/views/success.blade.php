@@ -8,8 +8,8 @@
         @if(session('success'))
             <div class="alert alert-success">
                 <p>{{session('success')}}</p>
-{{--                <?php var_dump($new_count );?>--}}
-            </div>
-        @endif
-    </div>
-@endsection
+{{--                   <?php var_dump($have_record);?>--}}
+               </div>
+           @endif
+       </div>
+   @endsection
