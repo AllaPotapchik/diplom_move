@@ -18,7 +18,7 @@ class ScheduleController extends Controller {
                                  -> join( 'days_of_week', 'schedule.day_id', '=', 'days_of_week.day_id' )
                                  -> join( 'dance_types', 'schedule.dance_type', '=', 'dance_types.dance_type_id' )
                                  -> join( 'levels', 'schedule.level_id', '=', 'levels.level_id' )
-                                 -> where( 'days_of_week.name', 'Понедельник' )
+                                 -> where( 'days_of_week.day_name', 'Понедельник' )
                                  -> select( '*' )
                                  -> get();
 
@@ -27,7 +27,7 @@ class ScheduleController extends Controller {
                                   -> join( 'days_of_week', 'schedule.day_id', '=', 'days_of_week.day_id' )
                                   -> join( 'dance_types', 'schedule.dance_type', '=', 'dance_types.dance_type_id' )
                                   -> join( 'levels', 'schedule.level_id', '=', 'levels.level_id' )
-                                  -> where( 'days_of_week.name', 'Вторник' )
+                                  -> where( 'days_of_week.day_name', 'Вторник' )
                                   -> select( '*' )
                                   -> get();
 
@@ -36,7 +36,7 @@ class ScheduleController extends Controller {
                                     -> join( 'days_of_week', 'schedule.day_id', '=', 'days_of_week.day_id' )
                                     -> join( 'dance_types', 'schedule.dance_type', '=', 'dance_types.dance_type_id' )
                                     -> join( 'levels', 'schedule.level_id', '=', 'levels.level_id' )
-                                    -> where( 'days_of_week.name', 'Среда' )
+                                    -> where( 'days_of_week.day_name', 'Среда' )
                                     -> select( '*' )
                                     -> get();
 
@@ -45,7 +45,7 @@ class ScheduleController extends Controller {
                                    -> join( 'days_of_week', 'schedule.day_id', '=', 'days_of_week.day_id' )
                                    -> join( 'dance_types', 'schedule.dance_type', '=', 'dance_types.dance_type_id' )
                                    -> join( 'levels', 'schedule.level_id', '=', 'levels.level_id' )
-                                   -> where( 'days_of_week.name', 'Четверг' )
+                                   -> where( 'days_of_week.day_name', 'Четверг' )
                                    -> select( '*' )
                                    -> get();
 
@@ -54,7 +54,7 @@ class ScheduleController extends Controller {
                                  -> join( 'days_of_week', 'schedule.day_id', '=', 'days_of_week.day_id' )
                                  -> join( 'dance_types', 'schedule.dance_type', '=', 'dance_types.dance_type_id' )
                                  -> join( 'levels', 'schedule.level_id', '=', 'levels.level_id' )
-                                 -> where( 'days_of_week.name', 'Пятница' )
+                                 -> where( 'days_of_week.day_name', 'Пятница' )
                                  -> select( '*' )
                                  -> get();
         } else {
@@ -96,7 +96,7 @@ class ScheduleController extends Controller {
                                  -> join( 'dance_types', 'schedule.dance_type', '=', 'dance_types.dance_type_id' )
                                  -> join( 'levels', 'schedule.level_id', '=', 'levels.level_id' )
                                  -> join( 'users_tariffs', 'dance_types.dance_type_id', '=', 'users_tariffs.user_dance_type' )
-                                 -> where( 'days_of_week.name', 'Понедельник' )
+                                 -> where( 'days_of_week.day_name', 'Понедельник' )
                                  -> whereIn( 'dance_type', $user_dance_type_array )
                                  -> whereIn( 'schedule.level_id', $user_levels_array )
                                  -> orWhereIn( 'schedule.level_id', $user_level_offline_array )
@@ -110,7 +110,7 @@ class ScheduleController extends Controller {
                                   -> join( 'dance_types', 'schedule.dance_type', '=', 'dance_types.dance_type_id' )
                                   -> join( 'levels', 'schedule.level_id', '=', 'levels.level_id' )
                                   -> join( 'users_tariffs', 'dance_types.dance_type_id', '=', 'users_tariffs.user_dance_type' )
-                                  -> where( 'days_of_week.name', '=', 'Вторник' )
+                                  -> where( 'days_of_week.day_name', '=', 'Вторник' )
                                   -> whereIn( 'schedule.level_id', $user_levels_array )
                                   -> whereIn( 'users_tariffs.tariff_type', [ 1, 3 ] )
                                   -> select( '*' )
@@ -122,7 +122,7 @@ class ScheduleController extends Controller {
                                     -> join( 'dance_types', 'schedule.dance_type', '=', 'dance_types.dance_type_id' )
                                     -> join( 'levels', 'schedule.level_id', '=', 'levels.level_id' )
                                     -> join( 'users_tariffs', 'dance_types.dance_type_id', '=', 'users_tariffs.user_dance_type' )
-                                    -> where( 'days_of_week.name', 'Среда' )
+                                    -> where( 'days_of_week.day_name', 'Среда' )
                                     -> whereIn( 'schedule.level_id', $user_levels_array )
                                     -> whereIn( 'users_tariffs.tariff_type', [ 1, 3 ] )
                                     -> select( '*' )
@@ -134,7 +134,7 @@ class ScheduleController extends Controller {
                                    -> join( 'dance_types', 'schedule.dance_type', '=', 'dance_types.dance_type_id' )
                                    -> join( 'levels', 'schedule.level_id', '=', 'levels.level_id' )
                                    -> join( 'users_tariffs', 'dance_types.dance_type_id', '=', 'users_tariffs.user_dance_type' )
-                                   -> where( 'days_of_week.name', 'Четверг' )
+                                   -> where( 'days_of_week.day_name', 'Четверг' )
                                    -> whereIn( 'schedule.level_id', $user_levels_array )
                                    -> whereIn( 'users_tariffs.tariff_type', [ 1, 3 ] )
                                    -> select( '*' )
@@ -146,7 +146,7 @@ class ScheduleController extends Controller {
                                  -> join( 'dance_types', 'schedule.dance_type', '=', 'dance_types.dance_type_id' )
                                  -> join( 'levels', 'schedule.level_id', '=', 'levels.level_id' )
                                  -> join( 'users_tariffs', 'dance_types.dance_type_id', '=', 'users_tariffs.user_dance_type' )
-                                 -> where( 'days_of_week.name', 'Пятница' )
+                                 -> where( 'days_of_week.day_name', 'Пятница' )
                                  -> whereIn( 'schedule.level_id', $user_levels_array )
                                  -> whereIn( 'users_tariffs.tariff_type', [ 1, 3 ] )
                                  -> select( '*' )

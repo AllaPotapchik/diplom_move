@@ -5,8 +5,10 @@ use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TariffController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\User_subscriptionController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,3 +50,5 @@ Route ::get( '/account/program/{program_id}/{lesson_id}', [LessonController::cla
 Route::post('/upload-video', [LessonController::class, 'uploadVideo'])->name('uploadVideo');
 Route::get('/update_profile/{user_id}', [UserController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/change_password', [UserController::class, 'changePassword'])->name('changePassword');
+Route::get('/check/{lesson_id}/{user_id}', [TeacherController::class, 'showTask'])->name('showTask');
+Route::post('/check', [TeacherController::class, 'checkTask'])->name('checkTask');

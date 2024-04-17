@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/faq.js',
                 'resources/js/account.js',
+                'resources/js/teacher.js',
                 'resources/css/app.css',
                 'resources/css/schedule.css',
                 'resources/css/tariff.css',

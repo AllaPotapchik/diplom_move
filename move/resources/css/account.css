@@ -7,6 +7,9 @@
 #lesson_btn{
     background: #BA80E6;
 }
+.edit_profile{
+    display: none;
+}
 
 .back_color{
     width: 90%;
@@ -46,4 +49,8 @@
     display: flex;
     flex-direction: column;
     width: 50%;
+}
+
+.user_tasks{
+    display: none;
 }

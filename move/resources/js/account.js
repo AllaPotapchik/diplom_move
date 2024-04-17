@@ -8,13 +8,13 @@ const programsDiv = document.querySelector('.my_programs');
 const subscriptionsDiv = document.querySelector('.my_subscriptions');
 const editDiv = document.querySelector('.edit_profile');
 
-
 lesson_btn.addEventListener('click', () => {
 
     lesson_btn.style.backgroundColor = '#BA80E6';
     program_btn.style.backgroundColor = 'white';
     subscription_btn.style.backgroundColor = 'white';
     update_btn.style.backgroundColor = 'white';
+
 
     lessonsDiv.style.display = 'block';
     programsDiv.style.display = 'none';
@@ -27,6 +27,8 @@ program_btn.addEventListener('click', () => {
     program_btn.style.backgroundColor = '#BA80E6';
     lesson_btn.style.backgroundColor = 'white';
     subscription_btn.style.backgroundColor = 'white';
+    update_btn.style.backgroundColor = 'white';
+
 
     programsDiv.style.display = 'block';
     lessonsDiv.style.display = 'none';
@@ -40,6 +42,8 @@ subscription_btn.addEventListener('click', () => {
     subscription_btn.style.backgroundColor = '#BA80E6';
     lesson_btn.style.backgroundColor = 'white';
     program_btn.style.backgroundColor = 'white';
+    update_btn.style.backgroundColor = 'white';
+
 
     subscriptionsDiv.style.display = 'block';
     lessonsDiv.style.display = 'none';
@@ -47,3 +51,19 @@ subscription_btn.addEventListener('click', () => {
     editDiv.style.display = 'none';
 
 });
+
+update_btn.addEventListener('click', () => {
+
+    update_btn.style.backgroundColor = '#BA80E6';
+    subscription_btn.style.backgroundColor = 'white';
+    lesson_btn.style.backgroundColor = 'white';
+    program_btn.style.backgroundColor = 'white';
+
+    editDiv.style.display = 'block';
+    lessonsDiv.style.display = 'none';
+    programsDiv.style.display = 'none';
+    subscriptionsDiv.style.display = 'none';
+
+});
+
+

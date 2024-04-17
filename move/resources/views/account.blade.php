@@ -90,7 +90,6 @@
                         <p>Направление: {{$el->title}}</p>
                         <p>Уровень: {{$el->level_name}}</p>
                     </div>
-
                 @endforeach
             @endif
         </div>
@@ -111,7 +110,7 @@
                 <input value="{{$user->email}}" name="user_email">
                 <button class="text-dark mt-2" type="submit">Изменить</button>
             </form>
-<br>
+            <br>
             <form class="update_profile" method="post" action="{{route('changePassword')}}">
                 @csrf
 

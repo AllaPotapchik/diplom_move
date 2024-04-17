@@ -22,6 +22,7 @@ class LessonController extends Controller {
                       -> select( '*' )
                       -> get();
 
+
         return view( 'lesson', [
             'lessons' => $lessons,
             'program' => $program,
@@ -35,11 +36,11 @@ class LessonController extends Controller {
                      -> select( '*' )
                      -> get();
 
-        $start_lesson = DB::table('user_lessons')
-                          ->where('user_id', Auth::id())
-                          ->where('lesson_id',$lesson_id)
-                          ->get();
-        if(!$start_lesson){
+        $start_lesson = DB ::table( 'user_lessons' )
+                           -> where( 'user_id', Auth ::id() )
+                           -> where( 'lesson_id', $lesson_id )
+                           -> get();
+        if ( ! $start_lesson ) {
             DB ::table( 'user_lessons' ) -> insert( [
                 [
                     'user_id'    => Auth ::id(),
@@ -49,10 +50,9 @@ class LessonController extends Controller {
             ] );
         }
 
-
         return view( 'single_lesson', [
-            'lesson' => $lesson,
-            'program_id'=>$program_id
+            'lesson'     => $lesson,
+            'program_id' => $program_id,
         ] );
     }
 
@@ -61,19 +61,18 @@ class LessonController extends Controller {
             'video' => 'required|file|mimetypes:video/mp4', // Проверка на тип файла (mp4)
         ] );
 
-        // Создаем новую запись в таблице "videos"
         DB ::table( 'user_lessons' ) -> where( 'user_id', Auth ::id() )
            -> where( 'lesson_id', $request -> lesson_id )
-            ->update(['user_video'=> 'program_'.$request->program_id.'_lesson_'.$request -> lesson_id.'.mp4']);
+           -> update( [ 'user_video' => 'p_' . $request -> program_id . '_l_' . $request -> lesson_id . '_u_' . Auth ::id(). '.mp4' ] );
 
         if ( $request -> hasFile( 'video' ) ) {
-            // Сохраняем видео в публичной директории (диск "my_files")
-            $videoPath      = $request -> file( 'video' ) -> storeAs( 'videos', 'program_'.$request->program_id.'_lesson_'.$request -> lesson_id );
+            $videoPath = $request -> file( 'video' ) -> storeAs( 'videos', 'p_' . $request -> program_id . '_l_' . $request -> lesson_id . '_u_' . Auth ::id() . '.' . $request -> file( 'video' ) -> getClientOriginalExtension() );
         }
-//
-//        $video -> save();
-
-        return redirect() -> back() -> with( 'success', 'Видео успешно загружено!' );
+        if ( $videoPath ) {
+            return redirect() -> back() -> with( 'success', 'Видео успешно загружено!' );
+        } else {
+            return redirect() -> back() -> with( 'error', 'Видео не загружено!' );
+        }
     }
 
 }
