@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class TeacherController extends Controller {
+
+    public function index(){
+        return view('teacher_panel');
+    }
     public function showTask( $lesson_id, $user_id ) {
 
         $task = DB ::table( 'user_lessons' )

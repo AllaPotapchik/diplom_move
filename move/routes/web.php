@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\Dance_typeController;
+use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\RecordController;
@@ -31,6 +33,10 @@ Route ::get( '/success', function () {
     return view( 'success' );
 } );
 
+Route ::get( '/admin_panel', [HomeController::class,'index'] ) -> name( 'adminMain' );
+Route ::get( '/teacher_panel', [TeacherController::class,'index'] ) -> name( 'teacherIndex' );
+Route::get('/all_types', [Dance_typeController::class,'index'] )->name('all');
+
 
 Route ::get( '/schedule', 'App\Http\Controllers\ScheduleController@index' );
 Route ::get( '/tariffs', 'App\Http\Controllers\TariffController@index' );
@@ -52,3 +58,9 @@ Route::get('/update_profile/{user_id}', [UserController::class, 'updateProfile']
 Route::post('/change_password', [UserController::class, 'changePassword'])->name('changePassword');
 Route::get('/check/{lesson_id}/{user_id}', [TeacherController::class, 'showTask'])->name('showTask');
 Route::post('/check', [TeacherController::class, 'checkTask'])->name('checkTask');
+
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::resource('dance_type_admin', Dance_typeController::class);

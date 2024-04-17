@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 
-class LoginController extends Controller
-{
+class LoginController extends Controller {
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -36,17 +35,28 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
+    public function __construct() {
+        $this -> middleware( 'guest' ) -> except( 'logout' );
     }
-    public function login(Request $request) {
-        $phone = $request->phone;
-        $password = $request->password;
-        $user = User::where('phone', $phone)->first();
-        if ($user) {
-            Auth::login($user);
-            return redirect()->route('home');
+
+    public function login( Request $request ) {
+        $phone    = $request -> phone;
+        $password = $request -> password;
+        $user     = User ::where( 'phone', $phone ) -> first();
+        if ( $user ) {
+            if ( $user -> user_type == 1 ) {
+                Auth ::login( $user );
+
+                return redirect() -> route( 'adminMain' );
+            } elseif ( $user -> user_type == 2 ) {
+                Auth ::login( $user );
+
+                return redirect() -> route( 'teacherIndex' );
+
+            }else{
+                Auth ::login( $user );
+                return redirect() -> route( 'home' );
+            }
         }
 
     }

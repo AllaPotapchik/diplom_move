@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/js/faq.js',
                 'resources/js/account.js',
                 'resources/js/teacher.js',
+                'public/admin/admin.js',
                 'resources/css/app.css',
                 'resources/css/schedule.css',
                 'resources/css/tariff.css',

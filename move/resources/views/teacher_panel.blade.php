@@ -39,10 +39,6 @@
                             <td><?php echo date( 'H:i', strtotime( $el -> time ) ); ?> </td>
                             <td>{{$el->title}} </td>
                             <td>{{$el->level_name}} </td>
-                            <td>
-                                <button class="text-dark">Отменить</button>
-                            </td>
-                            {{--                <td>{{$el->available_count}} </td>--}}
                         </tr>
                     </tbody>
                     @endforeach

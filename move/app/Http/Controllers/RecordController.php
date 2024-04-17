@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class RecordController extends Controller {
     public function createRecord( $schedule_id_for_record ) {
 
-        $have_record = DB ::table( 'records' ) -> where( 'user_id', Auth ::id() )
+       /* $have_record = DB ::table( 'records' ) -> where( 'user_id', Auth ::id() )
                           -> where( 'schedule_id', $schedule_id_for_record )
                           -> select( '*' )
                           -> get();
@@ -81,7 +81,7 @@ class RecordController extends Controller {
                 return redirect( '/success' ) -> withSuccess( 'Вы записаны' );
             }
         }
-
+*/
 
     }
 

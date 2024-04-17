@@ -25,8 +25,6 @@ class UserController extends Controller {
                         -> get();
 
         /*for teacher account*/
-
-
         foreach ( $user_type as $el ) {
             if ( $el -> user_type == 0 ) {
 
@@ -63,7 +61,7 @@ class UserController extends Controller {
 
             } else if ( $el -> user_type == 1 ) {
 
-                return view( 'admin_panel', [
+                return view( '/admin_index', [
                     'user' => $user
                 ] );
 
@@ -128,5 +126,4 @@ class UserController extends Controller {
 
         return redirect() -> back() -> with( 'success', 'Пароль изменен' );
     }
-
 }
