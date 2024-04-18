@@ -67,7 +67,9 @@ class Dance_typeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit( $dance_type_id ) {
-        $dance_type = DB ::table( 'dance_types' ) -> where( 'dance_type_id', $dance_type_id ) -> first();
+        $dance_type = DB ::table( 'dance_types' )
+                         -> where( 'dance_type_id', $dance_type_id )
+                         -> first();
 
         return view( 'admin.dance_type.update', [
             'dance_type' => $dance_type
@@ -108,7 +110,8 @@ class Dance_typeController extends Controller {
      */
     public function destroy( $dance_type ) {
         DB ::table( 'dance_types' ) -> where( 'dance_type_id', $dance_type )
-           ->delete();
+           -> delete();
+
         return redirect() -> back() -> with( 'success', 'Запись удалена' );
     }
 }

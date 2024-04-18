@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class RecordController extends Controller {
     public function createRecord( $schedule_id_for_record ) {
 
-       /* $have_record = DB ::table( 'records' ) -> where( 'user_id', Auth ::id() )
+        $have_record = DB ::table( 'records' ) -> where( 'user_id', Auth ::id() )
                           -> where( 'schedule_id', $schedule_id_for_record )
                           -> select( '*' )
                           -> get();
@@ -28,13 +28,21 @@ class RecordController extends Controller {
 
         $current_date = date( 'Y-m-d' );
         $date_object  = new DateTime( $current_date );
-        $date_object -> modify( '-' . $today_day . 'day' );
-        $date_object -> modify( '+' . $schedule_day -> day_id . ' days' );
+
+        if ( $today_day >= $schedule_day -> day_id ) {
+            $interval = 7 - $today_day;
+            $date_object -> modify( '+' . $interval . ' days' );
+            $date_object -> modify( '+' . $schedule_day -> day_id . ' days' );
+
+        } else {
+            $date_object -> modify( '-' . $today_day . 'day' );
+            $date_object -> modify( '+' . $schedule_day -> day_id . ' days' );
+        }
 
         $new_date = $date_object -> format( 'Y-m-d' );
 
         if ( sizeof( $have_record ) != 0 ) {
-            return redirect( '/success' ) -> withSuccess( 'уже есть запись на этот класс' );
+            return redirect() -> back() -> with( 'error', 'У вас уже есть запись на данное занятие' );
         } else {
             $new_record                = new Record();
             $new_record -> user_id     = Auth ::id();
@@ -78,10 +86,10 @@ class RecordController extends Controller {
                        -> delete();
                 }
 
-                return redirect( '/success' ) -> withSuccess( 'Вы записаны' );
+                return redirect() -> back() -> with( 'success', 'Вы записаны на урок, запись отобразиться в вашем личном кабинете' );
             }
         }
-*/
+
 
     }
 

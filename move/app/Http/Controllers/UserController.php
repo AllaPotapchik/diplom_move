@@ -26,7 +26,7 @@ class UserController extends Controller {
 
         /*for teacher account*/
         foreach ( $user_type as $el ) {
-            if ( $el -> user_type == 0 ) {
+            if ( $el -> user_type == 1 ) {
 
                 $user_orders = DB ::table( 'records' )
                                   -> join( 'schedule', 'records.schedule_id', 'schedule.id' )
@@ -59,13 +59,13 @@ class UserController extends Controller {
                     'user_subscriptions' => $user_subscriptions
                 ] );
 
-            } else if ( $el -> user_type == 1 ) {
+            } else if ( $el -> user_type == 2 ) {
 
-                return view( '/admin_index', [
+                return view( 'layouts/admin_panel', [
                     'user' => $user
                 ] );
 
-            } else if ( $el -> user_type == 2 ) {
+            } else if ( $el -> user_type == 3 ) {
 
                 $teacher_id = DB ::table( 'teachers' )
                                  -> where( 'user_id', Auth ::id() )

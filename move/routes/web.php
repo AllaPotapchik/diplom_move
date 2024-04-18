@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\admin\Dance_typeController;
 use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\Admin\ProgramsController;
+use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\RecordController;
@@ -25,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route ::get( '/', function () {
-    return view( 'index' );
+    return view( 'home' );
 } );
 
 
@@ -35,7 +37,10 @@ Route ::get( '/success', function () {
 
 Route ::get( '/admin_panel', [HomeController::class,'index'] ) -> name( 'adminMain' );
 Route ::get( '/teacher_panel', [TeacherController::class,'index'] ) -> name( 'teacherIndex' );
-Route::get('/all_types', [Dance_typeController::class,'index'] )->name('all');
+Route::get('/all_types', [Dance_typeController::class,'index'] )->name('all_types');
+Route::get('/all_schedules', [ScheduleController::class,'index'] )->name('all_schedules');
+Route::get('/all_users', [\App\Http\Controllers\Admin\UserController::class,'index'] )->name('all_users');
+Route::get('/all_programs', [ProgramsController::class,'index'] )->name('all_programs');
 
 
 Route ::get( '/schedule', 'App\Http\Controllers\ScheduleController@index' );
@@ -44,6 +49,8 @@ Route ::get( '/tariffs/offline/create_sub', 'App\Http\Controllers\TariffControll
 Route ::get( '/tariffs/offline/{id}', [SubscriptionController::class,'getSubscription'] ) -> name( 'getSubscription' );
 Route ::post( '/save', [ User_subscriptionController::class, 'createSubscription' ] ) -> name( 'createSubscription' );
 Route ::get( '/subscriptions', 'App\Http\Controllers\SubscriptionController@index' );
+Route ::get( '/teachers', [TeacherController::class, 'teachersList'])->name('teachersList');
+Route ::get( '/teachers{teacher_id}', [TeacherController::class, 'showTeacher'])->name('showTeacher');
 
 Auth ::routes();
 Route ::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] ) -> name( 'home' );
@@ -64,3 +71,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::resource('dance_type_admin', Dance_typeController::class);
+Route::resource('schedule_admin', ScheduleController::class);
+Route::resource('user_admin', \App\Http\Controllers\Admin\UserController::class);
+Route::resource('program_admin', ProgramsController::class);

@@ -44,11 +44,11 @@ class LoginController extends Controller {
         $password = $request -> password;
         $user     = User ::where( 'phone', $phone ) -> first();
         if ( $user ) {
-            if ( $user -> user_type == 1 ) {
+            if ( $user -> user_type == 2 ) {
                 Auth ::login( $user );
 
                 return redirect() -> route( 'adminMain' );
-            } elseif ( $user -> user_type == 2 ) {
+            } elseif ( $user -> user_type == 3 ) {
                 Auth ::login( $user );
 
                 return redirect() -> route( 'teacherIndex' );

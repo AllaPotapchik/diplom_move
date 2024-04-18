@@ -81,13 +81,73 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('all')}}" class="nav-link ">
+                                <a href="{{route('all_types')}}" class="nav-link ">
                                     <p>Все направления</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('dance_type_admin.create')}}" class="nav-link ">
-                                    <p>Добавть направление</p>
+                                    <p>Добавить направление</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#" class="nav-link ">
+                            <p>
+                                Расписание
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('all_schedules')}}" class="nav-link ">
+                                    <p>Все занятия</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('schedule_admin.create')}}" class="nav-link ">
+                                    <p>Добавить занятие</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#" class="nav-link ">
+                            <p>
+                                Пользователи
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('all_users')}}" class="nav-link ">
+                                    <p>Все пользователи</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('user_admin.create')}}" class="nav-link ">
+                                    <p>Добавить пользователя</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#" class="nav-link ">
+                            <p>
+                                Программы
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('all_programs')}}" class="nav-link ">
+                                    <p>Все программы</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('program_admin.create')}}" class="nav-link ">
+                                    <p>Добавить программу</p>
                                 </a>
                             </li>
                         </ul>
@@ -95,10 +155,10 @@
 
                 </ul>
 
-                    <a class="nav-item nav-link "
-                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        {{ __('Выход') }}
-                    </a>
+                <a class="nav-item nav-link "
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    {{ __('Выход') }}
+                </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf

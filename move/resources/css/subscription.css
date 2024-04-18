@@ -1,4 +1,4 @@
-.subscription_card{
+.subscription_card {
     max-width: 25rem;
     height: auto;
     background: #E9D5F7;
@@ -13,7 +13,27 @@
     color: #704D8A;
     margin: 1rem;
 }
-.card_wrap{
+
+.teacher {
+    padding: 2rem 3rem;
+}
+
+.dance_type {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    color: #BA80E6;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.name {
+    margin-bottom: 0;
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin-top: 0;
+}
+
+.card_wrap {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -21,23 +41,25 @@
 }
 
 @media (max-width: 990px) {
-    .card_wrap{
+    .card_wrap {
         flex-direction: column;
         align-content: center;
     }
 }
-button{
+
+button {
     background: #92ABFC;
 }
-.subscription_name{
+
+.subscription_name {
     text-transform: uppercase;
-    color:  #92ABFC;
+    color: #92ABFC;
     font-weight: bold;
     font-size: 20px;
 
 }
 
-.subscription_price{
+.subscription_price {
     font-weight: 900;
     font-size: 20px;
 }

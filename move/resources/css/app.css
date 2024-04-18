@@ -263,3 +263,15 @@ button{
     background: white;
 }
 
+.close_btn{
+    color: black;
+    padding: 0;
+    font-size: 1.4rem;
+    margin: 0;
+    background: none;
+}
+
+.alert{
+    display: flex;
+    justify-content: space-between;
+}

@@ -2,6 +2,13 @@
 import './bootstrap';
 import IMask from 'imask'
 
+const close_btn = document.getElementById('close_btn');
+const alertDiv = document.querySelector('.alert');
+
+close_btn.addEventListener('click', () => {
+    alertDiv.style.display = 'none';
+});
+
 const menu_burger = document.querySelector("#menu_burger");
 const popup = document.querySelector("#popup");
 const account = document.getElementById("#icon");

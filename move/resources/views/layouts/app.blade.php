@@ -38,7 +38,7 @@
                         <a href="#">Направления</a>
                     </li>
                     <li>
-                        <a href="#">Преподаватели</a>
+                        <a href="{{route('teachersList')}}">Преподаватели</a>
                     </li>
                     <li>
                         <a href="/tariffs">Тарифы</a>
@@ -90,7 +90,7 @@
                     <a href="#">Направления</a>
                 </li>
                 <li>
-                    <a href="#">Преподаватели</a>
+                    <a href="{{route('teachersList')}}">Преподаватели</a>
                 </li>
                 <li>
                     <a href="#">Тарифы</a>

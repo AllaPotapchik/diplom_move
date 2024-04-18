@@ -8,9 +8,23 @@ use Illuminate\Support\Facades\DB;
 
 class TeacherController extends Controller {
 
-    public function index(){
-        return view('teacher_panel');
+    public function index() {
+        return view( 'teacher_panel' );
     }
+
+    public function teachersList() {
+        $teachers = DB ::table( 'teachers' )
+                       -> join( 'dance_types', 'teachers.dance_type_id', 'dance_types.dance_type_id' )
+                       -> get();
+
+        return view( 'teachers', [ 'teachers' => $teachers ] );
+    }
+
+public function showTeacher($teacher_id){
+        $teacher = DB::table('teachers')->where('teacher_id',$teacher_id)->first();
+
+        return view('single_teacher', ['teacher'=>$teacher]);
+}
     public function showTask( $lesson_id, $user_id ) {
 
         $task = DB ::table( 'user_lessons' )

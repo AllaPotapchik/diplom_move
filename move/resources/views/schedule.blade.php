@@ -3,10 +3,23 @@
     Расписание
 @endsection
 @section('content')
-    @vite(['resources/css/schedule.css'])
+    @vite(['resources/css/schedule.css', 'public/admin/admin.js'])
     <div class="container back_color">
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                <h6><i class="icon fa fa-check"></i> {{ session('success') }}</h6>
+                <button type="button" class="close close_btn" id="close_btn" data-dismiss="alert" aria-hidden="true">×</button>
+            </div>
+        @elseif(session('error'))
+            <div class="alert alert-success">
+                <h6><i class="icon fa fa-check"></i> {{ session('error') }}</h6>
+                <button type="button" class="close close_btn" id="close_btn" data-dismiss="alert" aria-hidden="true">×</button>
+            </div>
+        @endif
         <div class="schedule_table">
-{{--             {{var_dump($newDate)}}--}}
+            {{--             {{var_dump($newDate)}}--}}
+
             <div class="schedule_day">Понедельник</div>
             @if(sizeof($scheduleMonday) == 0 )
                 <div class="no_lessons">нет тренировок по вашим направленям</div>
@@ -57,8 +70,7 @@
             @endif
 
 
-
-        <div class="schedule_day">Вторник</div>
+            <div class="schedule_day">Вторник</div>
             @if(sizeof($scheduleMonday) == 0 )
                 <div class="no_lessons">нет тренировок по вашим направленям</div>
             @else
@@ -107,7 +119,7 @@
                 </table>
             @endif
 
-    <div class="schedule_day">Среда</div>
+            <div class="schedule_day">Среда</div>
             @if(sizeof($scheduleWednesday) == 0 )
                 <div class="no_lessons">нет тренировок по вашим направленям</div>
             @else
@@ -253,6 +265,6 @@
                     </tbody>
                 </table>
             @endif
-    </div>
+        </div>
 
 @endsection
