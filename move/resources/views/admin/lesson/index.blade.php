@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Все программы</h1>
+                        <h1 class="m-0">Все уроки</h1>
                     </div><!-- /.col -->
 
                 </div><!-- /.row -->
@@ -33,24 +33,31 @@
                         <tr>
                             <th scope="col">Название</th>
                             <th scope="col">Направление</th>
-                            <th scope="col">Уровень</th>
-                            <th scope="col">Количество уроков</th>
+                            <th scope="col">Программа</th>
+                            <th scope="col">Номер</th>
+                            <th scope="col">Описание</th>
+                            <th scope="col">Видео</th>
+                            <th scope="col">Оборудование</th>
+                            <th scope="col">Длительность</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($programs as $el)
+                        @foreach($lesson as $el)
                             <tr>
-                                <th scope="row">{{$el->program_name}}</th>
-                              <td>{{$el->title}}</td>
-                                <td>{{$el->level_name}}</td>
-                             <td>{{$el->lesson_count}}</td>
-
+                                <th scope="row">{{$el->lesson_name}}</th>
+                                <td>{{$el->title}}</td>
+                                <td>{{$el->program_name}}</td>
+                                <td>{{$el->number}}</td>
+                                <td>{{$el->lesson_description}}</td>
+                                <td >{{$el->video}}</td>
+                                <td>{{$el->equipment}}</td>
+                                <td>{{$el->duration}}</td>
                                 <td class="text-center d-flex justify-content-evenly">
-                                    <a href="{{route('program_admin.edit', $el->program_id)}}"
+                                    <a href="{{route('lesson_admin.edit', $el->lesson_id)}}"
                                        class="btn btn-primary rounded-pill px-3 mr-2 "
-                                       type="button" id="{{$el->program_id}}">Редактировать</a>
-                                    <form method="post" action="{{route('program_admin.destroy', $el->program_id)}}">
+                                       type="button" id="{{$el->lesson_id}}">Редактировать</a>
+                                    <form method="post" action="{{route('lesson_admin.destroy', $el->lesson_id)}}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger rounded-pill px-3 delete_btn">Удалить</button>

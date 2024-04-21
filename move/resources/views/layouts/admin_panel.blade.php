@@ -152,7 +152,46 @@
                             </li>
                         </ul>
                     </li>
-
+                    <li class="nav-item ">
+                        <a href="#" class="nav-link ">
+                            <p>
+                                Преподаватели
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('all_teachers')}}" class="nav-link ">
+                                    <p>Все преподаватели</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('teacher_admin.create')}}" class="nav-link ">
+                                    <p>Добавить преподавателя</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#" class="nav-link ">
+                            <p>
+                                Уроки
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('all_lessons')}}" class="nav-link ">
+                                    <p>Все уроки</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('lesson_admin.create')}}" class="nav-link ">
+                                    <p>Добавить урок</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
 
                 <a class="nav-item nav-link "

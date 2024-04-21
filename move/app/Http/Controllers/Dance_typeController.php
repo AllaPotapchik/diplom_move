@@ -12,4 +12,11 @@ class Dance_typeController extends Controller
 
         return view('create_sub', ['dance_type' => $dance_type -> all()]);
     }
+
+    public function index(){
+
+        $dance_type = new Dance_type();
+
+        return view('dance_types', ['dance_type' => $dance_type -> all()]);
+    }
 }

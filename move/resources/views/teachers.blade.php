@@ -8,7 +8,7 @@
         @foreach($teachers as $el)
             <a href="{{route('showTeacher', $el->teacher_id)}}">
                 <div class="subscription_card teacher">
-                    <img src="{{asset('/images/'.$el->photo_path)}}">
+                    <img src="{{asset('storage')}}/teachers_photo/{{$el->photo_path}}">
                     <p class="dance_type">{{$el->title}}</p>
                     <p class="name">{{$el->teacher_name}}</p>
                 </div>

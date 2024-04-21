@@ -23,7 +23,6 @@ class RecordController extends Controller {
                            -> select( 'schedule.day_id' )
                            -> first();
 
-
         $today_day = date( 'N' );
 
         $current_date = date( 'Y-m-d' );
@@ -89,9 +88,29 @@ class RecordController extends Controller {
                 return redirect() -> back() -> with( 'success', 'Вы записаны на урок, запись отобразиться в вашем личном кабинете' );
             }
         }
-
-
     }
 
+    public function deleteRecord( $record_id, $schedule_id ) {
+        DB ::table( 'schedule' ) -> where( 'id', $schedule_id ) -> increment( 'available_count' );
+        $current_schedule = DB ::table( 'schedule' )
+                               -> where( 'id', '=', $schedule_id )
+                               -> first();
 
+        $have_subscription = DB ::table( 'user_subscriptions' )
+                                -> where( 'user_id', Auth ::id() )
+                                -> where( 'dance_type_id', $current_schedule -> dance_type )
+                                -> where( 'level_id', $current_schedule -> level_id )
+                                -> first();
+
+        if ( $have_subscription ) {
+            DB ::table( 'user_subscriptions' )
+               -> where( 'order_id', $have_subscription -> order_id )
+               -> increment( 'available_count' );
+
+            DB ::table( 'records' ) -> where( 'record_id', $record_id ) -> delete();
+
+            return redirect() -> back() -> with( 'success', 'Запись отменена' );
+
+        }
+    }
 }

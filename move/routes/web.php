@@ -34,13 +34,18 @@ Route ::get( '/', function () {
 Route ::get( '/success', function () {
     return view( 'success' );
 } );
+Route ::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] ) -> name( 'home' );
+Route ::get( '/account', [ UserController::class, 'accountType' ] ) -> name( 'accountType' );
 
 Route ::get( '/admin_panel', [HomeController::class,'index'] ) -> name( 'adminMain' );
 Route ::get( '/teacher_panel', [TeacherController::class,'index'] ) -> name( 'teacherIndex' );
+
 Route::get('/all_types', [Dance_typeController::class,'index'] )->name('all_types');
 Route::get('/all_schedules', [ScheduleController::class,'index'] )->name('all_schedules');
 Route::get('/all_users', [\App\Http\Controllers\Admin\UserController::class,'index'] )->name('all_users');
 Route::get('/all_programs', [ProgramsController::class,'index'] )->name('all_programs');
+Route::get('/all_teachers', [\App\Http\Controllers\Admin\TeacherController::class,'index'] )->name('all_teachers');
+Route::get('/all_lessons', [\App\Http\Controllers\Admin\LessonController::class,'index'] )->name('all_lessons');
 
 
 Route ::get( '/schedule', 'App\Http\Controllers\ScheduleController@index' );
@@ -53,24 +58,30 @@ Route ::get( '/teachers', [TeacherController::class, 'teachersList'])->name('tea
 Route ::get( '/teachers{teacher_id}', [TeacherController::class, 'showTeacher'])->name('showTeacher');
 
 Auth ::routes();
-Route ::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] ) -> name( 'home' );
-Route ::get( '/account', [ UserController::class, 'accountType' ] ) -> name( 'accountType' );
-Route ::get( '/{schedule_id}', [ RecordController::class, 'createRecord' ] ) -> name( 'createRecord' );
+
+
 Route ::get( '/tariffs/program/{tariff_id}', [ TariffController::class, 'programs' ] ) -> name( 'programs' );
 Route ::get( '/tariffs/program/{tariff_id}/{dance_type_id}/{program_id}', [ProgramController::class,'createProgramRecord'] ) -> name( 'createProgramRecord' );
 Route ::get( '/account/program/{program_id}', [LessonController::class,'showLessons'] ) -> name( 'showLessons' );
 Route ::get( '/account/program/{program_id}/{lesson_id}', [LessonController::class,'startLesson'] ) -> name( 'startLesson' );
+Route::get('/end/{lesson_id}', [LessonController::class, 'endLesson'])->name('endLesson');
 Route::post('/upload-video', [LessonController::class, 'uploadVideo'])->name('uploadVideo');
+
+Route ::get( '/{schedule_id}', [ RecordController::class, 'createRecord' ] ) -> name( 'createRecord' );
+Route ::get( '/{record_id}/{schedule_id}', [ RecordController::class, 'deleteRecord' ] ) -> name( 'deleteRecord' );
+
 Route::get('/update_profile/{user_id}', [UserController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/change_password', [UserController::class, 'changePassword'])->name('changePassword');
 Route::get('/check/{lesson_id}/{user_id}', [TeacherController::class, 'showTask'])->name('showTask');
+
 Route::post('/check', [TeacherController::class, 'checkTask'])->name('checkTask');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
+Route::resource('teacher_admin', \App\Http\Controllers\Admin\TeacherController::class);
 Route::resource('dance_type_admin', Dance_typeController::class);
 Route::resource('schedule_admin', ScheduleController::class);
 Route::resource('user_admin', \App\Http\Controllers\Admin\UserController::class);
 Route::resource('program_admin', ProgramsController::class);
+Route::resource('lesson_admin', \App\Http\Controllers\Admin\LessonController::class);

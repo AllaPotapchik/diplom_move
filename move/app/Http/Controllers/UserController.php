@@ -70,7 +70,6 @@ class UserController extends Controller {
                 $teacher_id = DB ::table( 'teachers' )
                                  -> where( 'user_id', Auth ::id() )
                                  -> first();
-
                 $teacher_lessons = DB ::table( 'schedule' )
                                       -> where( 'schedule.teacher_id', $teacher_id -> teacher_id )
                                       -> join( 'teachers', 'schedule.teacher_id', '=', 'teachers.teacher_id' )

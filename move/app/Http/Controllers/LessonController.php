@@ -22,7 +22,6 @@ class LessonController extends Controller {
                       -> select( '*' )
                       -> get();
 
-
         return view( 'lesson', [
             'lessons' => $lessons,
             'program' => $program,
@@ -40,7 +39,9 @@ class LessonController extends Controller {
                            -> where( 'user_id', Auth ::id() )
                            -> where( 'lesson_id', $lesson_id )
                            -> get();
-        if ( ! $start_lesson ) {
+
+        if ( sizeof($start_lesson) == 0 ) {
+//            dd($start_lesson);
             DB ::table( 'user_lessons' ) -> insert( [
                 [
                     'user_id'    => Auth ::id(),
@@ -63,10 +64,12 @@ class LessonController extends Controller {
 
         DB ::table( 'user_lessons' ) -> where( 'user_id', Auth ::id() )
            -> where( 'lesson_id', $request -> lesson_id )
-           -> update( [ 'user_video' => 'p_' . $request -> program_id . '_l_' . $request -> lesson_id . '_u_' . Auth ::id(). '.mp4' ] );
+           -> update( [ 'user_video' => 'p_' . $request -> program_id . '_l_' . $request -> lesson_id . '_u_' . Auth ::id() . '.mp4' ] );
 
         if ( $request -> hasFile( 'video' ) ) {
-            $videoPath = $request -> file( 'video' ) -> storeAs( 'videos', 'p_' . $request -> program_id . '_l_' . $request -> lesson_id . '_u_' . Auth ::id() . '.' . $request -> file( 'video' ) -> getClientOriginalExtension() );
+            $videoPath = $request -> file( 'video' )
+                                  -> storeAs( 'videos', 'p_' . $request -> program_id . '_l_' . $request -> lesson_id . '_u_' . Auth ::id() . '.' . $request -> file( 'video' )
+                                                                                                                                                             -> getClientOriginalExtension() );
         }
         if ( $videoPath ) {
             return redirect() -> back() -> with( 'success', 'Видео успешно загружено!' );
@@ -75,4 +78,14 @@ class LessonController extends Controller {
         }
     }
 
+    public function endLesson( $lesson_id ) {
+
+        DB ::table( 'user_lessons' )
+           -> where( 'lesson_id', $lesson_id )
+           -> where( 'user_id', Auth ::id() )
+           -> update( [ 'status' => 1 ] );
+
+        return redirect() -> back() -> with( 'success', 'Статус изменен' );
+
+    }
 }

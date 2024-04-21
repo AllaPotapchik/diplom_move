@@ -4,20 +4,17 @@
 @section('content')
 
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Все направления</h1>
-                    </div><!-- /.col -->
+                        <h1 class="m-0">Все пользователи</h1>
+                    </div>
 
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                </div>
+            </div>
         </div>
-        <!-- /.content-header -->
 
-        <!-- Main content -->
         <section class="content">
             @if (session('success'))
                 <div class="alert alert-success">
@@ -26,7 +23,6 @@
                 </div>
             @endif
             <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <table class="table table-striped">
                         <thead>
@@ -45,7 +41,6 @@
                             <tr>
                                 <th scope="row">{{$el->name}}</th>
                                 <td>{{$el->email}}</td>
-{{--                                <td>{{$el->password}}</td>--}}
                                 <td>{{$el->phone}}</td>
                                 <td>{{$el->type_name}}</td>
                                 <td>{{$el->point_balance}}</td>
@@ -63,16 +58,10 @@
                         @endforeach
                         </tbody>
                     </table>
-
-
-                    <!-- ./col -->
                 </div>
-                <!-- /.row -->
-                <!-- Main row -->
-
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-        <!-- /.content -->
+
     </div>
 
 @endsection

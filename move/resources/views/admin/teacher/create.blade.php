@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Добавить пользователя</h1>
+                        <h1 class="m-0">Добавить преподавателя</h1>
                     </div>
                 </div>
             </div>
@@ -26,35 +26,49 @@
                         @endif
                         <div class="card card-primary">
 
-                            <form method="post" action="{{route('user_admin.store')}}">
+                            <form method="post" action="{{route('teacher_admin.store')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <div class="form-group">
-                                            <label for="benefits">Имя</label>
+                                            <label for="name">Имя преподавателя</label>
                                             <input type="text" class="form-control" id="name"
                                                    name="name" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="benefits">Email</label>
-                                            <input type="email" class="form-control" id="email"
-                                                   name="email" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="benefits">Пароль</label>
-                                            <input type="password" class="form-control" id="password"
-                                                   name="password" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="benefits">Телефон</label>
-                                            <input type="tel" class="form-control" id="phone"
-                                                   name="phone" required>
-                                        </div>
-                                        <label for="name">Тип пользователя</label>
+
+                                        <label for="name">Направление</label>
                                         <br>
-                                        <select required name="user_type">
-                                            @foreach($user_types as $el)
-                                                <option value="{{$el->type_id}}">{{$el->type_name}}</option>
+                                        <select required name="dance_type">
+                                            @foreach($dance_types as $el)
+                                                <option value="{{$el->dance_type_id}}">{{$el->title}}</option>
+                                            @endforeach
+                                        </select>
+                                        <br> <br>
+                                        <div class="form-group">
+                                            <label for="experience">Опыт</label>
+                                            <input type="text" class="form-control" id="experience"
+                                                   name="experience" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="specialisation">Специализация</label>
+                                            <input type="text" class="form-control" id="specialisation"
+                                                   name="specialisation" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="photo">Фото</label>
+                                            <br>
+                                            <input type="file" name="teacher_photo" id="teacher_photo" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="video_path">Видео</label>
+                                            <input type="text" class="form-control" id="video_path"
+                                                   name="video_path" required>
+                                        </div>
+                                        <label for="name">Пользователь</label>
+                                        <br>
+                                        <select required name="user_id">
+                                            @foreach($users as $el)
+                                                <option value="{{$el->id}}">{{$el->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>

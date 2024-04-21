@@ -14,18 +14,18 @@
                 <p>Длительность урока: <?php echo date( 'i', strtotime( $el -> duration ) ); ?> минут</p>
             </div>
             <div class="lesson_video">
-                {!! $el->video !!}
+{{--                {!! $el->video !!}--}}
 
 
-                {{--                <video width="320" height="240" controls>--}}
-                {{--                    <source src="{{asset('video/'. $el->video)}}" type="video/mp4">--}}
-                {{--                    Your browser does not support the video tag.--}}
-                {{--                </video>--}}
-                <br><button class="text-dark">Отментить урок как пройденный</button>
+                                <video width="320" height="240" controls>
+                                    <source src="{{asset('storage')}}/lesson_video/{{$el->video}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                <br>
             </div>
                 <form action="{{ route('uploadVideo')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="file" name="video">
+                    <input type="file" required name="video">
                     <input type="hidden" value="{{$el->lesson_id}}" name="lesson_id">
                     <input type="hidden" value="{{$program_id}}" name="program_id">
                     @if(session('success'))
@@ -34,8 +34,16 @@
                         </div>
                         <br/>
                     @endif
-                    <button type="submit">Загрузить видео</button>
+                    <button type="submit" class="text-dark">Загрузить видео</button>
                 </form>
+            </div>
+        <br>
+        <br>
+        <br>
+            <div>
+                <a href="{{route('endLesson', $el->lesson_id)}}">
+                    <button class="text-dark">Отментить урок как пройденный</button>
+                </a>
             </div>
         @endforeach
     </div>

@@ -44,10 +44,10 @@
                         <th>Направление</th>
                         <th>Преподаватель</th>
                         <th>Уровень</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
-
                     @foreach($user_orders as $el)
                         <tr>
                             <td><?php echo date( 'd/m', strtotime( $el -> date ) ); ?> </td>
@@ -55,7 +55,11 @@
                             <td>{{$el->title}} </td>
                             <td>{{$el->teacher_name}} </td>
                             <td>{{$el->level_name}} </td>
-                            {{--                <td>{{$el->available_count}} </td>--}}
+                            <td>
+                                <a href="{{route('deleteRecord', [$el->record_id, $el->schedule_id])}}">
+                                    <button  class="schedule_btn ">Отменить</button>
+                                </a>
+                            </td>
                         </tr>
                     </tbody>
 

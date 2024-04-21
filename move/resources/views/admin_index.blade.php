@@ -77,14 +77,33 @@
                             <a href="{{route('all_programs')}}" class="small-box-footer">Просмотреть  <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-secondary ">
+                            <div class="inner">
+                                <h3>Преподаватели</h3>
+                                <p>{{$teacher_count}} записи(ей)</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-pie-graph"></i>
+                            </div>
+                            <a href="{{route('all_teachers')}}" class="small-box-footer">Просмотреть  <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-secondary ">
+                            <div class="inner">
+                                <h3>Уроки</h3>
+                                <p>{{$lesson_count}} записи(ей)</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-pie-graph"></i>
+                            </div>
+                            <a href="{{route('all_lessons')}}" class="small-box-footer">Просмотреть  <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.row -->
-                <!-- Main row -->
-
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-        <!-- /.content -->
     </div>
 
 @endsection

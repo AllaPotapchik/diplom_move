@@ -4,20 +4,17 @@
 @section('content')
 
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Все программы</h1>
-                    </div><!-- /.col -->
+                        <h1 class="m-0">Все преподаватели</h1>
+                    </div>
 
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                </div>
+            </div>
         </div>
-        <!-- /.content-header -->
 
-        <!-- Main content -->
         <section class="content">
             @if (session('success'))
                 <div class="alert alert-success">
@@ -26,50 +23,50 @@
                 </div>
             @endif
             <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">Название</th>
+                            <th scope="col">Имя</th>
                             <th scope="col">Направление</th>
-                            <th scope="col">Уровень</th>
-                            <th scope="col">Количество уроков</th>
+                            <th scope="col">Опыт</th>
+                            <th scope="col">Специализация</th>
+                            <th scope="col">Фото</th>
+                            <th scope="col">Видео</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($programs as $el)
+                        @foreach($teachers as $el)
                             <tr>
-                                <th scope="row">{{$el->program_name}}</th>
-                              <td>{{$el->title}}</td>
-                                <td>{{$el->level_name}}</td>
-                             <td>{{$el->lesson_count}}</td>
-
+                                <th scope="row">{{$el->teacher_name}}</th>
+                                <td>{{$el->title}}</td>
+                                <td>{{$el->experience}}</td>
+                                <td>{{$el->specialisation}}</td>
+                                <td><img style="width: 100px; height: auto"
+                                         src="{{asset('storage')}}/teachers_photo/{{$el->photo_path}}">
+                                </td>
+                                <td>{{$el->video_path}}</td>
                                 <td class="text-center d-flex justify-content-evenly">
-                                    <a href="{{route('program_admin.edit', $el->program_id)}}"
+                                    <a href="{{route('teacher_admin.edit', $el->teacher_id)}}"
                                        class="btn btn-primary rounded-pill px-3 mr-2 "
-                                       type="button" id="{{$el->program_id}}">Редактировать</a>
-                                    <form method="post" action="{{route('program_admin.destroy', $el->program_id)}}">
+                                       type="button" id="{{$el->teacher_id}}">Редактировать</a>
+                                    <form method="post" action="{{route('teacher_admin.destroy', $el->teacher_id)}}">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger rounded-pill px-3 delete_btn">Удалить</button>
+                                        <button type="submit" class="btn btn-danger rounded-pill px-3 delete_btn">
+                                            Удалить
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-
-
-                    <!-- ./col -->
                 </div>
-                <!-- /.row -->
-                <!-- Main row -->
-
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-        <!-- /.content -->
+
     </div>
 
 @endsection

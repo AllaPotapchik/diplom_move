@@ -4,25 +4,19 @@
 @section('content')
 
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Изменить направление</h1>
-                    </div><!-- /.col -->
-
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                        <h1 class="m-0">Изменить программу</h1>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /.content-header -->
 
-        <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
                 <div class="row">
-
                     <div class="col-lg-6">
                         @if (session('success'))
                             <div class="alert alert-success">
@@ -38,7 +32,8 @@
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label for="benefits">Название программы</label>
-                                            <input type="text" value="{{$program->program_name}}"  class="form-control" id="name"
+                                            <input type="text" value="{{$program->program_name}}" class="form-control"
+                                                   id="name"
                                                    name="name" required>
                                         </div>
                                         <label for="name">Направление</label>
@@ -58,31 +53,24 @@
                                         </select>
                                         <br>
                                         <br>
-
                                         <div class="form-group">
                                             <label for="benefits">Количество уроков</label>
-                                            <input type="number" value="{{$program->lesson_count}}" class="form-control" id="email"
+                                            <input type="number" value="{{$program->lesson_count}}" class="form-control"
+                                                   id="email"
                                                    name="count" required>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /.card-body -->
-
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Изменить</button>
                                 </div>
                             </form>
                         </div>
                     </div>
-
-                    <!-- ./col -->
                 </div>
-                <!-- /.row -->
-                <!-- Main row -->
-
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-        <!-- /.content -->
+
     </div>
 
 @endsection

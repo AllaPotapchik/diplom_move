@@ -4,20 +4,16 @@
 @section('content')
 
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Все направления</h1>
-                    </div><!-- /.col -->
-
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                        <h1 class="m-0">Все занятия</h1>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /.content-header -->
 
-        <!-- Main content -->
         <section class="content">
             @if (session('success'))
                 <div class="alert alert-success">
@@ -26,7 +22,6 @@
                 </div>
             @endif
             <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <table class="table table-striped">
                         <thead>
@@ -56,23 +51,19 @@
                                     <form method="post" action="{{route('schedule_admin.destroy', $el->id)}}">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger rounded-pill px-3 delete_btn">Удалить</button>
+                                        <button type="submit" class="btn btn-danger rounded-pill px-3 delete_btn">
+                                            Удалить
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-
-
-                    <!-- ./col -->
                 </div>
-                <!-- /.row -->
-                <!-- Main row -->
-
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-        <!-- /.content -->
+
     </div>
 
 @endsection
