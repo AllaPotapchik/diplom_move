@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller {
     public function accountType() {
 
-        /*for user account*/
         $date = new DateTime();
         $user = DB ::table( 'users' )
                    -> where( 'id', Auth ::id() )
@@ -23,8 +22,8 @@ class UserController extends Controller {
         $user_type = DB ::table( 'users' ) -> where( 'id', Auth ::id() )
                         -> select( 'users.user_type' )
                         -> get();
-
-        /*for teacher account*/
+//($user);
+        /*for user account*/
         foreach ( $user_type as $el ) {
             if ( $el -> user_type == 1 ) {
 
@@ -58,13 +57,13 @@ class UserController extends Controller {
                     'user_programs'      => $user_programs,
                     'user_subscriptions' => $user_subscriptions
                 ] );
-
+                /*for admin account*/
             } else if ( $el -> user_type == 2 ) {
 
                 return view( 'layouts/admin_panel', [
                     'user' => $user
                 ] );
-
+                /*for teacher account*/
             } else if ( $el -> user_type == 3 ) {
 
                 $teacher_id = DB ::table( 'teachers' )

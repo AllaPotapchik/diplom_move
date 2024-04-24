@@ -57,7 +57,7 @@
                             <td>{{$el->level_name}} </td>
                             <td>
                                 <a href="{{route('deleteRecord', [$el->record_id, $el->schedule_id])}}">
-                                    <button  class="schedule_btn ">Отменить</button>
+                                    <button  class="schedule_btn" >Отменить</button>
                                 </a>
                             </td>
                         </tr>

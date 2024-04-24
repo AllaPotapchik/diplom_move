@@ -71,7 +71,7 @@
 
 
             <div class="schedule_day">Вторник</div>
-            @if(sizeof($scheduleMonday) == 0 )
+            @if(sizeof($scheduleTuesday) == 0 )
                 <div class="no_lessons">нет тренировок по вашим направленям</div>
             @else
                 <table>

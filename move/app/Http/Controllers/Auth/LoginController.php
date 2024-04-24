@@ -51,7 +51,7 @@ class LoginController extends Controller {
             } elseif ( $user -> user_type == 3 ) {
                 Auth ::login( $user );
 
-                return redirect() -> route( 'teacherIndex' );
+                return redirect() -> route( 'home' );
 
             }else{
                 Auth ::login( $user );

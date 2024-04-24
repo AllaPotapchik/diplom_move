@@ -18,7 +18,7 @@ class ScheduleController extends Controller {
                      -> where( 'records.date', '<', date( 'Y-m-d' ) )
                      -> where( 'time','<' ,date( 'H:i:s' ) )
                      -> delete();
-//        dd( $delete );
+
         if ( ! Auth ::check() ) {
             $scheduleMonday = DB ::table( 'schedule' )
                                  -> join( 'teachers', 'schedule.teacher_id', '=', 'teachers.teacher_id' )
@@ -70,11 +70,12 @@ class ScheduleController extends Controller {
                                         -> where( 'user_id', $user_id )
                                         -> select( 'user_dance_type' )
                                         -> get();
+
             $user_dance_type_array = [];
             foreach ( $user_dance_type as $value ) {
                 $user_dance_type_array[] = $value -> user_dance_type;
             }
-
+//            dd($user_dance_type_array);
             $user_levels = DB ::table( 'users_tariffs' )
                               -> where( 'user_id', Auth ::id() )
                               -> join( 'programs', 'programs.program_id', '=', 'users_tariffs.program_id' )
@@ -105,11 +106,11 @@ class ScheduleController extends Controller {
                                  -> join( 'users_tariffs', 'dance_types.dance_type_id', '=', 'users_tariffs.user_dance_type' )
                                  -> where( 'days_of_week.day_name', '=', 'Понедельник' )
                                  -> whereIn( 'dance_type', $user_dance_type_array )
-                                 -> whereIn( 'schedule.level_id', $user_levels_array )
+//                                 -> whereIn( 'schedule.level_id', $user_levels_array )
 //                                 -> orWhereIn( 'schedule.level_id', $user_level_offline_array )
                                  -> whereIn( 'users_tariffs.tariff_type', [ 1, 3 ] )
                                  -> get();
-//            dd($scheduleMonday);
+//            ;
             $scheduleTuesday = DB ::table( 'schedule' ) -> whereIn( 'dance_type', $user_dance_type_array )
                                   -> join( 'teachers', 'schedule.teacher_id', '=', 'teachers.teacher_id' )
                                   -> join( 'days_of_week', 'schedule.day_id', '=', 'days_of_week.day_id' )
@@ -121,7 +122,7 @@ class ScheduleController extends Controller {
                                   -> whereIn( 'users_tariffs.tariff_type', [ 1, 3 ] )
                                   -> select( '*' )
                                   -> get();
-
+//            dd($scheduleTuesday);
             $scheduleWednesday = DB ::table( 'schedule' ) -> whereIn( 'dance_type', $user_dance_type_array )
                                     -> join( 'teachers', 'schedule.teacher_id', '=', 'teachers.teacher_id' )
                                     -> join( 'days_of_week', 'schedule.day_id', '=', 'days_of_week.day_id' )

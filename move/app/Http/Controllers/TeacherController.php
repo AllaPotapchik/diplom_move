@@ -8,9 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class TeacherController extends Controller {
 
-    public function index() {
-        return view( 'teacher_panel' );
-    }
+//    public function index() {
+//        $teachers = DB ::table( 'teachers' )
+//                       -> join( 'dance_types', 'teachers.dance_type_id', 'dance_types.dance_type_id' )
+//                       -> get();
+//        return view( 'teacher_panel', );
+//    }
 
     public function teachersList() {
         $teachers = DB ::table( 'teachers' )

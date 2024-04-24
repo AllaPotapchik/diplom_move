@@ -47,6 +47,7 @@ Route::get('/all_programs', [ProgramsController::class,'index'] )->name('all_pro
 Route::get('/all_teachers', [\App\Http\Controllers\Admin\TeacherController::class,'index'] )->name('all_teachers');
 Route::get('/all_lessons', [\App\Http\Controllers\Admin\LessonController::class,'index'] )->name('all_lessons');
 
+Route ::get( '/dance_types', [\App\Http\Controllers\Dance_typeController::class, 'index'])->name('dance_typeList');
 
 Route ::get( '/schedule', 'App\Http\Controllers\ScheduleController@index' );
 Route ::get( '/tariffs', 'App\Http\Controllers\TariffController@index' );
@@ -68,7 +69,7 @@ Route::get('/end/{lesson_id}', [LessonController::class, 'endLesson'])->name('en
 Route::post('/upload-video', [LessonController::class, 'uploadVideo'])->name('uploadVideo');
 
 Route ::get( '/{schedule_id}', [ RecordController::class, 'createRecord' ] ) -> name( 'createRecord' );
-Route ::get( '/{record_id}/{schedule_id}', [ RecordController::class, 'deleteRecord' ] ) -> name( 'deleteRecord' );
+Route ::get( '/delete/{record_id}/{schedule_id}', [ RecordController::class, 'deleteRecord' ] ) -> name( 'deleteRecord' );
 
 Route::get('/update_profile/{user_id}', [UserController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/change_password', [UserController::class, 'changePassword'])->name('changePassword');

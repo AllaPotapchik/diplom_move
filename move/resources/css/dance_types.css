@@ -1,0 +1,34 @@
+.dance_type_card{
+    background: #BA80E6;
+    padding: 3rem;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    border-radius: 2rem;
+    color: #fff;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 20px;
+}
+.dance_type_card button{
+    font-size: 1rem;
+}
+.dance_type_card h1{
+    font-weight: bolder;
+}
+.card_info{
+    display: flex;
+    justify-content: space-between;
+}
+.card_text{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.dance_type_description{
+    margin: 3rem 0;
+}

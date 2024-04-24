@@ -5,6 +5,7 @@
 @section('content')
     @vite(['resources/css/schedule.css', 'resources/css/account.css', 'resources/js/teacher.js'])
     <div class="container back_color">
+{{--        @dd($user);--}}
         <h1>Преподавтаель {{$user->name}}</h1>
         <button id="lesson_btn" class="text-dark">Мое расписание</button>
         <button id="tasks_btn" class="text-dark">Задания</button>

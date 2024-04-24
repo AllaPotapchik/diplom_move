@@ -35,7 +35,7 @@
                         <a href="/schedule">Расписание</a>
                     </li>
                     <li>
-                        <a href="#">Направления</a>
+                        <a href="{{route('dance_typeList')}}">Направления</a>
                     </li>
                     <li>
                         <a href="{{route('teachersList')}}">Преподаватели</a>

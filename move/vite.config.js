@@ -19,6 +19,7 @@ export default defineConfig({
                 'resources/css/program.css',
                 'resources/css/account.css',
                 'resources/css/lesson.css',
+                'resources/css/dance_types.css',
             ],
             refresh: true,
         }),

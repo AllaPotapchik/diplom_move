@@ -91,6 +91,7 @@ class RecordController extends Controller {
     }
 
     public function deleteRecord( $record_id, $schedule_id ) {
+//        dd($schedule_id);
         DB ::table( 'schedule' ) -> where( 'id', $schedule_id ) -> increment( 'available_count' );
         $current_schedule = DB ::table( 'schedule' )
                                -> where( 'id', '=', $schedule_id )
@@ -101,6 +102,7 @@ class RecordController extends Controller {
                                 -> where( 'dance_type_id', $current_schedule -> dance_type )
                                 -> where( 'level_id', $current_schedule -> level_id )
                                 -> first();
+//        dd($current_schedule->level_id);
 
         if ( $have_subscription ) {
             DB ::table( 'user_subscriptions' )
