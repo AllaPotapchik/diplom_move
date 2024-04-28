@@ -123,7 +123,6 @@ class LessonController extends Controller {
 
         return redirect() -> back() -> with( 'success', 'Урок обновлен' );
 
-
     }
 
     /**

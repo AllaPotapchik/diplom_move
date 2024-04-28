@@ -1,0 +1,16 @@
+.pay_info{
+    display: none;
+}
+.wrapper{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+.back{
+    display: none;
+}
+.card_info{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+}

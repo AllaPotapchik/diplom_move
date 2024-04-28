@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->integer('subscription_price');
             $table->integer('subscription_count');
+            $table->float('coefficient');
             $table->timestamps();
         });
     }

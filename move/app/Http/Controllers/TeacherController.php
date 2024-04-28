@@ -23,11 +23,18 @@ class TeacherController extends Controller {
         return view( 'teachers', [ 'teachers' => $teachers ] );
     }
 
-public function showTeacher($teacher_id){
-        $teacher = DB::table('teachers')->where('teacher_id',$teacher_id)->first();
+    public function showTeacher( $teacher_id ) {
+        $teacher = DB ::table( 'teachers' ) -> where( 'teacher_id', $teacher_id ) -> first();
+        $reviews = DB ::table( 'reviews' ) -> where( 'teacher_id', $teacher_id )
+                      -> join( 'users', 'reviews.user_id', '=', 'users.id' )
+                      -> get();
 
-        return view('single_teacher', ['teacher'=>$teacher]);
-}
+        return view( 'single_teacher', [
+            'teacher' => $teacher,
+            'reviews' => $reviews
+        ] );
+    }
+
     public function showTask( $lesson_id, $user_id ) {
 
         $task = DB ::table( 'user_lessons' )

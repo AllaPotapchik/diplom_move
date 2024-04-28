@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AcceptController;
 use App\Http\Controllers\admin\Dance_typeController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\Admin\ProgramsController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TariffController;
 use App\Http\Controllers\TeacherController;
@@ -38,6 +40,9 @@ Route ::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] ) 
 Route ::get( '/account', [ UserController::class, 'accountType' ] ) -> name( 'accountType' );
 
 Route ::get( '/admin_panel', [HomeController::class,'index'] ) -> name( 'adminMain' );
+Route::get('/accepts', [AcceptController::class,'showRecords'] )->name('all_accepts');
+Route::get('/accept{id}', [AcceptController::class,'accept'] )->name('accept');
+
 Route ::get( '/teacher_panel', [TeacherController::class,'index'] ) -> name( 'teacherIndex' );
 
 Route::get('/all_types', [Dance_typeController::class,'index'] )->name('all_types');
@@ -54,6 +59,7 @@ Route ::get( '/tariffs', 'App\Http\Controllers\TariffController@index' );
 Route ::get( '/tariffs/offline/create_sub', 'App\Http\Controllers\TariffController@index' ) -> name( 'createSubscription' );
 Route ::get( '/tariffs/offline/{id}', [SubscriptionController::class,'getSubscription'] ) -> name( 'getSubscription' );
 Route ::post( '/save', [ User_subscriptionController::class, 'createSubscription' ] ) -> name( 'createSubscription' );
+Route ::get( '/tariffs/offline/usePoint/{id}', [ User_subscriptionController::class, 'usePoint' ] ) -> name( 'usePoint' );
 Route ::get( '/subscriptions', 'App\Http\Controllers\SubscriptionController@index' );
 Route ::get( '/teachers', [TeacherController::class, 'teachersList'])->name('teachersList');
 Route ::get( '/teachers{teacher_id}', [TeacherController::class, 'showTeacher'])->name('showTeacher');
@@ -76,6 +82,7 @@ Route::post('/change_password', [UserController::class, 'changePassword'])->name
 Route::get('/check/{lesson_id}/{user_id}', [TeacherController::class, 'showTask'])->name('showTask');
 
 Route::post('/check', [TeacherController::class, 'checkTask'])->name('checkTask');
+Route::post('/review', [ReviewController::class, 'makeReview'])->name('makeReview');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

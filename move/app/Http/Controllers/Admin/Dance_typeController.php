@@ -93,10 +93,6 @@ class Dance_typeController extends Controller {
                'description'   => $request -> description,
                'type_benefits' => $request -> benefits
            ] );
-//        $dance_type -> title         = $request -> title;
-//        $dance_type -> description   = $request -> description;
-//        $dance_type -> type_benefits = $request -> benefits;
-//        $dance_type -> save();
 
         return redirect() -> back() -> with( 'success', 'Запись обновлена' );
     }

@@ -1,5 +1,5 @@
 @extends('layouts.admin_panel')
-@section('title', 'Добавить направление')
+@section('title', 'Добавить преподавателя')
 
 @section('content')
 
