@@ -23,7 +23,7 @@
                         @endif
                         <div class="card card-primary">
                                 @if(sizeof($records) == 0)
-                                    <div>Нет заявок</div>
+                                    <div class="m-3">Нет заявок</div>
                                 @else
                                     <table class="table table-striped">
                                         <thead>

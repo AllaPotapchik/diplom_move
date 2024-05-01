@@ -17,8 +17,6 @@
                         </div>
                         <img src="{{asset('/images/hip_hop.png')}}">
                     </div>
-
-
                 </div>
             @elseif($el->title=='ДЖАЗ-ФАНК')
                 <div class="dance_type_card" style="background: #92ABFC">

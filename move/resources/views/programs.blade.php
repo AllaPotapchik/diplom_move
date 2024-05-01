@@ -6,14 +6,20 @@
     @vite(['resources/css/tariff.css','resources/css/program.css', 'resources/js/faq.js'])
 
     <div class="container">
-
+        @if (session('success'))
+            <div class="alert alert-success">
+                <h6><i class="icon fa fa-check"></i> {{ session('success') }}</h6>
+                <button type="button" class="close close_btn" id="close_btn" data-dismiss="alert" aria-hidden="true">×</button>
+            </div>
+        @elseif(session('error'))
+            <div class="alert alert-success">
+                <h6><i class="icon fa fa-check"></i> {{ session('error') }}</h6>
+                <button type="button" class="close close_btn" id="close_btn" data-dismiss="alert" aria-hidden="true">×</button>
+            </div>
+        @endif
 
         @foreach($programs as $el)
             <div class="tariff_card">
-                {{--                        @foreach($users_tariffs as $users_tariff)--}}
-                {{--                            {{$users_tariff->user_id}}--}}
-                {{--                        @endforeach--}}
-                {{--                        {{ var_dump($check_tariff)}}--}}
                 <p class="tariff_title  mb-4">{{$el->program_name}}</p>
 					<?php
 					$lessons = DB ::table( 'lessons' )
@@ -30,16 +36,14 @@
                     </div>
                     <br>
                 @endforeach
-
-
                 <br>
                 @if ( Auth ::check() )
                     <button disabled class="program_btn"><a
-                            href="{{route('createProgramRecord',[$el->dance_type_id, $tariff_id,$el-> program_id])}}">Купить</a>
+                            href="{{route('showDetails',[$el->dance_type_id, $tariff_id,$el-> program_id])}}">Купить</a>
                     </button>
                 @else
 
-                    <button disabled class="program_btn disabled"><a href="/login">Купить </a></button>
+                    <button disabled class="program_btn disabled"><a href="/login">Купить</a></button>
 
                 @endif
 

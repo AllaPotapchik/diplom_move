@@ -68,7 +68,8 @@ Auth ::routes();
 
 
 Route ::get( '/tariffs/program/{tariff_id}', [ TariffController::class, 'programs' ] ) -> name( 'programs' );
-Route ::get( '/tariffs/program/{tariff_id}/{dance_type_id}/{program_id}', [ProgramController::class,'createProgramRecord'] ) -> name( 'createProgramRecord' );
+Route ::get( '/tariffs/program/{tariff_id}/{dance_type_id}/{program_id}', [ProgramController::class,'showDetails']) -> name( 'showDetails' );
+Route ::get( '/tariffs/program/create/{tariff_id}/{dance_type_id}/{program_id}', [ProgramController::class,'createProgramRecord']) -> name( 'createProgramRecord' );
 Route ::get( '/account/program/{program_id}', [LessonController::class,'showLessons'] ) -> name( 'showLessons' );
 Route ::get( '/account/program/{program_id}/{lesson_id}', [LessonController::class,'startLesson'] ) -> name( 'startLesson' );
 Route::get('/end/{lesson_id}', [LessonController::class, 'endLesson'])->name('endLesson');

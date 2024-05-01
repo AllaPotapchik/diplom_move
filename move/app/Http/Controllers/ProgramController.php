@@ -10,38 +10,62 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProgramController extends Controller {
-    public function index() {
+    public function showDetails( $dance_type, $tariff_type, $program_id ) {
+        $user    = DB ::table( 'users' ) -> find( Auth ::id() );
+        $program = DB ::table( 'programs' ) -> where( 'program_id', $program_id ) -> first();
 
+        if ( $program -> price * 3 <= $user -> point_balance ) {
+            $percent = 30;
+            $cost    = $program -> price * 3;
+        } elseif ( $program -> price * 2 <= $user -> point_balance ) {
+            $percent = 20;
+            $cost    = $program -> price * 2;
+
+        } elseif ( $program -> price * 1.5 <= $user -> point_balance ) {
+            $percent = 10;
+            $cost    = $program -> price * 1.5;
+
+        } else {
+            $percent = 0;
+            $cost    = 0;
+        }
+
+        return view( 'create_program', [
+            'dance_type'  => $dance_type,
+            'tariff_id' => $tariff_type,
+            'program_id'  => $program_id,
+            'user'        => $user,
+            'program'     => $program,
+            'percent'     => $percent,
+            'new_price'   => '',
+            'cost'        => $cost
+        ] );
     }
 
-    public function createProgramRecord( $dance_type, $tariff_type, $program_id ) {
-        $id = Auth ::id();
-
-        $users_tariffs = DB ::table( 'users_tariffs' ) -> where( 'user_id', $id )
+    public function createProgramRecord( $program_id, $dance_type, $tariff_id ) {
+        $id            = Auth ::id();
+        $users_tariffs = DB ::table( 'users_tariffs' )
+                            -> where( 'user_id', $id )
+                            -> where( 'program_id', $program_id )
+                            -> whereIn( 'tariff_type', [ 2, 3 ] )
                             -> select( '*' )
                             -> get();
-        $check_tariff  = false;
-        foreach ( $users_tariffs as $el ) {
-            if ( $el -> user_dance_type == $tariff_type ) {
-                $check_tariff = true;
-            }
-        }
-        if ( $check_tariff ) {
-            return redirect( '/success' ) -> withSuccess( 'У вас уже есть программы по данному направлению' );
+        if ( $users_tariffs) {
+            return redirect() -> back() -> with( 'error', 'У вас уже есть программы по данному направлению' );
         } else {
             DB ::table( 'users_tariffs' ) -> insert( [
                 [
                     'user_id'         => $id,
                     'user_dance_type' => $dance_type,
-                    'tariff_type'     => $tariff_type,
+                    'tariff_type'     => $tariff_id,
                     'start'           => null,
                     'end'             => null,
                     'is_check'        => false,
                     'program_id'      => $program_id
-               ]
+                ]
             ] );
 
-            return redirect( '/success' ) -> withSuccess( 'Запись оформлена' );
+            return redirect() -> back() -> with( 'error', 'Доступ к урокам в личном кабинете появиться после подтверждения оплаты администрантором' );
         }
 
     }

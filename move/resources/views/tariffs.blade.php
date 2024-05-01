@@ -33,7 +33,7 @@
                     <br>
                     <p class="tariff_title">Преимущества</p>
 						<?php echo formatText( $el -> tariff_benefits ) ?>
-                </div><?php if ( $el -> tariff_type == 0 ){ ?>
+                </div><?php if ( $el -> tariff_type == 1 ){ ?>
                 <button><a href="/subscriptions">Выберите абонимент</a></button>
 				<?php } else{ ?>
                 <button value="{{$el->tariff_id}}"><a href="{{ route('programs', $el->tariff_id) }}">Выберите

@@ -2,14 +2,15 @@
 import './bootstrap';
 import IMask from 'imask'
 
-const close_btn = document.getElementById('close_btn');
 const alertDiv = document.querySelector('.alert');
 
-close_btn.addEventListener('click', () => {
-    alertDiv.style.display = 'none';
-});
+// close_btn.addEventListener('click', () => {
+//     alertDiv.style.display = 'none';
+// });
 
 const menu_burger = document.querySelector("#menu_burger");
+// alert(menu_burger);
+
 const popup = document.querySelector("#popup");
 const account = document.getElementById("#icon");
 const body = document.body;
@@ -54,7 +55,7 @@ function closeOnClick() {
 //create template fot phone mask
 let element = document.getElementById('phone');
 let maskOptions = {
-    mask: '+{375}(00) 000-00-00'
+    mask: '+{375} (00) 000-00-00'
 };
 
 IMask(element, maskOptions);

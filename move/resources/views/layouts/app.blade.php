@@ -129,7 +129,7 @@
                     <p><b>Email</b>
                         <br>
                         <br>
-                        <a href="mailto:movedance@gmail.com">movedance@gmail.com</a>
+                        <a href="mailto:movedance@gmail.com">move@gmail.com</a>
                     </p>
                 </div>
             </div>
