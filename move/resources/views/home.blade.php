@@ -25,8 +25,9 @@
                             отражающее культуру и самовыражение через ритмичные движения,
                             импровизацию и индивидуальный стиль танцоров. Он сочетает в себе элементы фанка,
                             соула, брейк-данса и джаза. </p>
-                        <button class="text-dark">Узнать больше</button>
-                    </div>
+                        <a href="{{route('singleType', 1)}}">
+                            <button class="text-dark">Узнать больше</button>
+                        </a>                    </div>
                     <img src="{{asset('/images/hip_hop.png')}}">
                 </div>
             </div>
@@ -37,8 +38,9 @@
                         <p class="dance_type_description">Джаз-фанк — самое популярное танцевальное направление
                             в шоу-бизнес индустрии. Оно объедининяет такие танцевальные стили как vogue,
                             waacking, hip-hop и jazz. Это новый, свободный, привлекательный стиль.</p>
-                        <button class="text-dark">Узнать больше</button>
-                    </div>
+                        <a href="{{route('singleType', 2)}}">
+                            <button class="text-dark">Узнать больше</button>
+                        </a>                    </div>
                     <img style="margin-right: 8rem" src="{{asset('/images/juzz_funk.png')}}">
                 </div>
             </div>
@@ -49,8 +51,9 @@
                         <p class="dance_type_description">Вог — это уникальный и экспрессивный стиль танцев,
                             вдохновленнй модными журналами и бальными танцами. Он воплощает превосходную координацию,
                             несомненное чувство ритма, музыки.</p>
-                        <button class="text-dark">Узнать больше</button>
-                    </div>
+                        <a href="{{route('singleType', 3)}}">
+                            <button class="text-dark">Узнать больше</button>
+                        </a>                    </div>
                     <img style="margin-right: 8rem" src="{{asset('/images/vogue.png')}}">
                 </div>
             </div>
@@ -61,8 +64,9 @@
                         <p class="dance_type_description">Тверк — современное направление танца, основанное на
                             активных ритмичных движениях ягодицами и бёдрами. Тверк полезен не только для поддержания
                             мышц в тонусе, но и для здоровья.</p>
-                        <button class="text-dark">Узнать больше</button>
-                    </div>
+                        <a href="{{route('singleType', 4)}}">
+                            <button class="text-dark">Узнать больше</button>
+                        </a>                    </div>
                     <img src="{{asset('/images/twerk.png')}}">
                 </div>
             </div>
@@ -129,7 +133,6 @@
                         Тогда выбирай подходяшее время и записывайся на первоепробное занятие </b></p>
                 <button class="text-dark">Записаться на первое занятие</button>
             </div>
-
         </div>
     </div>
 @endsection

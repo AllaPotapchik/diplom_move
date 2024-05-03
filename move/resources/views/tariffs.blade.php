@@ -15,11 +15,21 @@
 		}
 
 		return $formattedText;
-	} ?>
+	}
+	?>
 
-    <div class="container">
+    <div style="margin-top: 6rem" class="container">
         @foreach($tariff as $el)
-            <div class="tariff_card">
+				<?php
+				$color = '';
+				if ( $el -> tariff_name == 'Офлайн' )
+					$color = '#BA80E6';
+				if ( $el -> tariff_name == 'Онлайн' )
+					$color = '#92ABFC';
+				if ( $el -> tariff_name == 'Онлайн++' )
+					$color = '#FFAF77';
+				?>
+            <div class="tariff_card" style="background: {{$color}};">
                 <p class="tariff_title text-center mb-4">ТАРИФ "{{$el->tariff_name}}"</p>
                 <div>
                     {{$el->description}}

@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     @vite(['resources/css/schedule.css','resources/css/order.css', 'resources/js/pay.js'])
-    <div class="container back_color">
+    <div style="margin-top: 6rem" class="container back_color">
         @if (session('success'))
             <div class="alert alert-success">
                 <h6><i class="icon fa fa-check"></i> {{ session('success') }}</h6>
@@ -20,7 +20,6 @@
         @endif
         <div class="wrapper">
             <div class="back">
-{{--                <a id="back_btn" >Вернуться</a>--}}
             </div>
             <form method="post" action="{{route('createSubscription')}}">
                 @csrf

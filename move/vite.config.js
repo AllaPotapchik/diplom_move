@@ -24,6 +24,7 @@ export default defineConfig({
                 'resources/css/dance_types.css',
                 'resources/css/order.css',
                 'resources/css/slider.css',
+                'resources/css/teacher.css',
             ],
             refresh: true,
         }),

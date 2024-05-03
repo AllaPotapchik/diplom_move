@@ -81,3 +81,22 @@ td .not_authorized{
     margin: 1rem 0;
 }
 
+@media (max-width: 990px){
+    .scroll{
+        overflow-x: auto;
+    }
+    th,td{
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 990px){
+    .back_color{
+        width: 90%;
+    }
+    .schedule_day{
+        font-size: 1.4rem;
+    }
+}
+

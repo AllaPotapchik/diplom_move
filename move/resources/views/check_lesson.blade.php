@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     @vite(['resources/css/schedule.css', 'resources/css/lesson.css', 'resources/css/account.css'])
-    <div class="container back_color">
+    <div style="margin-top: 6rem" class="container back_color">
         <h1>Проверка задания</h1>
         <video width="320" height="240" controls>
             <source src="{{asset('storage')}}/videos/{{$task->user_video}}" type="video/mp4">

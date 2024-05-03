@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     @vite(['resources/css/subscription.css'])
-    <div class="container card_wrap">
+    <div style="margin-top: 6rem" class="container card_wrap">
         @foreach($subscription as $el)
           <div class="subscription_card">
               <p class="subscription_name">{{$el->subscription_name}}</p>

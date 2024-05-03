@@ -5,7 +5,7 @@
 @section('content')
     @vite(['resources/css/tariff.css','resources/css/program.css', 'resources/js/faq.js'])
 
-    <div class="container">
+    <div style="margin-top: 6rem" class="container">
         @if (session('success'))
             <div class="alert alert-success">
                 <h6><i class="icon fa fa-check"></i> {{ session('success') }}</h6>

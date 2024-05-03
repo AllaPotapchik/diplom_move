@@ -24,7 +24,9 @@ class TeacherController extends Controller {
     }
 
     public function showTeacher( $teacher_id ) {
-        $teacher = DB ::table( 'teachers' ) -> where( 'teacher_id', $teacher_id ) -> first();
+        $teacher = DB ::table( 'teachers' ) -> where( 'teacher_id', $teacher_id )
+                      -> join( 'dance_types', 'teachers.dance_type_id', 'dance_types.dance_type_id' )
+                      -> first();
         $reviews = DB ::table( 'reviews' ) -> where( 'teacher_id', $teacher_id )
                       -> join( 'users', 'reviews.user_id', '=', 'users.id' )
                       -> get();

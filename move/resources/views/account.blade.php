@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     @vite(['resources/css/schedule.css', 'resources/css/account.css', 'resources/js/account.js'])
-    <div class="container back_color">
+    <div style="margin-top: 6rem" class="container back_color">
         <div class="user_head">
             <h2>
                 {{$user->name}}, добро пожаловать в личный кабинет

@@ -4,8 +4,7 @@
 @endsection
 @section('content')
     @vite(['resources/css/schedule.css', 'resources/css/lesson.css', 'resources/css/account.css'])
-    <div class="container back_color">
-
+    <div style="margin-top: 6rem" class="container back_color">
         <p class="program_title">{{$program->program_name}}</p>
         @foreach($lessons as $el)
             <div class="lesson_card">

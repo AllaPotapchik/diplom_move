@@ -66,7 +66,6 @@ Route ::get( '/teachers{teacher_id}', [TeacherController::class, 'showTeacher'])
 
 Auth ::routes();
 
-
 Route ::get( '/tariffs/program/{tariff_id}', [ TariffController::class, 'programs' ] ) -> name( 'programs' );
 Route ::get( '/tariffs/program/{tariff_id}/{dance_type_id}/{program_id}', [ProgramController::class,'showDetails']) -> name( 'showDetails' );
 Route ::get( '/tariffs/program/create/{tariff_id}/{dance_type_id}/{program_id}', [ProgramController::class,'createProgramRecord']) -> name( 'createProgramRecord' );
@@ -84,6 +83,9 @@ Route::get('/check/{lesson_id}/{user_id}', [TeacherController::class, 'showTask'
 
 Route::post('/check', [TeacherController::class, 'checkTask'])->name('checkTask');
 Route::post('/review', [ReviewController::class, 'makeReview'])->name('makeReview');
+
+Route::get('/dance_type/{dance_type_id}', [\App\Http\Controllers\Dance_typeController::class, 'singleType'])->name('singleType');
+
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     @vite(['resources/css/subscription.css'])
-    <div class="container card_wrap">
+    <div style="margin-top: 6rem" class="container card_wrap">
         @foreach($teachers as $el)
             <a href="{{route('showTeacher', $el->teacher_id)}}">
                 <div class="subscription_card teacher">
