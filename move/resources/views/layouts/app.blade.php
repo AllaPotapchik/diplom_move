@@ -64,7 +64,7 @@
                     ?>
                 <a href="{{ route('accountType') }}"> <img  src="{{asset('images/account_icon.png')}}"></a>
                 <?php } else { ?>
-                <a href="{{ url('/login') }}"> <img class="account_icon" src="{{asset('images/account_icon.png')}}"></a>
+                <a href="{{ url('/login') }}"> <img class="account_icon_" src="{{asset('images/account_icon.png')}}"></a>
                 <?php } ?>
                 <div class="menu_burger__field" id="menu_burger">
                     <span class="bar"></span>

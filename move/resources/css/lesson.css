@@ -1,49 +1,104 @@
-.lesson_card{
+.lesson_card {
     padding: 1rem 0rem;
     margin: 1rem 0rem;
     border-bottom: 3px solid white;
 }
 
-.lesson_about{
+.lesson_about {
     display: flex;
     justify-content: space-between;
-    margin-top: 2rem;
+    margin: 2rem 0;
+    font-size: 1.4rem;
+    flex-direction: column;
 }
 
-.lesson_about p{
-    font-size: 1rem;
+.lesson_about p {
+    font-size: 1.4rem;
+    width: 100%;
+    margin-bottom: 2rem;
 }
 
-.lesson_description{
+.lesson_description {
     width: 40%;
 }
 
-.lesson_video{
+.lesson_video {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-iframe{
+video {
     width: 100%;
-    height: 35rem ;
+    height: 100%;
+    border-radius: 2rem;
+}
+
+iframe {
+    width: 100%;
+    height: 35rem;
+}
+
+input[type="file"] {
+    margin: 1rem 0;
+}
+
+input[type="file"]::-webkit-file-upload-button, .done button{
+    background: #ffffff;
+    color: #704D8A;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.5rem 1.5rem;
+    margin-right: 1rem;
+    width: 50%;
+    max-width: 19rem;
+    cursor: pointer;
+}
+
+button[type="submit"]{
+    background: #BA80E6;
+    color: #ffffff;
 }
 @media (max-width: 990px) {
-    .lesson_about{
+
+    .lesson_about {
         flex-direction: column;
         align-items: stretch;
     }
-    .lesson_description{
+
+    .lesson_description {
         width: 100%;
     }
-    iframe{
-        height: 20rem ;
+
+    iframe {
+        height: 20rem;
     }
 }
 
-.check{
+.check {
     display: flex;
     flex-direction: column;
     margin: 2rem 0;
 }
+.teacher_comment{
+    background: #F8F2FC;
+    border: none;
+    border-radius: 2rem;
+    padding: 1rem 2rem 10rem 2rem;
+    margin-bottom: 1rem;
+}
+@media (max-width: 990px) {
+    .lesson_about p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+}
+    @media (max-width: 990px) {
+        input[type="file"] {
+            width: 100%;
+        }
+        input[type="file"]::-webkit-file-upload-button, .done button{
+            width: 100%;
+        }
+    }

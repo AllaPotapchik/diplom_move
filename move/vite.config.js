@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/js/faq.js',
                 'resources/js/account.js',
                 'resources/js/teacher.js',
+                'resources/js/user.js',
                 'resources/js/pay.js',
                 'resources/js/slider.js',
                 'public/admin/admin.js',

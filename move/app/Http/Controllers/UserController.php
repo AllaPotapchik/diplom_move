@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use function Symfony\Component\Translation\t;
 
 class UserController extends Controller {
     public function accountType() {
@@ -22,7 +23,7 @@ class UserController extends Controller {
         $user_type = DB ::table( 'users' ) -> where( 'id', Auth ::id() )
                         -> select( 'users.user_type' )
                         -> get();
-//($user);
+
         /*for user account*/
         foreach ( $user_type as $el ) {
             if ( $el -> user_type == 1 ) {
@@ -42,7 +43,10 @@ class UserController extends Controller {
                                     -> whereIn( 'users_tariffs.tariff_type', [ 2, 3 ] )
                                     -> select( '*' )
                                     -> get();
-
+                $show_balance= false;
+                if ( sizeof($user_programs) != 0 ) {
+                    $show_balance = true;
+                }
 
                 $user_subscriptions = DB ::table( 'user_subscriptions' )
                                          -> where( 'user_id', Auth ::id() )
@@ -50,13 +54,15 @@ class UserController extends Controller {
                                          -> join( 'dance_types', 'user_subscriptions.dance_type_id', 'dance_types.dance_type_id' )
                                          -> join( 'levels', 'user_subscriptions.level_id', 'levels.level_id' )
                                          -> select( '*' ) -> get();
-
+//dd(sizeof($user_programs) );
                 return view( 'account', [
                     'user'               => $user,
                     'user_orders'        => $user_orders,
                     'user_programs'      => $user_programs,
+                    'show_balance'      => $show_balance,
                     'user_subscriptions' => $user_subscriptions
                 ] );
+
                 /*for admin account*/
             } else if ( $el -> user_type == 2 ) {
 
@@ -66,16 +72,15 @@ class UserController extends Controller {
                 /*for teacher account*/
             } else if ( $el -> user_type == 3 ) {
 
-                $teacher_id = DB ::table( 'teachers' )
-                                 -> where( 'user_id', Auth ::id() )
-                                 -> first();
+                $teacher_id      = DB ::table( 'teachers' )
+                                      -> where( 'user_id', Auth ::id() )
+                                      -> first();
                 $teacher_lessons = DB ::table( 'schedule' )
                                       -> where( 'schedule.teacher_id', $teacher_id -> teacher_id )
                                       -> join( 'teachers', 'schedule.teacher_id', '=', 'teachers.teacher_id' )
                                       -> join( 'dance_types', 'schedule.dance_type', '=', 'dance_types.dance_type_id' )
                                       -> join( 'levels', 'schedule.level_id', '=', 'levels.level_id' )
                                       -> join( 'days_of_week', 'schedule.day_id', '=', 'days_of_week.day_id' )
-                                      -> select( '*' )
                                       -> get();
 
                 $user_tasks = DB ::table( 'user_lessons' )
@@ -86,10 +91,16 @@ class UserController extends Controller {
                                  -> select( '*' )
                                  -> get();
 
+                $teacher = DB ::table( 'teachers' ) -> where( 'user_id', $user -> id )
+                              -> join( 'dance_types', 'teachers.dance_type_id', 'dance_types.dance_type_id' )
+                              -> get();
+
                 return view( 'teacher_panel', [
                     'user'            => $user,
                     'teacher_lessons' => $teacher_lessons,
-                    'user_tasks'      => $user_tasks
+                    'user_tasks'      => $user_tasks,
+                    'teacher'      => $teacher,
+
                 ] );
             }
         }

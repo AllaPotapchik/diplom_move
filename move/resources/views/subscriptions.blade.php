@@ -11,7 +11,7 @@
               <p class="subscription_desc">{{$el->description}}</p>
               <p class="subscription_price">{{$el->subscription_price}} BYN</p>
               @if(Auth::check())
-                  <a href="{{route('getSubscription',[$el->id])}}"><button>Купить</button></a>
+                  <a href="{{route('getSubscription',[$el->id, $dance_type_id])}}"><button type="button">Купить</button></a>
               @else
                   <a href="/login"><button>Купить</button></a>
               @endif

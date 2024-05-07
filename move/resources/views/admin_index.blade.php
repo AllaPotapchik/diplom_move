@@ -2,6 +2,7 @@
 @section('title', 'Главная')
 
 @section('content')
+    @vite(['resources/css/schedule.css'])
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->

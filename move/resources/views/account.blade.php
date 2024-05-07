@@ -3,70 +3,76 @@
     Расписание
 @endsection
 @section('content')
-    @vite(['resources/css/schedule.css', 'resources/css/account.css', 'resources/js/account.js'])
+    @vite(['resources/css/schedule.css', 'resources/css/account.css', 'resources/js/account.js', 'resources/css/order.css'])
     <div style="margin-top: 6rem" class="container back_color">
         <div class="user_head">
-            <h2>
+            <p>
                 {{$user->name}}, добро пожаловать в личный кабинет
-            </h2>
-            <h2>Баллы: {{$user->point_balance}}</h2>
+            </p>
+            @if($show_balance)
+                <p class="balance">Баллы: {{$user->point_balance}}</p>
+            @endif
         </div>
-        <button id="lesson_btn" class="text-dark">
-            Мои тренировки
-        </button>
-
-        <button id="program_btn" class="text-dark ">
-            Мои программы
-        </button>
-        <button id="subscription_btn" class="text-dark ">
-            Мои абонементы
-        </button>
-        <button id="update_btn" class="text-dark ">
-            Редактировать профиль
-        </button>
-        <button><a class="nav-link text-dark "
-                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                {{ __('Выход') }}
-            </a>
-        </button>
-        <br>
+            <div class="user_buttons">
+                <div class="personal_buttons">
+                <button id="lesson_btn" >
+                    Мои тренировки
+                </button>
+                <button id="program_btn">
+                    Мои программы
+                </button>
+                <button id="subscription_btn" >
+                    Мои абонементы
+                </button>
+                <button id="update_btn">
+                    Редактировать профиль
+                </button>
+            </div>
+            <div class="exit_button">
+                <button><a class="nav-link text-dark "
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {{ __('Выход') }}
+                    </a>
+                </button>
+            </div>
+        </div>
         <br>
         <div class="my_lessons">
-            {{--            {{var_dump($user_orders)}}--}}
-            @if(sizeof($user_orders) == 0 )
-                <div class="no_lessons">нет тренировок по вашим направленям</div>
-            @else
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Дата</th>
-                        <th>Время</th>
-                        <th>Направление</th>
-                        <th>Преподаватель</th>
-                        <th>Уровень</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($user_orders as $el)
+            <div class="scroll">
+                @if(sizeof($user_orders) == 0 )
+                    <div class="no_lessons">нет тренировок по вашим направленям</div>
+                @else
+                    <table>
+                        <thead>
                         <tr>
-                            <td><?php echo date( 'd/m', strtotime( $el -> date ) ); ?> </td>
-                            <td><?php echo date( 'H:i', strtotime( $el -> time ) ); ?> </td>
-                            <td>{{$el->title}} </td>
-                            <td>{{$el->teacher_name}} </td>
-                            <td>{{$el->level_name}} </td>
-                            <td>
-                                <a href="{{route('deleteRecord', [$el->record_id, $el->schedule_id])}}">
-                                    <button  class="schedule_btn" >Отменить</button>
-                                </a>
-                            </td>
+                            <th>Дата</th>
+                            <th>Время</th>
+                            <th>Направление</th>
+                            <th>Преподаватель</th>
+                            <th>Уровень</th>
+                            <th></th>
                         </tr>
-                    </tbody>
+                        </thead>
+                        <tbody>
+                        @foreach($user_orders as $el)
+                            <tr>
+                                <td><?php echo date( 'd/m', strtotime( $el -> date ) ); ?> </td>
+                                <td><?php echo date( 'H:i', strtotime( $el -> time ) ); ?> </td>
+                                <td>{{$el->title}} </td>
+                                <td>{{$el->teacher_name}} </td>
+                                <td>{{$el->level_name}} </td>
+                                <td>
+                                    <a href="{{route('deleteRecord', [$el->record_id, $el->schedule_id])}}">
+                                        <button class="schedule_btn">Отменить</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
 
-                    @endforeach
-                </table>
-            @endif
-
+                        @endforeach
+                    </table>
+                @endif
+            </div>
         </div>
         <div class="my_programs">
             @if(sizeof($user_programs) == 0 )
@@ -98,6 +104,7 @@
             @endif
         </div>
         <div class="edit_profile">
+            <div class="user_info">
             @if(session('success'))
                 <div class="alert alert-success">
                     <p>{{session('success')}}</p>
@@ -112,23 +119,22 @@
                 <input id="phone" type="tel" name="user_phone" value="{{$user->phone}}">
                 <label for="user_email">Email</label>
                 <input value="{{$user->email}}" name="user_email">
-                <button class="text-dark mt-2" type="submit">Изменить</button>
+                <button class="mt-2" type="submit">Изменить</button>
             </form>
             <br>
             <form class="update_profile" method="post" action="{{route('changePassword')}}">
                 @csrf
-
                 <h3>Для смены пароля введите старый</h3>
                 <label for="user_password">Старый пароль</label>
                 <input type="password" name="old_user_password">
                 <label for="user_password">Новый пароль</label>
                 <input type="password" name="new_user_password">
-                <button class="text-dark mt-2">Сменить пароль</button>
+                <button class="mt-2">Сменить пароль</button>
             </form>
         </div>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf
         </form>
-
+        </div>
     </div>
 @endsection

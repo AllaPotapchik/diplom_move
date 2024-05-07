@@ -1,16 +1,102 @@
-.pay_info{
+.pay_info {
     display: none;
+    background: #f8f2fc;
+    padding: 2rem;
+    border-radius: 2rem;
+    color: #704D8A;
 }
-.wrapper{
+
+.wrapper {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: flex-end;
+    justify-content: center;
 }
-.back{
-    display: none;
+
+.order_info {
+    text-align: center;
 }
-.card_info{
+
+.order_header {
+    text-transform: uppercase;
+    color: #704D8A;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.user_info input {
+    border: none;
+    padding: 0.5rem 0.7rem;
+    border-radius: 2rem;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+
+}
+
+.card_info input {
+    padding: 0.5rem 0.7rem;
+    border-radius: 2rem;
+    border: 1px solid #704D8A;
+    margin-bottom: 0.5rem;
+
+}
+
+.card_info label {
+    margin-top: 1rem;
+}
+
+.card_info {
     display: flex;
     flex-direction: column;
-    margin: 2rem 0;
+    margin: 0 0 2rem 0;
 }
+
+.order_info button, .pay {
+    background: #BA80E6;
+    color: #ffffff;
+    /*width: 30%;*/
+}
+.pay_info p{
+    font-size: 1.2rem;
+}
+.disabled {
+    background: #E9D5F7;
+}
+
+.radio_wrap {
+    margin-bottom: 2rem;
+
+}
+
+.radio_button_type, .radio_button_level, .radio_button_points {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.radio_button_type input[type=radio], .radio_button_level input[type=radio], .radio_button_points input[type=radio]  {
+    display: none;
+}
+
+.radio_button_type label, .radio_button_level label, .radio_button_points label {
+    display: inline-block;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    /*border: none;*/
+    background: #F8F2FC;
+    border-radius: 2rem;
+    color: #704D8A;
+    border: 1px solid #704D8A;
+    width: 10rem;
+    margin-bottom: 0.5rem;
+}
+
+.radio_button_type input[type=radio]:checked + label, .radio_button_level input[type=radio]:checked + label, .radio_button_points input[type=radio]:checked + label {
+    background: #BA80E6;
+    color: #ffff;
+}
+
+/* Hover */
+.radio_button_type label:hover, .radio_button_level label:hover, .radio_button_points label:hover {
+    background: #F4E6FF;
+}
+
+

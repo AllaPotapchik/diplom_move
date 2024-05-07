@@ -27,7 +27,8 @@
                             соула, брейк-данса и джаза. </p>
                         <a href="{{route('singleType', 1)}}">
                             <button class="text-dark">Узнать больше</button>
-                        </a>                    </div>
+                        </a>
+                    </div>
                     <img src="{{asset('/images/hip_hop.png')}}">
                 </div>
             </div>
@@ -51,7 +52,7 @@
                         <p class="dance_type_description">Вог — это уникальный и экспрессивный стиль танцев,
                             вдохновленнй модными журналами и бальными танцами. Он воплощает превосходную координацию,
                             несомненное чувство ритма, музыки.</p>
-                        <a href="{{route('singleType', 3)}}">
+                        <a href="{{route('singleType', 17)}}">
                             <button class="text-dark">Узнать больше</button>
                         </a>                    </div>
                     <img style="margin-right: 8rem" src="{{asset('/images/vogue.png')}}">
@@ -64,7 +65,7 @@
                         <p class="dance_type_description">Тверк — современное направление танца, основанное на
                             активных ритмичных движениях ягодицами и бёдрами. Тверк полезен не только для поддержания
                             мышц в тонусе, но и для здоровья.</p>
-                        <a href="{{route('singleType', 4)}}">
+                        <a href="{{route('singleType', 18)}}">
                             <button class="text-dark">Узнать больше</button>
                         </a>                    </div>
                     <img src="{{asset('/images/twerk.png')}}">
@@ -82,7 +83,10 @@
                         в атмосферной студии.
                     </div>
                     <p class="tariff_price">150 BYN</p>
-                    <button>КУПИТЬ</button>
+                    <a href="{{route('subscriptions', [1,0])}}">
+                        <button>КУПИТЬ</button>
+                    </a>
+
                 </div>
                 <div class="tariff">
                     <p>ТАРИФ</p>
@@ -91,7 +95,10 @@
                         уроков и знанимайся в любом удобном месте в любое время.
                     </div>
                     <p class="tariff_price">100 BYN</p>
-                    <button>КУПИТЬ</button>
+                    <a href="{{ route('programs', [2,0])}}">
+                        <button>КУПИТЬ</button>
+                    </a>
+
                 </div>
                 <div style="margin-right: 0" class="tariff">
                     <p>ТАРИФ</p>
@@ -100,7 +107,9 @@
                         а если захочется ощутить атмосферу настоящего офлайн урока - ждем тебя в зале.
                     </div>
                     <p class="tariff_price">200 BYN</p>
-                    <button>КУПИТЬ</button>
+                    <a href="{{ route('programs', [2,0])}}">
+                        <button>КУПИТЬ</button>
+                    </a>
                 </div>
             </div>
         </div>

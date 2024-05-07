@@ -43,7 +43,7 @@ Route ::get( '/admin_panel', [HomeController::class,'index'] ) -> name( 'adminMa
 Route::get('/accepts', [AcceptController::class,'showRecords'] )->name('all_accepts');
 Route::get('/accept{id}', [AcceptController::class,'accept'] )->name('accept');
 
-Route ::get( '/teacher_panel', [TeacherController::class,'index'] ) -> name( 'teacherIndex' );
+Route ::get( '/teacher_panel{user}', [TeacherController::class,'index'] ) -> name( 'teacherIndex' );
 
 Route::get('/all_types', [Dance_typeController::class,'index'] )->name('all_types');
 Route::get('/all_schedules', [ScheduleController::class,'index'] )->name('all_schedules');
@@ -53,20 +53,22 @@ Route::get('/all_teachers', [\App\Http\Controllers\Admin\TeacherController::clas
 Route::get('/all_lessons', [\App\Http\Controllers\Admin\LessonController::class,'index'] )->name('all_lessons');
 
 Route ::get( '/dance_types', [\App\Http\Controllers\Dance_typeController::class, 'index'])->name('dance_typeList');
+Route ::get( '/tariffs/{dance_type_id}','App\Http\Controllers\TariffController@index')->name('chooseTariff');
+
 
 Route ::get( '/schedule', 'App\Http\Controllers\ScheduleController@index' );
 Route ::get( '/tariffs', 'App\Http\Controllers\TariffController@index' );
 Route ::get( '/tariffs/offline/create_sub', 'App\Http\Controllers\TariffController@index' ) -> name( 'createSubscription' );
-Route ::get( '/tariffs/offline/{id}', [SubscriptionController::class,'getSubscription'] ) -> name( 'getSubscription' );
+Route ::get( '/tariffs/offline/{id}/{dance_type_id}', [SubscriptionController::class,'getSubscription'] ) -> name( 'getSubscription' );
 Route ::post( '/save', [ User_subscriptionController::class, 'createSubscription' ] ) -> name( 'createSubscription' );
-Route ::get( '/tariffs/offline/usePoint/{id}', [ User_subscriptionController::class, 'usePoint' ] ) -> name( 'usePoint' );
-Route ::get( '/subscriptions', 'App\Http\Controllers\SubscriptionController@index' );
+Route ::get( '/tariffs/offline/{id}/{dance_type_id}/usePoint/{sub_id}', [ User_subscriptionController::class, 'usePoint' ] ) -> name( 'usePoint' );
+Route ::get( '/subscriptions/{tariff_id}/{dance_type_id}', 'App\Http\Controllers\SubscriptionController@index' )-> name( 'subscriptions' );;
 Route ::get( '/teachers', [TeacherController::class, 'teachersList'])->name('teachersList');
 Route ::get( '/teachers{teacher_id}', [TeacherController::class, 'showTeacher'])->name('showTeacher');
 
 Auth ::routes();
 
-Route ::get( '/tariffs/program/{tariff_id}', [ TariffController::class, 'programs' ] ) -> name( 'programs' );
+Route ::get( '/tariffs/program/{tariff_id}/{dance_type_id}', [ TariffController::class, 'programs' ] ) -> name( 'programs' );
 Route ::get( '/tariffs/program/{tariff_id}/{dance_type_id}/{program_id}', [ProgramController::class,'showDetails']) -> name( 'showDetails' );
 Route ::get( '/tariffs/program/create/{tariff_id}/{dance_type_id}/{program_id}', [ProgramController::class,'createProgramRecord']) -> name( 'createProgramRecord' );
 Route ::get( '/account/program/{program_id}', [LessonController::class,'showLessons'] ) -> name( 'showLessons' );

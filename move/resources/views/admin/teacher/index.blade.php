@@ -24,6 +24,7 @@
             @endif
             <div class="container-fluid">
                 <div class="row">
+                    <div class="scroll">
                     <table class="table table-striped">
                         <thead>
                         <tr>
@@ -64,6 +65,7 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
             </div>
         </section>
 

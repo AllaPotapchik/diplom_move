@@ -5,21 +5,27 @@
 @section('content')
     @vite(['resources/css/schedule.css', 'resources/css/account.css', 'resources/js/teacher.js'])
     <div style="margin-top: 6rem" class="container back_color">
-{{--        @dd($user);--}}
-        <h1>Преподаватель {{$user->name}}</h1>
-        <button id="lesson_btn" class="text-dark">Мое расписание</button>
-        <button id="tasks_btn" class="text-dark">Задания</button>
-        <button><a class="nav-link text-dark "
-                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                Выход
-            </a></button>
+        {{--        @dd();--}}
+        <h1>Преподаватель: {{$teacher[0]->teacher_name}}</h1>
+        <div class="user_buttons">
+            <div class="personal_buttons">
+                <button id="lesson_btn">Мое расписание</button>
+                <button id="tasks_btn">Задания</button>
+            </div>
+            <div class="exit_button">
+                <button><a class="nav-link "
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Выход
+                    </a></button>
+            </div>
+        </div>
         <br>
-
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf
         </form>
-        <div class="teacher_lessons">
+        <div class="teacher_lessons scroll">
             <br>
+            {{--            @dd($teacher_lessons);--}}
             @if(sizeof($teacher_lessons) == 0 )
                 <div class="no_lessons">нет тренировок по вашим направленям</div>
             @else

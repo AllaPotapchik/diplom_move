@@ -50,7 +50,8 @@ class ProgramController extends Controller {
                             -> whereIn( 'tariff_type', [ 2, 3 ] )
                             -> select( '*' )
                             -> get();
-        if ( $users_tariffs) {
+//        dd($users_tariffs);
+        if ( sizeof($users_tariffs) != 0) {
             return redirect() -> back() -> with( 'error', 'У вас уже есть программы по данному направлению' );
         } else {
             DB ::table( 'users_tariffs' ) -> insert( [
@@ -65,7 +66,7 @@ class ProgramController extends Controller {
                 ]
             ] );
 
-            return redirect() -> back() -> with( 'error', 'Доступ к урокам в личном кабинете появиться после подтверждения оплаты администрантором' );
+            return redirect() -> back() -> with( 'error', 'Доступ к урокам в личном кабинете появиться после подтверждения оплаты администратором' );
         }
 
     }

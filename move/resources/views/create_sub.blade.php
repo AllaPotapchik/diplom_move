@@ -12,7 +12,7 @@
                 </button>
             </div>
         @elseif(session('error'))
-            <div class="alert alert-success">
+            <div class="alert alert-danger">
                 <h6><i class="icon fa fa-check"></i> {{ session('error') }}</h6>
                 <button type="button" class="close close_btn" id="close_btn" data-dismiss="alert" aria-hidden="true">×
                 </button>
@@ -24,48 +24,72 @@
             <form method="post" action="{{route('createSubscription')}}">
                 @csrf
                 <div class="order_info">
-                    <h1>
-                        Выберите направление
-                    </h1>
-                    @foreach($dance_types as $el)
-                        <label>
-                            <input required type="radio" name="dance_type" value="{{$el->dance_type_id}}">{{$el->title}}
-                        </label>
-                    @endforeach
-
-                    <h1>
+                    @if($dance_type_id == 0)
+                        <p style="margin-top: 0" class="order_header">
+                            Выберите направление
+                        </p>
+                        <div class="radio_wrap">
+                            @foreach($dance_types as $el)
+                                <div class="radio_button_type">
+                                    <input required id="type-{{$el->dance_type_id}}" type="radio" name="dance_type"
+                                           value="{{$el->dance_type_id}}">
+                                    <label for="type-{{$el->dance_type_id}}"> {{$el->title}} </label>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <input  type="hidden" name="dance_type" value="{{$dance_type_id}}">
+                    @endif
+                    <p class="order_header">
                         Выберите уровень
-                    </h1>
+                    </p>
+                    <div class="radio_wrap">
                     @foreach($levels as $el)
-                        <label>
-                            <input required type="radio" name="level_id" value="{{$el->level_id}}">{{$el->level_name}}
-                        </label>
+                        <div class="radio_button_level">
+                            <input required id="level-{{$el->level_id}}" type="radio" name="level_id"
+                                   value="{{$el->level_id}}">
+                            <label for="level-{{$el->level_id}}"> {{$el->level_name}} </label>
+                        </div>
                     @endforeach
-                    <h1>
+                    </div>
+                    <p class="order_header">
                         Персональные данные
-                    </h1>
-                    <input type="text" value="{{$user->name}}" name="user_name">
-                    <input type="text" value="{{$user->email}}" name="user_email">
-                    <input type="text" value="{{$user->phone}}" name="user_phone">
-                    <input type="hidden" value="{{$id}}" name="sub_id">
+                    </p>
+                    <div class="user_info">
+                        <input type="text" value="{{$user->name}}" name="user_name">
+                        <input type="text" value="{{$user->email}}" name="user_email">
+                        <input type="text" value="{{$user->phone}}" name="user_phone">
+                        <input type="hidden" value="{{$id}}" name="sub_id">
+                    </div>
+                    <br>
 
+                    <button><a id="confirm_btn" type="button" style="cursor: pointer; color: #ffffff">Далее</a></button>
+                    <br>
+                    <br>
                 </div>
-                <br>
-                <button><a class="text-dark" id="confirm_btn" style="cursor: pointer;">Далее</a></button>
 
                 <div class="pay_info">
-                    <h1>Оплата</h1>
+                    <p class="order_header">Оплата</p>
                     <div>
                         <p>Ваш балланс: <span id="point_balance">{{$user->point_balance}}</span> баллов<br>
-                        <p>Ваш балланс позволяет оплатить <span id="percent">{{$percent}}</span>% от стоимости абонемента
+                        <div id="hide">
+                        <p>Ваш балланс позволяет оплатить <span id="percent">{{$percent}}</span>% от стоимости
+                            абонемента
                         </p>
                         @if($percent == 0)
-                            <button id="points_btn" disabled value="{{$cost}}" class="text-dark disabled">Использовать баллы</button>
+                            <button id="points_btn" disabled value="{{$cost}}" class="disabled">Использовать
+                                баллы
+                            </button>
                         @else
                             <span id="sub_id" class="d-none">{{$id}}</span>
-                            <button id="points_btn" value="{{$cost}}" class="text-dark">Использовать баллы</button>
+                            <a><button type="button" id="points_btn" value="{{$cost}}" class="pay">Использовать баллы</button></a>
                         @endif
-                        <div id="price">Сумма к оплате: <span id="price">{{$subscription->subscription_price}} BYN</span></div>
+
+                        <br>
+                        <br>
+                        </div>
+                        <div class="order_header" id="price">Сумма к оплате: <span
+                                id="price">{{$subscription->subscription_price}} BYN</span></div>
                     </div>
                     <div class="card_info">
                         <label for="cardNumber">Номер карты:</label>
@@ -80,7 +104,7 @@
                         <label for="cvv">CVV:</label>
                         <input type="password" id="cvv" maxlength="3" name="cvv" placeholder="Введите CVV" required>
                     </div>
-                    <button type="submit" class="text-dark">Оплатить</button>
+                    <button class="pay" type="submit">Оплатить</button>
                 </div>
             </form>
         </div>

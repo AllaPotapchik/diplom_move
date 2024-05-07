@@ -104,6 +104,9 @@ li{
     .account_icon {
         display: none;
     }
+    .account_icon_ {
+        display: block;
+    }
 
     .logo {
         width: 45px;
@@ -242,7 +245,6 @@ footer a:hover {
         flex-direction: column;
         width: auto;
         padding: 0 2rem;
-        /*padding-right: 0;*/
         font-size: 12px;
 
     }
