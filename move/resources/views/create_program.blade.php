@@ -22,7 +22,7 @@
             <div class="back">
             </div>
             <form method="get"
-                  action="{{route('createProgramRecord',[$program->program_id, $program->dance_type_id, $tariff_id])}}">
+                  action="{{route('createProgramRecord',[$program->program_id, $program->dance_type_id, $tariff_id, $program->level_id])}}">
                 @csrf
                 <div class="order_info">
                     <p class="order_header">

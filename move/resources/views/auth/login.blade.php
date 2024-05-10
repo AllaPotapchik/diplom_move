@@ -3,18 +3,18 @@
     Login
 @endsection
 @section('content')
-<div class="container">
+    @vite(['resources/css/index.css', 'resources/css/order.css' ])
+    <div style="margin-top: 6rem" class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Вход</div>
-
-                <div class="card-body">
+            <div class="auth_card">
+                <h1>Вход</h1>
+                <div class="card-body user_info">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        <div class="row mb-3">
-                            <label for="phone" class="col-md-4 col-form-label text-md-end">Телефон</label>
-                            <div class="col-md-6">
+                        <div class="mb-3 input_wrap">
+                            <div class="input_card">
+                                <label for="phone">Телефон</label>
                                 <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
@@ -24,9 +24,9 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">Пароль</label>
-                            <div class="col-md-6">
+                        <div class="mb-3 input_wrap">
+                            <div class="input_card">
+                                <label for="password">Пароль</label>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -36,15 +36,14 @@
                             </div>
                         </div>
 
-
                         <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="auth_btns">
+                                <button type="submit" >
                                    Войти
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="/register">
+                                    <a class="auth_link" href="/register">
                                         Еще не зарегистрированы?
                                     </a>
                                 @endif

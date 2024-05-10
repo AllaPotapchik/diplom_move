@@ -28,7 +28,7 @@ class LoginController extends Controller {
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+//    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -56,7 +56,7 @@ class LoginController extends Controller {
             } else {
                 Auth ::login( $user );
 
-                return redirect() -> route( 'home' );
+                return redirect() -> route( 'accountType', $user );
             }
         }
 

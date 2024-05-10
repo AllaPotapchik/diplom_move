@@ -12,7 +12,7 @@
                 </button>
             </div>
         @elseif(session('error'))
-            <div class="alert alert-danger">
+            <div class="alert error">
                 <h6><i class="icon fa fa-check"></i> {{ session('error') }}</h6>
                 <button type="button" class="close close_btn" id="close_btn" data-dismiss="alert" aria-hidden="true">×
                 </button>

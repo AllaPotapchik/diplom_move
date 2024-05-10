@@ -9,15 +9,15 @@
         <div class="back_color main_screen">
             <img src="{{asset('images/main_logo.png')}}">
         </div>
-        <div class="main_screen quote_background">
+        <div class="main_screen quote_background element-animation">
             <blockquote class="quote">
                 <p><b>Умение танцевать даёт тебе величайшую из свобод: выразить всего себя в полной мере таким, какой ты
                         есть.</b></p>
                 <p class="mb-0">&copy; Генри Линк</p>
             </blockquote>
         </div>
-        <div class="types_slider">
-            <div class="dance_type_card" style="background: #BA80E6">
+        <div class="types_slider ">
+            <div class="dance_type_card element-animation" style="background: #BA80E6">
                 <div class="card_info">
                     <div class="card_text">
                         <h1 class="dance_type_name">ХИП-ХОП</h1>
@@ -26,13 +26,13 @@
                             импровизацию и индивидуальный стиль танцоров. Он сочетает в себе элементы фанка,
                             соула, брейк-данса и джаза. </p>
                         <a href="{{route('singleType', 1)}}">
-                            <button class="text-dark">Узнать больше</button>
+                            <button class="text-dark button">Узнать больше</button>
                         </a>
                     </div>
                     <img src="{{asset('/images/hip_hop.png')}}">
                 </div>
             </div>
-            <div class="dance_type_card" style="background: #92ABFC">
+            <div class="dance_type_card element-animation" style="background: #92ABFC">
                 <div class="card_info">
                     <div class="card_text">
                         <h1 class="dance_type_name">ДЖАЗ-ФАНК</h1>
@@ -45,7 +45,7 @@
                     <img style="margin-right: 8rem" src="{{asset('/images/juzz_funk.png')}}">
                 </div>
             </div>
-            <div class="dance_type_card" style="background: #FFAF77">
+            <div class="dance_type_card element-animation" style="background: #FFAF77">
                 <div class="card_info">
                     <div class="card_text">
                         <h1 class="dance_type_name">ВОГ</h1>
@@ -58,7 +58,7 @@
                     <img style="margin-right: 8rem" src="{{asset('/images/vogue.png')}}">
                 </div>
             </div>
-            <div class="dance_type_card" style="background: #FF77B8">
+            <div class="dance_type_card element-animation" style="background: #FF77B8">
                 <div class="card_info">
                     <div class="card_text">
                         <h1 class="dance_type_name">ТВЕРК</h1>
@@ -72,15 +72,14 @@
                 </div>
             </div>
         </div>
-        <div class="tariffs">
+        <div class="tariffs element-animation">
             <h1>Занимайся тогда, когда удобно</h1>
             <div class="tariffs_wrap">
                 <div class="tariff">
                     <p>ТАРИФ</p>
                     <p class="tariff_name">ОФФЛАЙН</p>
-                    <div class="tariff_description">Выбирай удобное для себя время и занимайся в студии
-                        с лучшими тренерами вместе с другими учениками
-                        в атмосферной студии.
+                    <div class="tariff_description">Выбирай любое удобное для себя время и занимайся в атмосферной студии
+                        вместе с лучшими тренерами.
                     </div>
                     <p class="tariff_price">150 BYN</p>
                     <a href="{{route('subscriptions', [1,0])}}">
@@ -113,8 +112,8 @@
                 </div>
             </div>
         </div>
-        <div class="benefit_background"></div>
-        <div class="benefits">
+        <div class="benefit_background element-animation"></div>
+        <div class="benefits element-animation">
             <h1>Почему именно move?</h1>
             <div class="benefit_wrap">
                 <div class="benefit">
@@ -136,7 +135,7 @@
             </div>
 
         </div>
-        <div class="first_class">
+        <div class="first_class element-animation">
             <div class="inner_part">
                 <p><b>Уже знаешь какое направление хочешь попробовать?
                         Тогда выбирай подходяшее время и записывайся на первоепробное занятие </b></p>

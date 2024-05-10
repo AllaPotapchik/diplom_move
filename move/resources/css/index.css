@@ -10,7 +10,6 @@
     width: 30%;
 }
 
-
 .quote_background {
     background-image: url("/public/images/quote_img.png");
     background-repeat: no-repeat;
@@ -25,9 +24,11 @@
     font-size: 1.4rem;
     color: #704D8A;
 }
-.tariffs{
+
+.tariffs {
     margin-top: 7rem;
 }
+
 .tariffs_wrap {
     display: flex;
     justify-content: center;
@@ -77,7 +78,7 @@
 }
 
 .tariff_description {
-    text-align: justify;
+    text-align: center;
     font-weight: 500;
 }
 
@@ -292,3 +293,5 @@
         padding: 0;
     }
 }
+
+

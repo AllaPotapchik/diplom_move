@@ -6,7 +6,7 @@
     @vite(['resources/css/subscription.css'])
     <div style="margin-top: 6rem" class="container card_wrap">
         @foreach($subscription as $el)
-          <div class="subscription_card">
+          <div class="subscription_card element-animation">
               <p class="subscription_name">{{$el->subscription_name}}</p>
               <p class="subscription_desc">{{$el->description}}</p>
               <p class="subscription_price">{{$el->subscription_price}} BYN</p>

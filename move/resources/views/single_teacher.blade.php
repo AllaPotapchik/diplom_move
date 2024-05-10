@@ -43,7 +43,6 @@
             </div>
         </div>
 
-
         <div class="reviews teacher_info_wrap">
             @if(session('error'))
                 <div class="alert alert-success">
@@ -62,7 +61,7 @@
                             {{$el->review_text}}
                         </div>
                         <p>
-                            {{$el->date}}
+                            {{date( 'd.m.y', strtotime( $el->date )) }}
                             {{--                            {{date( 'H:i', strtotime( $el -> time ) )}}--}}
                         </p>
                     </div>

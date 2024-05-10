@@ -19,7 +19,7 @@
         @endif
 
         @foreach($programs as $el)
-            <div class="tariff_card">
+            <div class="tariff_card element-animation">
                 <p class="tariff_title  mb-4">{{$el->program_name}}</p>
 					<?php
 					$lessons = DB ::table( 'lessons' )

@@ -31,18 +31,18 @@ class ProgramController extends Controller {
         }
 
         return view( 'create_program', [
-            'dance_type'  => $dance_type,
-            'tariff_id' => $tariff_type,
-            'program_id'  => $program_id,
-            'user'        => $user,
-            'program'     => $program,
-            'percent'     => $percent,
-            'new_price'   => '',
-            'cost'        => $cost
+            'dance_type' => $dance_type,
+            'tariff_id'  => $tariff_type,
+            'program_id' => $program_id,
+            'user'       => $user,
+            'program'    => $program,
+            'percent'    => $percent,
+            'new_price'  => '',
+            'cost'       => $cost
         ] );
     }
 
-    public function createProgramRecord( $program_id, $dance_type, $tariff_id ) {
+    public function createProgramRecord( $program_id, $dance_type, $tariff_id, $level_id ) {
         $id            = Auth ::id();
         $users_tariffs = DB ::table( 'users_tariffs' )
                             -> where( 'user_id', $id )
@@ -50,8 +50,7 @@ class ProgramController extends Controller {
                             -> whereIn( 'tariff_type', [ 2, 3 ] )
                             -> select( '*' )
                             -> get();
-//        dd($users_tariffs);
-        if ( sizeof($users_tariffs) != 0) {
+        if ( sizeof( $users_tariffs ) != 0 ) {
             return redirect() -> back() -> with( 'error', 'У вас уже есть программы по данному направлению' );
         } else {
             DB ::table( 'users_tariffs' ) -> insert( [
@@ -62,14 +61,12 @@ class ProgramController extends Controller {
                     'start'           => null,
                     'end'             => null,
                     'is_check'        => false,
-                    'program_id'      => $program_id
+                    'program_id'      => $program_id,
+                    'level_id'        => $level_id
                 ]
             ] );
 
             return redirect() -> back() -> with( 'error', 'Доступ к урокам в личном кабинете появиться после подтверждения оплаты администратором' );
         }
-
     }
-
-
 }

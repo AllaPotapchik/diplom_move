@@ -29,7 +29,7 @@
 				if ( $el -> tariff_name == 'Онлайн++' )
 					$color = '#FFAF77';
 				?>
-            <div class="tariff_card" style="background: {{$color}};">
+            <div class="tariff_card element-animation" style="background: {{$color}};">
                 <p class="tariff_title text-center mb-4">ТАРИФ "{{$el->tariff_name}}"</p>
                 <div>
                     {{$el->description}}
