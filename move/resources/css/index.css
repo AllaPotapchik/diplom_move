@@ -4,11 +4,73 @@
     padding: 6rem;
     text-align: center;
     margin-bottom: 7rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+
+}
+
+.main_screen_text {
+    width: 50%;
+    font-size: 1.4rem;
+    color: #704d8a;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: flex-start;
+    text-align: start;
+}
+
+.main_screen_text article {
+    font-size: 1.4rem;
+    color: #704d8a;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.main_screen_text button {
+    font-size: 0.9rem;
+
 }
 
 .main_screen img {
     width: 30%;
 }
+
+@media (max-width: 1200px) {
+    .main_screen {
+        padding: 3rem;
+    }
+
+    .main_screen img {
+        width: 25%;
+    }
+}
+
+@media (max-width: 990px) {
+    .main_screen_text article {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 720px) {
+    .main_screen {
+        flex-direction: column;
+        margin-bottom: 3rem;
+    }
+
+    .main_screen_text {
+        width: 100%;
+    }
+
+    .main_screen img {
+        display: none;
+    }
+}
+
 
 .quote_background {
     background-image: url("/public/images/quote_img.png");
@@ -255,13 +317,6 @@
 }
 
 @media (max-width: 720px) {
-    .main_screen img {
-        width: 100%;
-    }
-
-    .main_screen {
-        margin-bottom: 3rem;
-    }
 
     .quote_background, .first_class {
         background-image: none;
@@ -275,9 +330,11 @@
     .tariff {
         padding: 2rem 2rem;
     }
-    .tariffs{
+
+    .tariffs {
         margin-top: 3rem;
     }
+
     .benefits {
         margin-top: 1rem;
     }

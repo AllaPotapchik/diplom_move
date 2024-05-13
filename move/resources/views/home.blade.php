@@ -8,6 +8,16 @@
     <div class="container" style="margin-top: 6rem">
         <section class="back_color main_screen">
             <img src="{{asset('images/main_logo.png')}}">
+            <div class="main_screen_text">
+                <article>
+                    <b>MOVE</b> — это студия танцев с командой энергичных и талантливых танцоров,
+                    объедненных вместе для того, чтобы делиться своей любовью к танцам.
+                </article>
+
+                <a href="{{route('singleType', 1)}}">
+                    <button class="button violet">Выбрать направление</button>
+                </a>
+            </div>
         </section>
         <section class="main_screen quote_background element-animation">
             <blockquote class="quote">
