@@ -71,7 +71,7 @@
                     @csrf
                     <input type="text" required name="review" placeholder="Сообщение...">
                     <input type="hidden" value="{{$teacher->teacher_id}}" name="teacher_id">
-                    <button type="submit">Отправить</button>
+                    <button type="submit" class="button violet">Отправить</button>
                 </form>
             </div>
     </div>

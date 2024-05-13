@@ -13,7 +13,7 @@
                             <h1 class="dance_type_name">{{$el->title}}</h1>
                             <p class="dance_type_description">{{$el->short}}</p>
                             <a href="{{route('singleType', $el->dance_type_id)}}">
-                                <button class="text-dark">Узнать больше</button>
+                                <button class="button white">Узнать больше</button>
                             </a>
                         </div>
                         <img src="{{asset('/images/hip_hop.png')}}">
@@ -26,7 +26,7 @@
                             <h1 class="dance_type_name">{{$el->title}}</h1>
                             <p class="dance_type_description">{{$el->short}}</p>
                             <a href="{{route('singleType', $el->dance_type_id)}}">
-                                <button class="text-dark">Узнать больше</button>
+                                <button class="button white">Узнать больше</button>
                             </a>
                         </div>
                         <img style="margin-right: 8rem" src="{{asset('/images/juzz_funk.png')}}">
@@ -39,7 +39,7 @@
                             <h1 class="dance_type_name">{{$el->title}}</h1>
                             <p class="dance_type_description">{{$el->short}}</p>
                             <a href="{{route('singleType', $el->dance_type_id)}}">
-                                <button class="text-dark">Узнать больше</button>
+                                <button class="button white">Узнать больше</button>
                             </a>
                         </div>
                         <img style="margin-right: 8rem" src="{{asset('/images/vogue.png')}}">
@@ -52,10 +52,10 @@
                             <h1 class="dance_type_name">{{$el->title}}</h1>
                             <p class="dance_type_description">{{$el->short}}</p>
                             <a href="{{route('singleType', $el->dance_type_id)}}">
-                                <button class="text-dark">Узнать больше</button>
+                                <button class="button white">Узнать больше</button>
                             </a>
                         </div>
-                        <img src="{{asset('/images/twerk.png')}}">
+                        <img style="top: -10%" src="{{asset('/images/twerk.png')}}">
                     </div>
                 </div>
             @endif

@@ -80,7 +80,7 @@
 
                             <div class="row mb-0">
                                 <div class="auth_btns">
-                                    <button type="submit">
+                                    <button type="submit" class="button violet">
                                         Зарегистрироваться
                                     </button>
                                     <a class="auth_link" href="/login">

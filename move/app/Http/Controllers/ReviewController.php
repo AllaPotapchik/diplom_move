@@ -26,10 +26,5 @@ class ReviewController extends Controller {
             return redirect() -> back() -> with( 'error', 'Для того, чтобы оставить отзыв, необходимо авторизоваться' );
 
         }
-
-
-
-
-
     }
 }

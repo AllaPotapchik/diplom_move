@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 
 class LoginController extends Controller {
@@ -43,21 +44,29 @@ class LoginController extends Controller {
         $phone    = $request -> phone;
         $password = $request -> password;
         $user     = User ::where( 'phone', $phone ) -> first();
-        if ( $user ) {
-            if ( $user -> user_type == 2 ) {
-                Auth ::login( $user );
 
-                return redirect() -> route( 'adminMain' );
-            } elseif ( $user -> user_type == 3 ) {
-                Auth ::login( $user );
+        if ( Hash ::check( $password,$user['password']) ) {
+            if ( $user ) {
+                if ( $user -> user_type == 2 ) {
+                    Auth ::login( $user );
 
-                return redirect() -> route( 'teacherIndex', $user );
+                    return redirect() -> route( 'adminMain' );
+                } elseif ( $user -> user_type == 3 ) {
+                    Auth ::login( $user );
 
+                    return redirect() -> route( 'teacherIndex', $user );
+
+                } else {
+                    Auth ::login( $user );
+
+                    return redirect() -> route( 'accountType', $user );
+                }
             } else {
-                Auth ::login( $user );
-
-                return redirect() -> route( 'accountType', $user );
+                return redirect() -> back() -> with( 'error', 'Неверный телефон' );
             }
+        }
+        else {
+            return redirect() -> back() -> with( 'error', 'Неверный пароль' );
         }
 
     }

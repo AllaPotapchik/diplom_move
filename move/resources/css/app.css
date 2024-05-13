@@ -3,17 +3,13 @@
     padding: 0;
 }
 
-body {
-    height: 100%;
-}
-
 #app {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-body{
+body {
     background: #F8F2FC;
     margin: 0;
     display: flex;
@@ -22,15 +18,16 @@ body{
     font-family: "Montserrat";
 }
 
-main{
+main {
     flex: 1 0 auto;
 }
 
-.error{
+.error {
     border: 2px solid #704d8a;
     background: #ffa2a2;
 }
 
+/* появление блоков*/
 .element-animation {
     opacity: 0;
     transform: translateY(80px);
@@ -41,27 +38,47 @@ main{
     transition: all 1.5s;
     transform: translateY(0%);
 }
- /*кнопки*/
 
-.button {
+/*кнопки*/
+.white {
     --color: #704D8A;
     --color-hover: var(--color);
     --background: #ffffff;
     --background-hover: var(--background);
     --hover-back: #E9D5F7;
     --hover-front: #E9D5F7;
-     border: none;
+}
+
+.blue {
+    --color: #ffff;
+    --color-hover: var(--color);
+    --background: #92ABFC;
+    --background-hover: var(--background);
+    --hover-back: #BA80E6;
+    --hover-front: #BA80E6;
+}
+
+.violet {
+    --color: #ffff;
+    --color-hover: var(--color);
+    --background: #BA80E6;
+    --background-hover: var(--background);
+    --hover-back: #704D8A;
+    --hover-front: #704D8A;
+}
+
+.button {
+    border: none;
     outline: none;
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    -webkit-appearance: none;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    text-transform: uppercase;
     color: var(--c, var(--color));
     background: var(--b, var(--background));
     transition: color 0.2s linear var(--c-d, 0.2s), background 0.3s linear var(--b-d, 0.2s);
 }
+
 .button:not(.simple):before, .button:not(.simple):after {
     content: "";
     position: absolute;
@@ -74,40 +91,49 @@ main{
     transform: translateY(var(--y, 50%));
     transition: transform var(--d, 0.4s) ease-in var(--d-d, 0s), border-radius 0.5s ease var(--br-d, 0.08s);
 }
+
 .button:not(.simple):after {
     --pb: var(--hover-front);
     --d: .44s;
 }
+
 .button div {
     z-index: 1;
     position: relative;
     display: flex;
     justify-content: center;
 }
+
 .button div span {
     display: block;
     backface-visibility: hidden;
     transform: translateZ(0);
     animation: var(--name, none) 0.7s linear forwards 0.18s;
 }
+
 .button.in {
     --name: move;
 }
+
 .button.in:not(.out) {
     --c: var(--color-hover);
     --b: var(--background-hover);
 }
+
 .button.in:not(.out):before, .button.in:not(.out):after {
     --y: 0;
     --br: 5%;
 }
+
 .button.in:not(.out):after {
     --br: 10%;
     --d-d: .02s;
 }
+
 .button.in.out {
     --name: move-out;
 }
+
 .button.in.out:before {
     --d-d: .06s;
 }
@@ -123,6 +149,7 @@ main{
         transform: translateY(calc(-2px * var(--move))) translateZ(0) rotate(calc(-3deg * var(--rotate) * var(--part)));
     }
 }
+
 @keyframes move-out {
     30%, 36% {
         transform: translateY(calc(6px * var(--move))) translateZ(0) rotate(calc(13deg * var(--rotate) * var(--part)));
@@ -134,8 +161,6 @@ main{
         transform: translateY(calc(2px * var(--move))) translateZ(0) rotate(calc(3deg * var(--rotate) * var(--part)));
     }
 }
-
-
 
 /*header*/
 header {
@@ -266,8 +291,9 @@ li {
     align-items: center;
     margin-top: 1rem;
 }
-.auth_btns button{
-   background: #BA80E6;
+
+.auth_btns button {
+    background: #BA80E6;
 }
 
 .auth_link {

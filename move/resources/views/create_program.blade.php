@@ -12,7 +12,7 @@
                 </button>
             </div>
         @elseif(session('error'))
-            <div class="alert alert-success">
+            <div class="alert error">
                 <h6><i class="icon fa fa-check"></i> {{ session('error') }}</h6>
                 <button type="button" class="close close_btn" id="close_btn" data-dismiss="alert" aria-hidden="true">×
                 </button>
@@ -36,7 +36,7 @@
                     </div>
                     <br>
 
-                    <button><a id="confirm_btn" style="cursor: pointer; color: #ffffff">Далее</a></button>
+                    <button><a id="confirm_btn" style="cursor: pointer; color: #ffffff" class="button violet">Далее</a></button>
                     <br>
                     <br>
                 </div>
@@ -76,7 +76,7 @@
                         <label for="cvv">CVV:</label>
                         <input type="password" id="cvv" maxlength="3" name="cvv" placeholder="Введите CVV" required>
                     </div>
-                    <button class="pay" type="submit">Оплатить</button>
+                    <button class="pay button violet" type="submit">Оплатить</button>
                 </div>
             </form>
         </div>

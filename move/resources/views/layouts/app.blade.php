@@ -16,11 +16,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Marck+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <link href="/resources/css/app.css" rel="stylesheet">
-    <!-- Scripts -->
-{{--    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>--}}
-    <!-- Scripts -->
-
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
 </head>
 <body>

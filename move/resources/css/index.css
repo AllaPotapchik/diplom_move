@@ -275,7 +275,9 @@
     .tariff {
         padding: 2rem 2rem;
     }
-
+    .tariffs{
+        margin-top: 3rem;
+    }
     .benefits {
         margin-top: 1rem;
     }

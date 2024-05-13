@@ -63,7 +63,7 @@
                                 <td>{{$el->level_name}} </td>
                                 <td>
                                     <a href="{{route('deleteRecord', [$el->record_id, $el->schedule_id])}}">
-                                        <button class="schedule_btn">Отменить</button>
+                                        <button class="schedule_btn button violet">Отменить</button>
                                     </a>
                                 </td>
                             </tr>
@@ -126,7 +126,7 @@
                     <input id="phone" type="tel" name="user_phone" value="{{$user->phone}}">
                     <label for="user_email">Email</label>
                     <input value="{{$user->email}}" name="user_email">
-                    <button class="mt-2" type="submit">Изменить</button>
+                    <button class="mt-2 button violet" type="submit">Изменить</button>
                 </form>
                 <br><br>
                 <form class="update_profile" method="post" action="{{route('changePassword')}}">
@@ -136,7 +136,7 @@
                     <input type="password" name="old_user_password">
                     <label for="user_password">Новый пароль</label>
                     <input type="password" name="new_user_password">
-                    <button class="mt-2">Сменить пароль</button>
+                    <button class="mt-2 button violet">Сменить пароль</button>
                 </form>
             </div>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

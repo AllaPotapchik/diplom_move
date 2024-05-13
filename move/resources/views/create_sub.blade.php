@@ -63,7 +63,7 @@
                     </div>
                     <br>
 
-                    <button><a id="confirm_btn" type="button" style="cursor: pointer; color: #ffffff">Далее</a></button>
+                        <a id="confirm_btn" type="button" style="cursor: pointer; color: #ffffff" ><button class="button violet">Далее</button></a>
                     <br>
                     <br>
                 </div>
@@ -82,7 +82,7 @@
                             </button>
                         @else
                             <span id="sub_id" class="d-none">{{$id}}</span>
-                            <a><button type="button" id="points_btn" value="{{$cost}}" class="pay">Использовать баллы</button></a>
+                            <a><button type="button" id="points_btn" value="{{$cost}}" class="pay button violet">Использовать баллы</button></a>
                         @endif
 
                         <br>
@@ -104,7 +104,7 @@
                         <label for="cvv">CVV:</label>
                         <input type="password" id="cvv" maxlength="3" name="cvv" placeholder="Введите CVV" required>
                     </div>
-                    <button class="pay" type="submit">Оплатить</button>
+                    <button class="pay button violet" type="submit" >Оплатить</button>
                 </div>
             </form>
         </div>

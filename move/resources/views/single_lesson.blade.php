@@ -31,7 +31,7 @@
                         </div>
                         <br/>
                     @endif
-                    <button type="submit" id="upload_btn">Загрузить видео</button>
+                    <button type="submit" id="upload_btn" >Загрузить видео</button>
                 </form>
                 <br>
                 <div class="done">

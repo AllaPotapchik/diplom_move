@@ -40,7 +40,7 @@
             <div class="inner_part">
                 <p><b>Если уверен, что <span style="text-transform: lowercase">{{$dance_type->title}}</span> это твое - сразу выбирай удобный тариф и окунись в мир <span style="text-transform: lowercase">{{$dance_type->title}}</span> </b></p>
                 <a href="{{route('chooseTariff', $dance_type->dance_type_id)}}">
-                    <button class="text-dark">Выбрать тариф</button>
+                    <button class="button white" >Выбрать тариф</button>
                 </a>
 
             </div>

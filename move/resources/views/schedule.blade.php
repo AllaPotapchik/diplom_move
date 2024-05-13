@@ -53,7 +53,7 @@
                                             </a>
                                         @else
                                             <a href="{{route('createRecord', [$el->id])}}">
-                                                <button class="schedule_btn">Записаться</button>
+                                                <button class="schedule_btn button violet">Записаться</button>
                                             </a>
                                         @endif
                                     </td>
@@ -105,7 +105,7 @@
                                             </a>
                                         @else
                                             <a href="{{route('createRecord', [$el->id])}}">
-                                                <button class="schedule_btn">Записаться</button>
+                                                <button class="schedule_btn button violet">Записаться</button>
                                             </a>
                                         @endif
                                     </td>
@@ -156,7 +156,7 @@
                                             </a>
                                         @else
                                             <a href="{{route('createRecord', [$el->id])}}">
-                                                <button class="schedule_btn">Записаться</button>
+                                                <button class="schedule_btn button violet">Записаться</button>
                                             </a>
                                         @endif
                                     </td>
@@ -207,7 +207,7 @@
                                             </a>
                                         @else
                                             <a href="{{route('createRecord', [$el->id])}}">
-                                                <button class="schedule_btn">Записаться</button>
+                                                <button class="schedule_btn button violet">Записаться</button>
                                             </a>
                                         @endif
                                     </td>
@@ -258,7 +258,7 @@
                                             </a>
                                         @else
                                             <a href="{{route('createRecord', [$el->id])}}">
-                                                <button class="schedule_btn">Записаться</button>
+                                                <button class="schedule_btn button violet">Записаться</button>
                                             </a>
                                         @endif
                                     </td>

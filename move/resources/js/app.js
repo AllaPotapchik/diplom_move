@@ -41,11 +41,9 @@ document.querySelectorAll('.button').forEach(button => {
         element.style.setProperty('--part', part);
 
         div.appendChild(element);
-
     }
 
     letters.forEach(elements);
-
     button.innerHTML = div.outerHTML;
 
     button.addEventListener('mouseenter', e => {
@@ -62,6 +60,7 @@ document.querySelectorAll('.button').forEach(button => {
     });
 
 });
+
 
 /* уведомления о действии*/
 const alertDiv = document.querySelector('.alert');

@@ -38,17 +38,13 @@
                 @endforeach
                 <br>
                 @if ( Auth ::check() )
-                    <button disabled class="program_btn"><a
+                    <button disabled class="program_btn button white"><a
                             href="{{route('showDetails',[$el->dance_type_id, $tariff_id,$el-> program_id])}}">Купить</a>
                     </button>
                 @else
-
                     <button disabled class="program_btn disabled"><a href="/login">Купить</a></button>
-
                 @endif
-
             </div>
         @endforeach
-
     </div>
 @endsection

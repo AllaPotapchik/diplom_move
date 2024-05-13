@@ -22,6 +22,7 @@ class TariffController extends Controller {
         }else{
             $programs = Program ::all();
         }
+
         return view( 'programs', [
                 'programs'      => $programs,
                 'tariff_id'     => $tariff_id,

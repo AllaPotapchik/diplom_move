@@ -10,6 +10,13 @@
             <div class="auth_card">
                 <h1>Вход</h1>
                 <div class="card-body user_info">
+                    @if(session('error'))
+                        <div class="alert error">
+                            <h6><i class="icon fa fa-check"></i> {{ session('error') }}</h6>
+                            <button type="button" class="close close_btn" id="close_btn" data-dismiss="alert" aria-hidden="true">×
+                            </button>
+                        </div>
+                    @endif
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="mb-3 input_wrap">
@@ -38,7 +45,7 @@
 
                         <div class="row mb-0">
                             <div class="auth_btns">
-                                <button type="submit" >
+                                <button type="submit" class="button violet">
                                    Войти
                                 </button>
 

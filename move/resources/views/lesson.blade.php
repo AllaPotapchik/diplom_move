@@ -23,7 +23,7 @@
                 @elseif($lesson_status->status == 0)
                     <p>Не пройден</p>
                     <a href="{{route('startLesson', [$el->lesson_id, $program->program_id])}}">
-                        <button>Пройти урок</button>
+                        <button class="button white">Пройти урок</button>
                     </a>
                 @elseif($lesson_status->status == 1)
                     <p>Пройден</p>

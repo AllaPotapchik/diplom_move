@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\DB;
 class User_subscriptionController extends Controller {
 
     public function usePoint( Request $request ) {
-//        dd($request -> cost);
         $user_points = DB ::table( 'users' ) -> where( 'id', Auth ::id() ) -> first();
 
         if ( $request -> cost ) {
@@ -52,7 +51,7 @@ class User_subscriptionController extends Controller {
                                         -> where( 'users_tariffs.level_id', '=', $request -> level_id )
                                         -> where( 'tariff_type', 1 )
                                         -> first();
-//dd(  $have_dance_type_and_level);
+
         $count               = DB ::table( 'subscriptions' )
                                   -> where( 'id', $request -> sub_id )
                                   -> first();

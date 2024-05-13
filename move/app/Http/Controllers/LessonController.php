@@ -41,7 +41,6 @@ class LessonController extends Controller {
                            -> get();
 
         if ( sizeof($start_lesson) == 0 ) {
-//            dd($start_lesson);
             DB ::table( 'user_lessons' ) -> insert( [
                 [
                     'user_id'    => Auth ::id(),

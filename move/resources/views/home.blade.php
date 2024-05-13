@@ -4,19 +4,19 @@
 @endsection
 
 @section('content')
-    @vite(['resources/css/index.css', 'resources/css/slider.css','resources/js/slider.js', 'resources/css/dance_types.css' ])
+    @vite(['resources/css/index.css','resources/css/dance_types.css' ])
     <div class="container" style="margin-top: 6rem">
-        <div class="back_color main_screen">
+        <section class="back_color main_screen">
             <img src="{{asset('images/main_logo.png')}}">
-        </div>
-        <div class="main_screen quote_background element-animation">
+        </section>
+        <section class="main_screen quote_background element-animation">
             <blockquote class="quote">
                 <p><b>Умение танцевать даёт тебе величайшую из свобод: выразить всего себя в полной мере таким, какой ты
                         есть.</b></p>
                 <p class="mb-0">&copy; Генри Линк</p>
             </blockquote>
-        </div>
-        <div class="types_slider ">
+        </section>
+        <section class="types_slider ">
             <div class="dance_type_card element-animation" style="background: #BA80E6">
                 <div class="card_info">
                     <div class="card_text">
@@ -26,7 +26,7 @@
                             импровизацию и индивидуальный стиль танцоров. Он сочетает в себе элементы фанка,
                             соула, брейк-данса и джаза. </p>
                         <a href="{{route('singleType', 1)}}">
-                            <button class="text-dark button">Узнать больше</button>
+                            <button class="text-dark button white">Узнать больше</button>
                         </a>
                     </div>
                     <img src="{{asset('/images/hip_hop.png')}}">
@@ -40,7 +40,7 @@
                             в шоу-бизнес индустрии. Оно объедининяет такие танцевальные стили как vogue,
                             waacking, hip-hop и jazz. Это новый, свободный, привлекательный стиль.</p>
                         <a href="{{route('singleType', 2)}}">
-                            <button class="text-dark">Узнать больше</button>
+                            <button class="text-dark button white">Узнать больше</button>
                         </a>                    </div>
                     <img style="margin-right: 8rem" src="{{asset('/images/juzz_funk.png')}}">
                 </div>
@@ -53,7 +53,7 @@
                             вдохновленнй модными журналами и бальными танцами. Он воплощает превосходную координацию,
                             несомненное чувство ритма, музыки.</p>
                         <a href="{{route('singleType', 17)}}">
-                            <button class="text-dark">Узнать больше</button>
+                            <button class="text-dark button white">Узнать больше</button>
                         </a>                    </div>
                     <img style="margin-right: 8rem" src="{{asset('/images/vogue.png')}}">
                 </div>
@@ -66,40 +66,38 @@
                             активных ритмичных движениях ягодицами и бёдрами. Тверк полезен не только для поддержания
                             мышц в тонусе, но и для здоровья.</p>
                         <a href="{{route('singleType', 18)}}">
-                            <button class="text-dark">Узнать больше</button>
+                            <button class="text-dark button white">Узнать больше</button>
                         </a>                    </div>
                     <img src="{{asset('/images/twerk.png')}}">
                 </div>
             </div>
-        </div>
-        <div class="tariffs element-animation">
-            <h1>Занимайся тогда, когда удобно</h1>
+        </section>
+        <section class="tariffs">
+            <h1 class="element-animation">Занимайся тогда, когда удобно</h1>
             <div class="tariffs_wrap">
-                <div class="tariff">
+                <div class="tariff element-animation">
                     <p>ТАРИФ</p>
-                    <p class="tariff_name">ОФФЛАЙН</p>
+                    <p class="tariff_name">ОФЛАЙН</p>
                     <div class="tariff_description">Выбирай любое удобное для себя время и занимайся в атмосферной студии
                         вместе с лучшими тренерами.
                     </div>
                     <p class="tariff_price">150 BYN</p>
                     <a href="{{route('subscriptions', [1,0])}}">
-                        <button>КУПИТЬ</button>
+                        <button class="button blue">КУПИТЬ</button>
                     </a>
-
                 </div>
-                <div class="tariff">
+                <div class="tariff element-animation">
                     <p>ТАРИФ</p>
-                    <p class="tariff_name">Онлайн</p>
+                    <p class="tariff_name ">Онлайн</p>
                     <div class="tariff_description">Получи доступ к полноценной программе видео
                         уроков и знанимайся в любом удобном месте в любое время.
                     </div>
                     <p class="tariff_price">100 BYN</p>
                     <a href="{{ route('programs', [2,0])}}">
-                        <button>КУПИТЬ</button>
+                        <button class="button blue">КУПИТЬ</button>
                     </a>
-
                 </div>
-                <div style="margin-right: 0" class="tariff">
+                <div style="margin-right: 0" class="tariff element-animation">
                     <p>ТАРИФ</p>
                     <p class="tariff_name">Онлайн++</p>
                     <div class="tariff_description">Получи доступ к онлайн тренировкам,
@@ -107,13 +105,13 @@
                     </div>
                     <p class="tariff_price">200 BYN</p>
                     <a href="{{ route('programs', [2,0])}}">
-                        <button>КУПИТЬ</button>
+                        <button class="button blue">КУПИТЬ</button>
                     </a>
                 </div>
             </div>
-        </div>
-        <div class="benefit_background element-animation"></div>
-        <div class="benefits element-animation">
+        </section>
+        <section class="benefit_background element-animation"></section>
+        <section class="benefits element-animation">
             <h1>Почему именно move?</h1>
             <div class="benefit_wrap">
                 <div class="benefit">
@@ -134,14 +132,14 @@
                 </div>
             </div>
 
-        </div>
-        <div class="first_class element-animation">
+        </section>
+        <section class="first_class element-animation">
             <div class="inner_part">
-                <p><b>Уже знаешь какое направление хочешь попробовать?
-                        Тогда выбирай подходяшее время и записывайся на первоепробное занятие </b></p>
-                <button class="text-dark">Записаться на первое занятие</button>
+                <p><b>Уверен что готов стать частью команды MOVE?
+                        Тогда выбирай подходящий тариф и зинимайся танцами в свое удовольствие </b></p>
+                <a href="/tariffs"><button class="text-dark button white">Записаться на первое занятие</button></a>
             </div>
-        </div>
+        </section>
     </div>
 @endsection
 
