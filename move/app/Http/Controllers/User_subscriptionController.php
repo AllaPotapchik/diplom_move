@@ -91,7 +91,7 @@ class User_subscriptionController extends Controller {
                     'start'           => null,
                     'end'             => null,
                     'is_check'        => false,
-                ]
+                    'level_id'        => $request -> level_id                ]
             ] );
         }
 

@@ -36,7 +36,7 @@
                     </div>
                     <br>
 
-                    <button><a id="confirm_btn" style="cursor: pointer; color: #ffffff" class="button violet">Далее</a></button>
+                   <a id="confirm_btn" style="cursor: pointer; color: #ffffff" > <button class="button violet">Далее</button></a>
                     <br>
                     <br>
                 </div>
@@ -53,7 +53,7 @@
                                     баллы
                                 </button>
                             @else
-                                <span id="sub_id" class="d-none">{{$id}}</span>
+                                <span id="sub_id" class="d-none">{{$program->program_id}}</span>
                                 <button id="points_btn" value="{{$cost}}" class="pay">Использовать баллы</button>
                             @endif
 

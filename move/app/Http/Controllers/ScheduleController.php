@@ -100,9 +100,9 @@ class ScheduleController extends Controller {
                                  -> join( 'users_tariffs', 'dance_types.dance_type_id', '=', 'users_tariffs.user_dance_type' )
                                  -> where( 'days_of_week.day_name', '=', 'Понедельник' )
                                  -> whereIn( 'dance_type', $user_dance_type_array )
-                                 -> whereIn( 'users_tariffs.tariff_type', [ 1, 3 ] )
+//                                 -> whereIn( 'users_tariffs.tariff_type', [ 1, 3 ] )
                                  -> get();
-
+//dd($scheduleMonday);
             $scheduleTuesday = DB ::table( 'schedule' ) -> whereIn( 'dance_type', $user_dance_type_array )
                                   -> join( 'teachers', 'schedule.teacher_id', '=', 'teachers.teacher_id' )
                                   -> join( 'days_of_week', 'schedule.day_id', '=', 'days_of_week.day_id' )

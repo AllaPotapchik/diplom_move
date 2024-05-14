@@ -26,6 +26,7 @@ export default defineConfig({
                 'resources/css/order.css',
                 'resources/css/slider.css',
                 'resources/css/teacher.css',
+                'resources/css/contact.css',
             ],
             refresh: true,
         }),

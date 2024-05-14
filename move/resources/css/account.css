@@ -5,6 +5,8 @@
 }
 .personal_buttons button{
     color: #704D8A;
+    text-transform: uppercase;
+    max-width: 17rem;
 }
 .user_head p {
     margin: 0;

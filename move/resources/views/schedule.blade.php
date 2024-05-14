@@ -20,6 +20,7 @@
             </div>
         @endif
         <div class="schedule_table">
+{{--            @dd($scheduleMonday)--}}
             <div class="schedule_day">Понедельник</div>
             <div class="scroll">
                 @if(sizeof($scheduleMonday) == 0 )

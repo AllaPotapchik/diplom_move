@@ -39,10 +39,10 @@
                         <a href="/tariffs">Тарифы</a>
                     </li>
                     <li>
-                        <a href="#">О нас</a>
+                        <a href="/about">О нас</a>
                     </li>
                     <li>
-                        <a href="#">Контакты</a>
+                        <a href="/contact">Контакты</a>
                     </li>
                 </ul>
             </div>

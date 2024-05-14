@@ -1,6 +1,6 @@
-.tariff_card{
+.tariff_card {
     background: #BA80E6;
-    padding: 2rem;
+    padding: 4rem;
     height: auto;
     width: 100%;
     display: flex;
@@ -10,19 +10,42 @@
     color: white;
     font-family: 'Montserrat';
     font-weight: normal;
-    font-size: 20px;
+    font-size: 1.4rem;
 }
-button{
+
+button {
     margin-top: 3rem;
     margin-bottom: 1rem;
     font-size: 15px;
-
 }
 
-.tariff_title{
+.tariff_title {
     text-transform: uppercase;
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 0;
 }
 
+@media (max-width: 990px) {
+    .tariff_card {
+        font-size: 1.2rem;
+        padding: 2rem;
+    }
+}
+
+.about1 {
+    background-image: url("/public/images/about1.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.about2 {
+    background-image: url("/public/images/about2.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+@media (max-width: 990px) {
+    .about1, .about2 {
+        background-image: none;
+    }
+}
