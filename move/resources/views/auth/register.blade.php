@@ -19,8 +19,8 @@
                                            value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                     @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                    <span style="color: red" role="alert">
+                                       {{ $message }}
                                     </span>
                                     @enderror
                                 </div>
@@ -34,8 +34,8 @@
                                            value="{{ old('email') }}" required autocomplete="email">
 
                                     @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                    <span style="color: red" role="alert">
+                                        {{ $message }}
                                     </span>
                                     @enderror
                                 </div>
@@ -46,11 +46,11 @@
                                     <label for="phone">Телефон</label>
                                     <input id="phone" type="tel"
                                            class="form-control @error('phone') is-invalid @enderror" name="phone"
-                                           value="{{ old('phone') }}" required autocomplete="phone">
+                                           value="{{ old('phone') }}" required autocomplete="phone" placeholder="+375 (хх) ххх-хх-хх">
                                     @error('phone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                </span>
+                                    <span style="color: red" role="alert">
+                                       {{ $message }}
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
@@ -63,8 +63,8 @@
                                            required autocomplete="new-password">
 
                                     @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                    <span style="color: red" role="alert">
+                                       {{ $message }}
                                     </span>
                                     @enderror
                                 </div>
@@ -75,6 +75,11 @@
                                     <label for="password-confirm" >Повторите пароль</label>
                                     <input id="password-confirm" type="password" class="form-control"
                                            name="password_confirmation" required autocomplete="new-password">
+                                    @error('password')
+                                    <span style="color: red" role="alert">
+                                       {{ $message }}
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
 

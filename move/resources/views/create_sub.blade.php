@@ -21,7 +21,7 @@
         <div class="wrapper">
             <div class="back">
             </div>
-            <form method="post" action="{{route('createSubscription')}}">
+            <form method="post"  action="{{route('createSubscription')}}">
                 @csrf
                 <div class="order_info">
                     @if($dance_type_id == 0)
@@ -62,7 +62,6 @@
                         <input type="hidden" value="{{$id}}" name="sub_id">
                     </div>
                     <br>
-
                         <a id="confirm_btn" type="button" style="cursor: pointer; color: #ffffff" ><button class="button violet">Далее</button></a>
                     <br>
                     <br>

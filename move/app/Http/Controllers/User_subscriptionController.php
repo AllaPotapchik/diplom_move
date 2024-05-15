@@ -79,7 +79,6 @@ class User_subscriptionController extends Controller {
                     'dance_type_id'   => $request -> dance_type,
                     'level_id'        => $request -> level_id,
                     'available_count' => $count -> subscription_count
-
                 ]
             ] );
 

@@ -2,6 +2,22 @@
 import './bootstrap';
 import IMask from 'imask'
 
+// const delete_btn = document.getElementById('delete-btn');
+// console.log((delete_btn))
+//
+// function accept(){
+//     alert("dd");
+//
+// }
+// delete_btn.addEventListener('click', () => {
+//     // $('.delete-btn').click(function () {
+//     alert("dd");
+//     // var res = confirm('Подтвердите действия');
+//     // if(!res){
+//     //     return false;
+//     // }
+// });
+
 /* появление блоков*/
 function onEntry(entry) {
     entry.forEach(change => {
@@ -21,7 +37,6 @@ for (let elm of elements) {
 }
 
 /*кнопки*/
-
 document.querySelectorAll('.button').forEach(button => {
 
     let div = document.createElement('div'),
@@ -63,11 +78,11 @@ document.querySelectorAll('.button').forEach(button => {
 
 
 /* уведомления о действии*/
-const alertDiv = document.querySelector('.alert');
+// const alertDiv = document.querySelector('.alert');
+document.querySelector('form').onsubmit = function() {
+    return confirm('Вы действительно хотите отправить форму?');
+};
 
-close_btn.addEventListener('click', () => {
-    alertDiv.style.display = 'none';
-});
 
 const menu_burger = document.querySelector("#menu_burger");
 // alert(menu_burger);
@@ -120,3 +135,7 @@ let maskOptions = {
 };
 
 IMask(element, maskOptions);
+
+close_btn.addEventListener('click', () => {
+    alertDiv.style.display = 'none';
+});

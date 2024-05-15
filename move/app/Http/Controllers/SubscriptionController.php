@@ -29,15 +29,7 @@ class SubscriptionController extends Controller {
         $user_id     = Auth ::id();
         $user        = DB ::table( 'users' ) -> find( $user_id );
         $subscription = DB ::table( 'subscriptions' ) -> where( 'id', $id ) -> first();
-//        $subscription = Subscription ::where( 'id', $id ) -> firstOrFail();
 
-//        $coefficient  = $subscription[0] -> coefficient;
-//        $subscription_price = $subscription[0]->subscription_price;
-//        dd($subscription[0]->subscription_price);
-//        var_dump($subscription -> coefficient);
-//        dd(print_r($subscription -> coefficient));
-//        dd($coefficient);
-//        dd( var_dump($subscription -> coefficient) );
         if ( $subscription -> coefficient * $subscription -> subscription_price * 3 <= $user -> point_balance ) {
             $percent = 30;
             $cost =  $subscription -> coefficient * $subscription -> subscription_price * 3;

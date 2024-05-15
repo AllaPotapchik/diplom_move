@@ -45,8 +45,9 @@ class LoginController extends Controller {
         $password = $request -> password;
         $user     = User ::where( 'phone', $phone ) -> first();
 
-        if ( Hash ::check( $password,$user['password']) ) {
-            if ( $user ) {
+        if ( $user ) {
+            if ( $password && Hash ::check( $password, $user[ 'password' ] ) ) {
+
                 if ( $user -> user_type == 2 ) {
                     Auth ::login( $user );
 
@@ -62,11 +63,14 @@ class LoginController extends Controller {
                     return redirect() -> route( 'accountType', $user );
                 }
             } else {
-                return redirect() -> back() -> with( 'error', 'Неверный телефон' );
+                return redirect() -> back() -> withErrors( [
+                    'password' => 'Неверный пароль',
+                ] );
             }
-        }
-        else {
-            return redirect() -> back() -> with( 'error', 'Неверный пароль' );
+        } else {
+            return redirect() -> back() -> withErrors( [
+                'phone' => 'Неверный телефон',
+                ] );
         }
 
     }

@@ -9,8 +9,8 @@ $(document).ready(function () {
         }
     });
 
-    $('.delete-btn').click(function () {
-        var res = confirm('Подтвердите действия');
+    $('.delete-btn').on('click', function () {
+        var res = confirm('Вы уверены что хотите удалить запись?');
         if(!res){
             return false;
         }

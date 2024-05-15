@@ -2,7 +2,7 @@
 @section('title', 'Все пользователи')
 
 @section('content')
-
+    @vite(['resources/js/app.js'])
     <div class="content-wrapper">
         <div class="content-header">
             <div class="container-fluid">
@@ -48,10 +48,10 @@
                                     <a href="{{route('user_admin.edit', $el->id)}}"
                                        class="btn btn-primary rounded-pill px-3 mr-2 "
                                        type="button" id="{{$el->id}}">Редактировать</a>
-                                    <form method="post" action="{{route('user_admin.destroy', $el->id)}}">
+                                    <form method="post" class="form" action="{{route('user_admin.destroy', $el->id)}}">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger rounded-pill px-3 delete_btn">Удалить</button>
+                                        <button type="submit" class="btn btn-danger rounded-pill px-3 delete-btn">Удалить</button>
                                     </form>
                                 </td>
                             </tr>
