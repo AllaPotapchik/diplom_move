@@ -52,6 +52,7 @@ class ProgramsController extends Controller {
         $new_program -> program_name  = $request -> name;
         $new_program -> dance_type_id = $request -> get( 'dance_type' );
         $new_program -> level_id      = $request -> get( 'level' );
+        $new_program -> price      = $request -> get( 'price' );
         $new_program -> lesson_count  = $request -> count;
 
         $new_program -> save();

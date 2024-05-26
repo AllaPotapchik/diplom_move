@@ -55,7 +55,7 @@ class TeacherController extends Controller {
         $new_teacher -> video_path     = $request -> video_path;
         $new_teacher -> user_id        = $request -> get( 'user_id' );
         $new_teacher -> photo_path     = 'teacher_' . $request -> get( 'user_id' ) . '.' . $request -> file( 'teacher_photo' ) -> getClientOriginalExtension();
-        $path                          = $request -> file( 'teacher_photo' ) -> storeAs( 'teachers_photo_', 'teacher_' . $request -> user_id . '.' . $request -> file( 'teacher_photo' ) -> getClientOriginalExtension() );
+        $path                          = $request -> file( 'teacher_photo' ) -> storeAs( 'teachers_photo', 'teacher_' . $request -> user_id . '.' . $request -> file( 'teacher_photo' ) -> getClientOriginalExtension() );
 
         $new_teacher -> save();
 

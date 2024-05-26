@@ -9,6 +9,12 @@ const subscriptionsDiv = document.querySelector('.my_subscriptions');
 const editDiv = document.querySelector('.edit_profile');
 
 
+$('.delete-btn').on('click', function () {
+    var res = confirm('Вы уверены что хотите отменить запись?');
+    if(!res){
+        return false;
+    }
+});
 lesson_btn.addEventListener('click', () => {
 
     lesson_btn.style.backgroundColor = '#BA80E6';

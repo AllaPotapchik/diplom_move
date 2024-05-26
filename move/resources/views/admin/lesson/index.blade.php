@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="content-wrapper">
+        <div class="content-wrapper" style="background-color: rgb(248, 242, 252)">
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
@@ -50,7 +50,7 @@
                                 <td>{{$el->program_name}}</td>
                                 <td>{{$el->number}}</td>
                                 <td>{{$el->lesson_description}}</td>
-                                <td >{{$el->video}}</td>
+                                <td >{{$el->lesson_video}}</td>
                                 <td>{{$el->equipment}}</td>
                                 <td>{{$el->duration}}</td>
                                 <td class="text-center d-flex justify-content-evenly">

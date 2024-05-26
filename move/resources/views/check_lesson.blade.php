@@ -7,6 +7,7 @@
     <div style="margin-top: 6rem" class="container back_color">
         <p class="order_header">Проверка задания</p>
         <div>
+{{--            @dd($task)--}}
         <video controls>
             <source src="{{asset('storage')}}/videos/{{$task->user_video}}" type="video/mp4">
             Your browser does not support the video tag.
@@ -17,16 +18,13 @@
             <input type="text" class="teacher_comment" placeholder="Комментарий к заданию" name="teacher_comment">
             <input type="hidden" value="{{$task->lesson_id}}" name="lesson_id">
             <input type="hidden" value="{{$task->user_id}}" name="user_id">
-            <div>
+            <div class="mt-3 mb-4">
                 @foreach($points as $el)
                     <div class="radio_button_points">
                         <input required id="point_id-{{$el->point_id}}" type="radio" name="point_id"
                                value="{{$el->point_id}}">
                         <label for="point_id-{{$el->point_id}}"> {{$el->point_name}} </label>
                     </div>
-                    {{--                <label>--}}
-                    {{--                    <input type="radio" name="point_id" value="{{$el->point_id}}">{{$el->point_name}}--}}
-                    {{--                </label>--}}
                 @endforeach
             </div>
 

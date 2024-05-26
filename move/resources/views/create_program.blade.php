@@ -53,8 +53,8 @@
                                     баллы
                                 </button>
                             @else
-                                <span id="sub_id" class="d-none">{{$program->program_id}}</span>
-                                <button id="points_btn" value="{{$cost}}" class="pay">Использовать баллы</button>
+                                <span id="program_id" class="d-none">{{$program->program_id}}</span>
+                                <button type="button" id="points_btn" value="{{$cost}}" class="pay violet">Использовать баллы</button>
                             @endif
 
                             <br>

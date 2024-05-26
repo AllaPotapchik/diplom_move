@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="content-wrapper">
+        <div class="content-wrapper" style="background-color: rgb(248, 242, 252)">
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
@@ -39,11 +39,11 @@
                                         <div class="form-group">
                                             <label for="benefits">Название программы</label>
                                             <input type="text" class="form-control" id="name"
-                                                   name="name" required>
+                                                   name="name" min="3" max="150" required>
                                         </div>
-                                        <label for="name">Направление</label>
+                                        <label for="dance_type">Направление</label>
                                         <br>
-                                        <select required name="dance_type">
+                                        <select required name="dance_type" style="width: 50%">
                                             @foreach($dance_types as $el)
                                                 <option value="{{$el->dance_type_id}}">{{$el->title}}</option>
                                             @endforeach
@@ -51,7 +51,7 @@
                                         <br>
                                         <label for="name">Уровень</label>
                                         <br>
-                                        <select required name="level">
+                                        <select required name="level" style="width: 50%">
                                             @foreach($levels as $el)
                                                 <option value="{{$el->level_id}}">{{$el->level_name}}</option>
                                             @endforeach
@@ -64,12 +64,13 @@
                                             <input type="number" class="form-control" id="email"
                                                    name="count" required>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="price">Цена</label>
+                                            <input type="number" class="form-control" id="email"
+                                                   name="price" required>
+                                        </div>
                                     </div>
                                 </div>
-
-
-                                <!-- /.card-body -->
-
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Добавить</button>
                                 </div>

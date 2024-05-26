@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="content-wrapper">
+        <div class="content-wrapper" style="background-color: rgb(248, 242, 252)">
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
@@ -38,12 +38,12 @@
                                     <div class="form-group">
                                         <label for="name">Название</label>
                                         <input type="text" value="{{$lesson->lesson_name}}" class="form-control"  id="name"
-                                               name="name" required>
+                                               name="name" min="3" max="50" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="program">Программа</label>
                                         <br>
-                                        <select required name="program">
+                                        <select required name="program" style="width: 50%" >
                                             @foreach($program as $el)
                                                 <option value="{{$el->program_id}}">{{$el->program_name}}</option>
                                             @endforeach
@@ -52,7 +52,7 @@
                                     <div class="form-group">
                                         <label for="benefits">Направление</label>
                                         <br>
-                                        <select required name="dance_type">
+                                        <select required name="dance_type" style="width: 50%" >
                                             @foreach($dance_types as $el)
                                                 <option value="{{$el->dance_type_id}}">{{$el->title}}</option>
                                             @endforeach
@@ -67,18 +67,23 @@
                                     <div class="form-group">
                                         <label for="description">Описание</label>
                                         <input type="text" value="{{$lesson->lesson_description}}" class="form-control"  id="description"
-                                               name="description" required>
+                                               name="description" min="10" required>
                                     </div>
                                     <div class="form-group">
+{{--                                        <input type="hidden" name="MAX_FILE_SIZE" value="800M" />--}}
                                         <label for="lesson_video">Видео</label>
                                         <br>
                                         <input type="file"  id="lesson_video"
                                                name="lesson_video" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="duration">Длительность</label>
-                                        <input type="time" value="{{$lesson->duration}}" class="form-control"  id="duration"
-                                               name="duration" required>
+                                        <label for="duration">Длительность</label><br>
+                                        <select  name="duration" style="width: 50%" id="duration" required>
+                                            <option selected value="00:30"> 30 минут</option>
+                                            <option value="00:40"> 40 минут</option>
+                                            <option value="01:00"> 1 час </option>
+                                            <option value="01:20"> 1 час 20 минут</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="equipment">Оборудование</label>

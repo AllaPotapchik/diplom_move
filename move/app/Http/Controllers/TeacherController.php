@@ -102,8 +102,6 @@ class TeacherController extends Controller {
                    ] );
             }
 
-//            return redirect() -> back() -> with( 'success', 'Задание проверено' );
-//            return view('teacher_panel')->with('success', 'Задание проверено');
             return redirect() -> route( 'teacherIndex', $user->user_id)
                               -> with( 'success', 'Задание проверено' );
         } else {

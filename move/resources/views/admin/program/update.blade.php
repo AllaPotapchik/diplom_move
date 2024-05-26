@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="content-wrapper">
+        <div class="content-wrapper" style="background-color: rgb(248, 242, 252)">
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -34,11 +34,11 @@
                                             <label for="benefits">Название программы</label>
                                             <input type="text" value="{{$program->program_name}}" class="form-control"
                                                    id="name"
-                                                   name="name" required>
+                                                   name="name" min="3" max="150" required>
                                         </div>
                                         <label for="name">Направление</label>
                                         <br>
-                                        <select required name="dance_type">
+                                        <select required name="dance_type" style="width: 50%">
                                             @foreach($dance_types as $el)
                                                 <option value="{{$el->dance_type_id}}">{{$el->title}}</option>
                                             @endforeach
@@ -46,7 +46,7 @@
                                         <br>
                                         <label for="name">Уровень</label>
                                         <br>
-                                        <select required name="level">
+                                        <select required name="level" style="width: 50%">
                                             @foreach($levels as $el)
                                                 <option value="{{$el->level_id}}">{{$el->level_name}}</option>
                                             @endforeach

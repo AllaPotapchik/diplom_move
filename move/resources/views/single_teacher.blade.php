@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="teacher_video">
-                {!! $teacher->video !!}
+                {!! $teacher->video_path !!}
             </div>
         </div>
 

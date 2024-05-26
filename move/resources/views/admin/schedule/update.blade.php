@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="content-wrapper">
+        <div class="content-wrapper" style="background-color: rgb(248, 242, 252)">
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -33,7 +33,7 @@
                                     <div class="form-group">
                                         <label for="name">Направление</label>
                                         <br>
-                                        <select required name="dance_type">
+                                        <select required name="dance_type" style="width: 50%">
                                             @foreach($dance_types as $el)
                                                 <option value="{{$el->dance_type_id}}">{{$el->title}}</option>
                                             @endforeach
@@ -42,7 +42,7 @@
                                     <div class="form-group">
                                         <label for="description">Преподаватель</label>
                                         <br>
-                                        <select required name="teacher">
+                                        <select required name="teacher" style="width: 50%">
                                             @foreach($teachers as $el)
                                                 <option value="{{$el->teacher_id}}">{{$el->teacher_name}}</option>
                                             @endforeach
@@ -51,7 +51,7 @@
                                     <div class="form-group">
                                         <label for="benefits">Уровень</label>
                                         <br>
-                                        <select required name="level">
+                                        <select required name="level" style="width: 50%">
                                             @foreach($levels as $el)
                                                 <option value="{{$el->level_id}}">{{$el->level_name}}</option>
                                             @endforeach
@@ -60,7 +60,7 @@
                                     <div class="form-group">
                                         <label for="benefits">День</label>
                                         <br>
-                                        <select required name="day">
+                                        <select required name="day" style="width: 50%">
                                             @foreach($days as $el)
                                                 <option value="{{$el->day_id}}">{{$el->day_name}}</option>
                                             @endforeach

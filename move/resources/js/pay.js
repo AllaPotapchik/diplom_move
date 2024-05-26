@@ -10,23 +10,33 @@ confirm_btn.addEventListener('click', () => {
  });
 
 $("#points_btn").click(function () {
-    let point_balance = document.getElementById('point_balance').innerText;
-    let sub_id = document.getElementById('sub_id').innerText;
-    let percent = document.getElementById('percent').innerText;
     let program_cost = '';
-    let cost = $(this).val();
-    if(!sub_id){
-        program_cost = document.getElementById('cost').innerText;
+    let program_id = '';
+    let sub_id = '';
+    let cost = "";
+    let id = "";
+    let point_balance = document.getElementById('point_balance').innerText;
+    let percent = document.getElementById('percent').innerText;
+    if(!document.getElementById('sub_id')){
+        program_cost = $(this).val();
+        program_id = document.getElementById('program_id').innerText;
+        id = program_id;
+    }else {
+        cost = $(this).val();
+        sub_id = document.getElementById('sub_id').innerText;
+        id = sub_id;
     }
 
     $.ajax({
-        url: '/tariffs/offline/{id}/{dance_type_id}/usePoint/' + sub_id,
+        url: '/tariffs/offline/{id}/{dance_type_id}/usePoint/' + id,
         type: 'get',
         data: {
             "point_balance": point_balance,
             "cost": cost,
             'percent': percent,
-            'sub_id': sub_id,
+            'id':id,
+            // 'sub_id': sub_id,
+            // 'program_id': program_id,
             'program_cost': program_cost
         },
         dataType: 'json',

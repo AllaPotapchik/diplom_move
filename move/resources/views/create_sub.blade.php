@@ -57,7 +57,7 @@
                     </p>
                     <div class="user_info">
                         <input type="text" value="{{$user->name}}" name="user_name">
-                        <input type="text" value="{{$user->email}}" name="user_email">
+                        <input type="email" value="{{$user->email}}" name="user_email">
                         <input type="text" value="{{$user->phone}}" name="user_phone">
                         <input type="hidden" value="{{$id}}" name="sub_id">
                     </div>
@@ -70,10 +70,16 @@
                 <div class="pay_info">
                     <p class="order_header">Оплата</p>
                     <div>
-                        <p>Ваш балланс: <span id="point_balance">{{$user->point_balance}}</span> баллов<br>
+                        <p class="d-none">Ваш балланс: <span id="point_balance" >{{$user->point_balance}}</span> баллов<br>
                         <div id="hide">
                         <p>Ваш балланс позволяет оплатить <span id="percent">{{$percent}}</span>% от стоимости
                             абонемента
+                            <br>
+                            <br>
+                            Для оплаты баллами:<br>
+                            10% - {{$cost_ten}} баллов<br>
+                            20% - {{$cost_twenty}} баллов<br>
+                            30% - {{$cost_thirty}} баллов
                         </p>
                         @if($percent == 0)
                             <button id="points_btn" disabled value="{{$cost}}" class="disabled">Использовать

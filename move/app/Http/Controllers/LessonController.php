@@ -15,11 +15,13 @@ class LessonController extends Controller {
     }
 
     public function showLessons( $program_id ) {
-        $program = DB ::table( 'programs' ) -> where( 'program_id', $program_id ) -> first();
+        $program = DB ::table( 'programs' ) -> where( 'program_id', $program_id )
+                      -> first();
 
         $lessons = DB ::table( 'lessons' )
                       -> where( 'program_id', $program_id )
                       -> select( '*' )
+                      -> orderBy( 'number' )
                       -> get();
 
         return view( 'lesson', [
@@ -40,7 +42,7 @@ class LessonController extends Controller {
                            -> where( 'lesson_id', $lesson_id )
                            -> get();
 
-        if ( sizeof($start_lesson) == 0 ) {
+        if ( sizeof( $start_lesson ) == 0 ) {
             DB ::table( 'user_lessons' ) -> insert( [
                 [
                     'user_id'    => Auth ::id(),

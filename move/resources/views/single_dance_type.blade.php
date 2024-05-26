@@ -25,18 +25,18 @@
     } ?>
 
     <div style="margin-top: 6rem" class="container">
-        <div class=" dance_type_card" style="background: {{$color}};">
+        <div class=" dance_type_card element-animation" style="background: {{$color}};">
             <h1>{{$dance_type->title}}</h1>
             <p class="dance_type_description">{!!$dance_type->description!!}</p>
         </div>
-        <div class="fits">
+        <div class="fits element-animation">
             <h1>Для кого подходит {{$dance_type->title}}</h1>
             <div><?php echo splitTextIntoDivs( $dance_type -> type_benefits ) ?></div>
         </div>
-        <div class="dance_type_video">
+        <div class="dance_type_video element-animation">
             {!! $dance_type->video !!}
         </div>
-        <div class="first_class" style="background-color: {{$color}};">
+        <div class="first_class element-animation" style="background-color: {{$color}};">
             <div class="inner_part">
                 <p><b>Если уверен, что <span style="text-transform: lowercase">{{$dance_type->title}}</span> это твое - сразу выбирай удобный тариф и окунись в мир <span style="text-transform: lowercase">{{$dance_type->title}}</span> </b></p>
                 <a href="{{route('chooseTariff', $dance_type->dance_type_id)}}">

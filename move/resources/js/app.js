@@ -2,23 +2,9 @@
 import './bootstrap';
 import IMask from 'imask'
 
-// const delete_btn = document.getElementById('delete-btn');
-// console.log((delete_btn))
-//
-// function accept(){
-//     alert("dd");
-//
-// }
-// delete_btn.addEventListener('click', () => {
-//     // $('.delete-btn').click(function () {
-//     alert("dd");
-//     // var res = confirm('Подтвердите действия');
-//     // if(!res){
-//     //     return false;
-//     // }
-// });
 
 /* появление блоков*/
+
 function onEntry(entry) {
     entry.forEach(change => {
         if (change.isIntersecting) {
@@ -75,13 +61,6 @@ document.querySelectorAll('.button').forEach(button => {
     });
 
 });
-
-
-/* уведомления о действии*/
-// const alertDiv = document.querySelector('.alert');
-document.querySelector('form').onsubmit = function() {
-    return confirm('Вы действительно хотите отправить форму?');
-};
 
 
 const menu_burger = document.querySelector("#menu_burger");

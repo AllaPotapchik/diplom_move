@@ -91,28 +91,34 @@ class RecordController extends Controller {
     }
 
     public function deleteRecord( $record_id, $schedule_id ) {
-//        dd($schedule_id);
-        DB ::table( 'schedule' ) -> where( 'id', $schedule_id ) -> increment( 'available_count' );
-        $current_schedule = DB ::table( 'schedule' )
-                               -> where( 'id', '=', $schedule_id )
-                               -> first();
+        date_default_timezone_set( "Europe/Minsk" );
+        $order_time = DB ::table( 'records' )
+                         -> join( 'schedule', 'records.schedule_id', 'schedule.id' )
+                         -> where( 'record_id', $record_id ) -> get();
+        $date_time  = $order_time[ 0 ] -> date . ' ' . $order_time[ 0 ] -> time;
+        if ( strtotime( $date_time ) - time() >= 7200 ) {
+            DB ::table( 'schedule' ) -> where( 'id', $schedule_id ) -> increment( 'available_count' );
+            $current_schedule = DB ::table( 'schedule' )
+                                   -> where( 'id', '=', $schedule_id )
+                                   -> first();
 
-        $have_subscription = DB ::table( 'user_subscriptions' )
-                                -> where( 'user_id', Auth ::id() )
-                                -> where( 'dance_type_id', $current_schedule -> dance_type )
-                                -> where( 'level_id', $current_schedule -> level_id )
-                                -> first();
-//        dd($current_schedule->level_id);
+            $have_subscription = DB ::table( 'user_subscriptions' )
+                                    -> where( 'user_id', Auth ::id() )
+                                    -> where( 'dance_type_id', $current_schedule -> dance_type )
+                                    -> where( 'level_id', $current_schedule -> level_id )
+                                    -> first();
 
-        if ( $have_subscription ) {
-            DB ::table( 'user_subscriptions' )
-               -> where( 'order_id', $have_subscription -> order_id )
-               -> increment( 'available_count' );
+            if ( $have_subscription ) {
+                DB ::table( 'user_subscriptions' )
+                   -> where( 'order_id', $have_subscription -> order_id )
+                   -> increment( 'available_count' );
 
-            DB ::table( 'records' ) -> where( 'record_id', $record_id ) -> delete();
+                DB ::table( 'records' ) -> where( 'record_id', $record_id ) -> delete();
 
-            return redirect() -> back() -> with( 'success', 'Запись отменена' );
-
+                return redirect() -> back() -> with( 'success', 'Запись отменена' );
+            }
+        } else {
+            return redirect() -> back() -> with( 'error', 'Нельзя отменять занятие менее чем за 2 часа' );
         }
     }
 }

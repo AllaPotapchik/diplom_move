@@ -32,7 +32,7 @@
                                     <div class="form-group">
                                         <label for="name">Направление</label>
                                         <br>
-                                        <select required name="dance_type">
+                                        <select required name="dance_type" style="width: 50%">
                                             @foreach($dance_types as $el)
                                                 <option value="{{$el->dance_type_id}}">{{$el->title}}</option>
                                             @endforeach
@@ -41,7 +41,7 @@
                                     <div class="form-group">
                                         <label for="description">Преподаватель</label>
                                         <br>
-                                        <select required name="teacher">
+                                        <select required name="teacher" style="width: 50%">
                                             @foreach($teachers as $el)
                                                 <option value="{{$el->teacher_id}}">{{$el->teacher_name}}</option>
                                             @endforeach
@@ -50,7 +50,7 @@
                                     <div class="form-group">
                                         <label for="benefits">Уровень</label>
                                         <br>
-                                        <select required name="level">
+                                        <select required name="level" style="width: 50%">
                                             @foreach($levels as $el)
                                                 <option value="{{$el->level_id}}">{{$el->level_name}}</option>
                                             @endforeach
@@ -59,20 +59,31 @@
                                     <div class="form-group">
                                         <label for="benefits">День</label>
                                         <br>
-                                        <select required name="day">
+                                        <select required name="day" style="width: 50%">
                                             @foreach($days as $el)
                                                 <option value="{{$el->day_id}}">{{$el->day_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="benefits">Время</label>
+                                        <label for="time">Время</label>
                                         <input type="time" class="form-control" id="time"
-                                               name="time" required>
+                                               name="time" list="time-list"  min="10:00" max="18:00" required>
+                                        <datalist id="time-list">
+                                            <option value="10:00">
+                                            <option value="11:00">
+                                            <option value="12:00">
+                                            <option value="13:00">
+                                            <option value="14:00">
+                                            <option value="15:00">
+                                            <option value="16:00">
+                                            <option value="17:00">
+                                            <option value="18:00">
+                                        </datalist>
                                     </div>
                                     <div class="form-group">
-                                        <label for="benefits">Места</label>
-                                        <input type="text" class="form-control" id="count"
+                                        <label for="count">Места</label>
+                                        <input type="number" value="15" class="form-control" id="count"
                                                name="count" required>
                                     </div>
                                 </div>

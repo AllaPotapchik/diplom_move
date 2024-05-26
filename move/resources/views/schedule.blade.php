@@ -20,9 +20,10 @@
             </div>
         @endif
         <div class="schedule_table">
-{{--            @dd($scheduleMonday)--}}
+
             <div class="schedule_day">Понедельник</div>
             <div class="scroll">
+
                 @if(sizeof($scheduleMonday) == 0 )
                     <div class="no_lessons">нет тренировок по вашим направленям</div>
                 @else
@@ -40,6 +41,7 @@
                         <tbody>
 
                         @foreach($scheduleMonday as $el)
+{{--                            @dd(strtotime( $el -> time ))--}}
                             <tr>
                                 <td><?php echo date( 'H:i', strtotime( $el -> time ) ); ?> </td>
                                 <td>{{$el->title}} </td>
@@ -142,7 +144,7 @@
                         </thead>
                         <tbody>
 
-                        @foreach($scheduleMonday as $el)
+                        @foreach($scheduleWednesday as $el)
                             <tr>
                                 <td><?php echo date( 'H:i', strtotime( $el -> time ) ); ?> </td>
                                 <td>{{$el->title}} </td>
@@ -193,7 +195,7 @@
                         </thead>
                         <tbody>
 
-                        @foreach($scheduleMonday as $el)
+                        @foreach($scheduleThursday as $el)
                             <tr>
                                 <td><?php echo date( 'H:i', strtotime( $el -> time ) ); ?> </td>
                                 <td>{{$el->title}} </td>
@@ -244,7 +246,7 @@
                         </thead>
                         <tbody>
 
-                        @foreach($scheduleMonday as $el)
+                        @foreach($scheduleFriday as $el)
                             <tr>
                                 <td><?php echo date( 'H:i', strtotime( $el -> time ) ); ?> </td>
                                 <td>{{$el->title}} </td>

@@ -91,7 +91,7 @@
                     <div class="tariff_description">Выбирай любое удобное для себя время и занимайся в атмосферной студии
                         вместе с лучшими тренерами.
                     </div>
-                    <p class="tariff_price">150 BYN</p>
+                    <p class="tariff_price">от 20 BYN</p>
                     <a href="{{route('subscriptions', [1,0])}}">
                         <button class="button blue">КУПИТЬ</button>
                     </a>

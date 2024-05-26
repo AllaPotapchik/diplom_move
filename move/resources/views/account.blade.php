@@ -38,6 +38,19 @@
         </div>
         <br>
         <div class="my_lessons">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    <h6><i class="icon fa fa-check"></i> {{ session('success') }}</h6>
+                    <button type="button" class="close close_btn" id="close_btn" data-dismiss="alert" aria-hidden="true">×
+                    </button>
+                </div>
+            @elseif(session('error'))
+                <div class="alert error">
+                    <h6><i class="icon fa fa-check"></i> {{ session('error') }}</h6>
+                    <button type="button" class="close close_btn" id="close_btn" data-dismiss="alert" aria-hidden="true">×
+                    </button>
+                </div>
+            @endif
             <div class="scroll">
                 @if(sizeof($user_orders) == 0 )
                     <div class="no_lessons">нет тренировок по вашим направленям</div>
@@ -63,7 +76,7 @@
                                 <td>{{$el->level_name}} </td>
                                 <td>
                                     <a href="{{route('deleteRecord', [$el->record_id, $el->schedule_id])}}">
-                                        <button class="schedule_btn button violet">Отменить</button>
+                                        <button class="schedule_btn button violet delete-btn">Отменить</button>
                                     </a>
                                 </td>
                             </tr>

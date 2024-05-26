@@ -14,7 +14,9 @@ use function Symfony\Component\Translation\t;
 class UserController extends Controller {
     public function accountType() {
 
+        date_default_timezone_set( "Europe/Minsk" );
         $date = new DateTime();
+        $format = $date->format('Y-m-d');
         $user = DB ::table( 'users' )
                    -> where( 'id', Auth ::id() )
                    -> select( '*' )
@@ -34,7 +36,8 @@ class UserController extends Controller {
                                   -> join( 'dance_types', 'schedule.dance_type', '=', 'dance_types.dance_type_id' )
                                   -> join( 'levels', 'schedule.level_id', '=', 'levels.level_id' )
                                   -> where( 'records.user_id', Auth ::id() )
-                                  -> where( 'date', '>', $date )
+                                  -> where( 'date', '>=', $format )
+//                                  -> where( 'time', '>', time() )
                                   -> select( '*' )
                                   -> get();
 
@@ -43,8 +46,8 @@ class UserController extends Controller {
                                     -> whereIn( 'users_tariffs.tariff_type', [ 2, 3 ] )
                                     -> select( '*' )
                                     -> get();
-                $show_balance= false;
-                if ( sizeof($user_programs) != 0 ) {
+                $show_balance  = false;
+                if ( sizeof( $user_programs ) != 0 ) {
                     $show_balance = true;
                 }
 
@@ -54,12 +57,13 @@ class UserController extends Controller {
                                          -> join( 'dance_types', 'user_subscriptions.dance_type_id', 'dance_types.dance_type_id' )
                                          -> join( 'levels', 'user_subscriptions.level_id', 'levels.level_id' )
                                          -> select( '*' ) -> get();
+
 //dd(sizeof($user_programs) );
                 return view( 'account', [
                     'user'               => $user,
                     'user_orders'        => $user_orders,
                     'user_programs'      => $user_programs,
-                    'show_balance'      => $show_balance,
+                    'show_balance'       => $show_balance,
                     'user_subscriptions' => $user_subscriptions
                 ] );
 
@@ -99,7 +103,7 @@ class UserController extends Controller {
                     'user'            => $user,
                     'teacher_lessons' => $teacher_lessons,
                     'user_tasks'      => $user_tasks,
-                    'teacher'      => $teacher,
+                    'teacher'         => $teacher,
 
                 ] );
             }

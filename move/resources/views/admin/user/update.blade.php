@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="content-wrapper">
+        <div class="content-wrapper" style="background-color: rgb(248, 242, 252)">
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
@@ -34,18 +34,18 @@
                                         <div class="form-group">
                                             <label for="benefits">Имя</label>
                                             <input type="text" value="{{$user->name}}" class="form-control"  id="name"
-                                                   name="name" required>
+                                                   name="name" min="3" max="30" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="benefits">Email</label>
                                             <input type="email" value="{{$user->email}}" class="form-control"  id="email"
                                                    name="email" required>
                                         </div>
-{{--                                        <div class="form-group">--}}
-{{--                                            <label for="benefits">Пароль</label>--}}
-{{--                                            <input type="password" class="form-control"  id="password"--}}
-{{--                                                   name="password" required>--}}
-{{--                                        </div>--}}
+                                        <div class="form-group">
+                                            <label for="benefits">Пароль</label>
+                                            <input type="password" class="form-control"  id="password"
+                                                   name="password" min="8" required>
+                                        </div>
                                         <div class="form-group">
                                             <label for="benefits">Телефон</label>
                                             <input type="tel" value="{{$user->phone}}" class="form-control"  id="phone"
@@ -58,7 +58,7 @@
                                         </div>
                                         <label for="name">Тип пользователя</label>
                                         <br>
-                                        <select required name="user_type">
+                                        <select required name="user_type" style="width: 50%">
                                             @foreach($user_types as $el)
                                                 <option value="{{$el->type_id}}">{{$el->type_name}}</option>
                                             @endforeach

@@ -20,7 +20,7 @@ class User_subscriptionController extends Controller {
             DB ::table( 'users' ) -> where( 'id', Auth ::id() ) -> update( [
                 'point_balance' => $new_balance
             ] );
-            $old_cost = DB ::table( 'subscriptions' ) -> where( 'id', $request -> sub_id ) -> first();
+            $old_cost = DB ::table( 'subscriptions' ) -> where( 'id', $request -> id ) -> first();
             $new_cost = $old_cost -> subscription_price - ( $old_cost -> subscription_price * ( $request -> percent * 0.01 ) );
         } elseif ( $request -> program_cost ) {
 
@@ -28,7 +28,7 @@ class User_subscriptionController extends Controller {
             DB ::table( 'users' ) -> where( 'id', Auth ::id() ) -> update( [
                 'point_balance' => $new_balance
             ] );
-            $old_cost = DB ::table( 'programs' ) -> where( 'program_id', $request -> sub_id ) -> first();
+            $old_cost = DB ::table( 'programs' ) -> where( 'program_id', $request -> id ) -> first();
             $new_cost = $old_cost -> price - ( $old_cost -> price * ( $request -> percent * 0.01 ) );
         }
 

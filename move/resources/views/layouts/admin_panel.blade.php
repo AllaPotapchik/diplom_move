@@ -28,13 +28,16 @@
     <!-- summernote -->
     <link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs4.min.css">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed" style=" background-color: #F8F2FC;">
 <div class="wrapper">
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #704d8a; color: white">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
-            <span class="brand-text font-weight-light">Панель администратора</span>
+        <a href=" " class="brand-link" style="
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;">
+            <span class="brand-text  font-weight-bold"><img style="width: 30%; margin-left: 0.5rem" src="{{asset('images/logo.png')}}"> MOVE</span>
         </a>
 
         <!-- Sidebar -->
@@ -43,21 +46,22 @@
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
 
                 <div class="info">
+{{--                    @dd(Auth::user())--}}
                     <a href="#" class="d-block">{{Auth::user()->name}}</a>
                 </div>
             </div>
 
-{{--            <div class="form-inline">--}}
-{{--               <div class="input-group" data-widget="sidebar-search">--}}
-{{--                   <input class="form-control form-control-sidebar" type="search" placeholder="Search"--}}
-{{--                          aria-label="Search">--}}
-{{--                   <div class="input-group-append">--}}
-{{--                       <button class="btn btn-sidebar">--}}
-{{--                           <i class="fas fa-search fa-fw"></i>--}}
-{{--                       </button>--}}
-{{--                   </div>--}}
-{{--               </div>--}}
-{{--           </div>--}}
+            {{--            <div class="form-inline">--}}
+            {{--               <div class="input-group" data-widget="sidebar-search">--}}
+            {{--                   <input class="form-control form-control-sidebar" type="search" placeholder="Search"--}}
+            {{--                          aria-label="Search">--}}
+            {{--                   <div class="input-group-append">--}}
+            {{--                       <button class="btn btn-sidebar">--}}
+            {{--                           <i class="fas fa-search fa-fw"></i>--}}
+            {{--                       </button>--}}
+            {{--                   </div>--}}
+            {{--               </div>--}}
+            {{--           </div>--}}
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
@@ -197,8 +201,9 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a style="cursor: pointer" class="nav-link " onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <p >Выйти</p>
+                        <a style="cursor: pointer" class="nav-link "
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <p>Выйти</p>
                         </a>
                     </li>
                 </ul>

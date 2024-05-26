@@ -55,7 +55,8 @@ class LessonController extends Controller {
         $new_lesson -> dance_type_id      = $request -> get( 'dance_type' );
         $new_lesson -> number             = $request -> number;
         $new_lesson -> lesson_description = $request -> description;
-        $new_lesson -> video              = $request -> file( 'lesson_video' );
+        $new_lesson -> lesson_video              = 'lesson_video_' . $request -> number . $request -> get( 'program' )
+                                                   . '.' . $request -> file( 'lesson_video' ) -> getClientOriginalExtension();
         $new_lesson -> duration           = $request -> duration;
         $new_lesson -> equipment          = $request -> equipment;
 
@@ -114,7 +115,7 @@ class LessonController extends Controller {
                'dance_type_id'      => $request -> get( 'dance_type' ),
                'number'             => $request -> number,
                'lesson_description' => $request -> description,
-               'video'              => 'lesson_video_' . $request -> number . $request -> get( 'program' ).$request->file( 'lesson_video' ) -> getClientOriginalExtension(),
+               'lesson_video'              => 'lesson_video_' . $request -> number . $request -> get( 'program' ).$request->file( 'lesson_video' ) -> getClientOriginalExtension(),
                'duration'           => $request -> duration,
                'equipment'          => $request -> equipment
            ] );

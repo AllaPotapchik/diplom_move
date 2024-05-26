@@ -15,7 +15,7 @@
                 </div>
                 <div class="lesson_video">
                     <video controls>
-                        <source src="{{asset('storage')}}/lesson_video/{{$el->video}}" type="video/mp4">
+                        <source src="{{asset('storage')}}/lesson_video/{{$el->lesson_video}}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <br>
