@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Program;
 use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
@@ -15,12 +16,12 @@ class UserController extends Controller {
     public function accountType() {
 
         date_default_timezone_set( "Europe/Minsk" );
-        $date = new DateTime();
-        $format = $date->format('Y-m-d');
-        $user = DB ::table( 'users' )
-                   -> where( 'id', Auth ::id() )
-                   -> select( '*' )
-                   -> first();
+        $date   = new DateTime();
+        $format = $date -> format( 'Y-m-d' );
+        $user   = DB ::table( 'users' )
+                     -> where( 'id', Auth ::id() )
+                     -> select( '*' )
+                     -> first();
 
         $user_type = DB ::table( 'users' ) -> where( 'id', Auth ::id() )
                         -> select( 'users.user_type' )
@@ -30,6 +31,24 @@ class UserController extends Controller {
         foreach ( $user_type as $el ) {
             if ( $el -> user_type == 1 ) {
 
+                /*delete late*/
+                $user_programs_delete = DB ::table( 'users_tariffs' ) -> where( 'user_id', Auth ::id() )
+                                    -> join( 'programs', 'users_tariffs.program_id', 'programs.program_id' )
+                                    -> whereIn( 'users_tariffs.tariff_type', [ 2, 3 ] )
+                                    -> where( 'end', '<=', date( 'Y-m-d H:i:s' ) )
+                                    -> delete();
+
+                $user_subscriptions_delete = DB ::table( 'user_subscriptions' )
+                                         -> where( 'user_subscriptions.user_id', Auth ::id() )
+                                         -> where( 'end', '<=', date( 'Y-m-d H:i:s' ) )
+                                         -> delete();
+
+                $user_tariffs_delete = DB ::table( 'users_tariffs' )
+                                         -> where( 'users_tariffs.user_id', Auth ::id() )
+                                         -> where( 'end', '<=', date( 'Y-m-d H:i:s' ) )
+                                         -> delete();
+
+                /*show user info*/
                 $user_orders = DB ::table( 'records' )
                                   -> join( 'schedule', 'records.schedule_id', 'schedule.id' )
                                   -> join( 'teachers', 'schedule.teacher_id', '=', 'teachers.teacher_id' )
@@ -44,21 +63,24 @@ class UserController extends Controller {
                 $user_programs = DB ::table( 'users_tariffs' ) -> where( 'user_id', Auth ::id() )
                                     -> join( 'programs', 'users_tariffs.program_id', 'programs.program_id' )
                                     -> whereIn( 'users_tariffs.tariff_type', [ 2, 3 ] )
+                                    -> where( 'end', '>', date( 'Y-m-d H:i:s' ) )
                                     -> select( '*' )
                                     -> get();
-                $show_balance  = false;
+
+                $show_balance = false;
                 if ( sizeof( $user_programs ) != 0 ) {
                     $show_balance = true;
                 }
 
                 $user_subscriptions = DB ::table( 'user_subscriptions' )
-                                         -> where( 'user_id', Auth ::id() )
+                                         -> where( 'user_subscriptions.user_id', Auth ::id() )
                                          -> join( 'subscriptions', 'user_subscriptions.subscription_id', 'subscriptions.id' )
                                          -> join( 'dance_types', 'user_subscriptions.dance_type_id', 'dance_types.dance_type_id' )
                                          -> join( 'levels', 'user_subscriptions.level_id', 'levels.level_id' )
+                                         -> where( 'user_subscriptions.status', 1 )
+                                         -> where( 'end', '>', date( 'Y-m-d H:i:s' ) )
                                          -> select( '*' ) -> get();
 
-//dd(sizeof($user_programs) );
                 return view( 'account', [
                     'user'               => $user,
                     'user_orders'        => $user_orders,
@@ -71,7 +93,8 @@ class UserController extends Controller {
             } else if ( $el -> user_type == 2 ) {
 
                 return view( 'layouts/admin_panel', [
-                    'user' => $user
+                    'user' => $user,
+//                    'lesson_program' => Program ::all()
                 ] );
                 /*for teacher account*/
             } else if ( $el -> user_type == 3 ) {

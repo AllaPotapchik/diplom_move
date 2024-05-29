@@ -54,6 +54,7 @@ class ProgramsController extends Controller {
         $new_program -> level_id      = $request -> get( 'level' );
         $new_program -> price      = $request -> get( 'price' );
         $new_program -> lesson_count  = $request -> count;
+        $new_program -> duration  = $request -> duration;
 
         $new_program -> save();
 
@@ -112,6 +113,7 @@ class ProgramsController extends Controller {
                'dance_type_id'      => $request -> get( 'dance_type' ),
                'level_id'        => $request -> get( 'level' ),
                'lesson_count'          => $request -> count,
+               'duration'          => $request -> duration,
            ] );
 
         return redirect() -> back() -> with( 'success', 'Программа обновлена' );

@@ -8,8 +8,8 @@
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Все уроки</h1>
+                    <div class="col-sm-12">
+                        <h1 class="m-0">Все уроки  для программы "{{$program->program_name}}"</h1>
                     </div><!-- /.col -->
 
                 </div><!-- /.row -->
@@ -32,9 +32,9 @@
                         <thead>
                         <tr>
                             <th scope="col">Название</th>
-                            <th scope="col">Направление</th>
-                            <th scope="col">Программа</th>
-                            <th scope="col">Номер</th>
+{{--                            <th scope="col">Направление</th>--}}
+{{--                            <th scope="col">Программа</th>--}}
+{{--                            <th scope="col">Номер</th>--}}
                             <th scope="col">Описание</th>
                             <th scope="col">Видео</th>
                             <th scope="col">Оборудование</th>
@@ -43,16 +43,18 @@
                         </tr>
                         </thead>
                         <tbody>
+
                         @foreach($lesson as $el)
+{{--                            @dd($el->lesson_duration)--}}
                             <tr>
                                 <th scope="row">{{$el->lesson_name}}</th>
-                                <td>{{$el->title}}</td>
-                                <td>{{$el->program_name}}</td>
-                                <td>{{$el->number}}</td>
+{{--                                <td>{{$el->title}}</td>--}}
+{{--                                <td >{{$el->program_name}}</td>--}}
+{{--                                <td>{{$el->number}}</td>--}}
                                 <td>{{$el->lesson_description}}</td>
                                 <td >{{$el->lesson_video}}</td>
                                 <td>{{$el->equipment}}</td>
-                                <td>{{$el->duration}}</td>
+                                <td>{{$el->lesson_duration}}</td>
                                 <td class="text-center d-flex justify-content-evenly">
                                     <a href="{{route('lesson_admin.edit', $el->lesson_id)}}"
                                        class="btn btn-primary rounded-pill px-3 mr-2 "

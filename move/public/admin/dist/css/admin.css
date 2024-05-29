@@ -1,0 +1,28 @@
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+    background-color: white !important;
+    color: #704d8a !important;
+}
+
+body {
+    font-family: 'Montserrat' !important;
+}
+
+.content-header h1 {
+    color: #704d8a !important;
+    text-transform: uppercase;
+    text-align: center;
+}
+.btn-primary {
+    background-color: #704d8a !important;
+    border: none !important;
+    border-radius: 2rem !important;
+    padding: 0.5rem 1rem !important;
+}
+.row{
+    justify-content: center;
+}
+.col-lg-3 .small-box h3, .col-md-3 .small-box h3, .col-xl-3 .small-box h3 {
+    font-size: 2rem !important;
+}
+

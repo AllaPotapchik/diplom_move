@@ -42,7 +42,7 @@
                                 <td>{{$el->teacher_name}}</td>
                                 <td>{{$el->level_name}}</td>
                                 <td>{{$el->day_name}}</td>
-                                <td>{{$el->time}}</td>
+                                <td> {{date( 'H:i', strtotime( $el -> time ) )}}</td>
                                 <td>{{$el->available_count}}</td>
                                 <td class="text-center d-flex justify-content-evenly">
                                     <a href="{{route('schedule_admin.edit', $el->id)}}"

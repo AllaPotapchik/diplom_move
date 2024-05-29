@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Панель администратора - @yield('title')</title>
-    @vite(['public/admin/admin.js'])
+    @vite(['public/admin/admin.js', 'public/admin/dist/css/admin.css'])
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -46,22 +46,9 @@
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
 
                 <div class="info">
-{{--                    @dd(Auth::user())--}}
                     <a href="#" class="d-block">{{Auth::user()->name}}</a>
                 </div>
             </div>
-
-            {{--            <div class="form-inline">--}}
-            {{--               <div class="input-group" data-widget="sidebar-search">--}}
-            {{--                   <input class="form-control form-control-sidebar" type="search" placeholder="Search"--}}
-            {{--                          aria-label="Search">--}}
-            {{--                   <div class="input-group-append">--}}
-            {{--                       <button class="btn btn-sidebar">--}}
-            {{--                           <i class="fas fa-search fa-fw"></i>--}}
-            {{--                       </button>--}}
-            {{--                   </div>--}}
-            {{--               </div>--}}
-            {{--           </div>--}}
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
@@ -188,11 +175,19 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('all_lessons')}}" class="nav-link ">
-                                    <p>Все уроки</p>
-                                </a>
-                            </li>
+                            <?php  $lesson_program = \Illuminate\Support\Facades\DB::table('programs')->get(); ?>
+                            @foreach($lesson_program as $el)
+                                <li class="nav-item">
+                                    <a href="{{route('program_lessons', $el->program_id)}}" class="nav-link ">
+                                        <p>{{$el->program_name}}</p>
+                                    </a>
+                                </li>
+                            @endforeach
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="{{route('all_lessons')}}" class="nav-link ">--}}
+{{--                                    <p>Все уроки</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                             <li class="nav-item">
                                 <a href="{{route('lesson_admin.create')}}" class="nav-link ">
                                     <p>Добавить урок</p>

@@ -55,7 +55,9 @@ Route::get('/all_schedules', [ScheduleController::class,'index'] )->name('all_sc
 Route::get('/all_users', [\App\Http\Controllers\Admin\UserController::class,'index'] )->name('all_users');
 Route::get('/all_programs', [ProgramsController::class,'index'] )->name('all_programs');
 Route::get('/all_teachers', [\App\Http\Controllers\Admin\TeacherController::class,'index'] )->name('all_teachers');
-Route::get('/all_lessons', [\App\Http\Controllers\Admin\LessonController::class,'index'] )->name('all_lessons');
+Route::get('/program_lessons', [\App\Http\Controllers\Admin\LessonController::class,'index'] )->name('all_lessons');
+Route::get('/program_lessons{program_id}', [\App\Http\Controllers\Admin\LessonController::class,'index'] )->name('program_lessons');
+
 
 Route ::get( '/dance_types', [\App\Http\Controllers\Dance_typeController::class, 'index'])->name('dance_typeList');
 Route ::get( '/tariffs/{dance_type_id}','App\Http\Controllers\TariffController@index')->name('chooseTariff');

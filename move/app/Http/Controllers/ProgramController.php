@@ -43,13 +43,19 @@ class ProgramController extends Controller {
     }
 
     public function createProgramRecord( $program_id, $dance_type, $tariff_id, $level_id ) {
+
         $id            = Auth ::id();
         $users_tariffs = DB ::table( 'users_tariffs' )
                             -> where( 'user_id', $id )
                             -> where( 'program_id', $program_id )
-                            -> whereIn( 'tariff_type', [ 2, 3 ] )
+                            -> whereIn( 'tariff_type', [ 2, 3, 1 ] )
                             -> select( '*' )
                             -> get();
+
+        $duration= DB ::table( 'programs' )
+                    -> where( 'program_id', $program_id )
+                    -> first();
+
         if ( sizeof( $users_tariffs ) != 0 ) {
             return redirect() -> back() -> with( 'error', 'У вас уже есть программы по данному направлению' );
         } else {
@@ -58,15 +64,15 @@ class ProgramController extends Controller {
                     'user_id'         => $id,
                     'user_dance_type' => $dance_type,
                     'tariff_type'     => $tariff_id,
-                    'start'           => null,
-                    'end'             => null,
+                    'start'           => date('Y-m-d H:i:s'),
+                    'end'             => date('Y-m-d H:i:s', strtotime('+ '.$duration->duration. ' month')),
                     'is_check'        => false,
                     'program_id'      => $program_id,
                     'level_id'        => $level_id
                 ]
             ] );
 
-            return redirect() -> back() -> with( 'error', 'Доступ к урокам в личном кабинете появиться после подтверждения оплаты администратором' );
+            return redirect() -> back() -> with( 'success', 'Доступ к урокам в личном кабинете появиться после подтверждения оплаты администратором' );
         }
     }
 }

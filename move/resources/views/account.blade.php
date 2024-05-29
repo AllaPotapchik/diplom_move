@@ -10,7 +10,11 @@
                 {{$user->name}}, добро пожаловать в личный кабинет
             </p>
             @if($show_balance)
-                <p class="balance">Баллы: {{$user->point_balance}}</p>
+                <div class="d-flex">
+                    <p class="balance mr-2">Баллы: {{$user->point_balance}}</p>
+{{--                    <img class="points"  src="{{asset('images/points.svg')}}">--}}
+                </div>
+
             @endif
         </div>
         <div class="user_buttons">
@@ -29,7 +33,7 @@
                 </button>
             </div>
             <div class="exit_button">
-                <button><a class="nav-link text-dark "
+                <button style="margin-right: 0"><a
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Выход') }}
                     </a>
@@ -100,7 +104,7 @@
                             <h6 class="footnote">*Уроки будут доступны после подтверждения администратора</h6>
                         @else
                             <a href="{{route('showLessons', $el->program_id)}}">
-                            <button class="text-dark size">Перейти к урокам</button>
+                            <button class="button white size ">Перейти к урокам</button>
                         </a>
                         @endif
 
@@ -119,6 +123,7 @@
                         <p>Осталось занятий: {{$el->available_count}}</p>
                         <p>Направление: {{$el->title}}</p>
                         <p>Уровень: {{$el->level_name}}</p>
+                        <p>Конец: {{date( 'd/m', strtotime( $el -> end ) )}}</p>
                     </div>
                 @endforeach
             @endif

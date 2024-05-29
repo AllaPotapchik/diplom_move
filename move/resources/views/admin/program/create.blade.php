@@ -61,13 +61,18 @@
 
                                         <div class="form-group">
                                             <label for="benefits">Количество уроков</label>
-                                            <input type="number" class="form-control" id="email"
+                                            <input type="number" class="form-control"
                                                    name="count" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="price">Цена</label>
-                                            <input type="number" class="form-control" id="email"
+                                            <input type="number" class="form-control"
                                                    name="price" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="duration">Длительность(мес.)</label>
+                                            <input type="number" class="form-control"
+                                                   name="duration" required>
                                         </div>
                                     </div>
                                 </div>

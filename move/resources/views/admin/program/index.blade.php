@@ -35,6 +35,7 @@
                             <th scope="col">Направление</th>
                             <th scope="col">Уровень</th>
                             <th scope="col">Количество уроков</th>
+                            <th scope="col">Длительность</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -45,6 +46,7 @@
                               <td>{{$el->title}}</td>
                                 <td>{{$el->level_name}}</td>
                              <td>{{$el->lesson_count}}</td>
+                             <td>{{$el->duration}} мес.</td>
 
                                 <td class="text-center d-flex justify-content-evenly">
                                     <a href="{{route('program_admin.edit', $el->program_id)}}"

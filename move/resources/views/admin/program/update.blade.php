@@ -59,6 +59,11 @@
                                                    id="email"
                                                    name="count" required>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="duration">Длительность(мес.)</label>
+                                            <input type="number" value="{{$program->duration}}" class="form-control"
+                                                   name="duration" required>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card-footer">

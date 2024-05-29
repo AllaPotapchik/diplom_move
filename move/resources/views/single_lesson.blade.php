@@ -11,7 +11,7 @@
                 <div class="lesson_about">
                     <p class="lesson_description"> {{$el->lesson_description}}</p>
                     <p><b>Инвентарь: </b> {{$el->equipment}}</p>
-                    <p><b>Длительность урока: </b><?php echo date( 'i', strtotime( $el -> duration ) ); ?> минут</p>
+                    <p><b>Длительность урока: </b><?php echo date( 'i', strtotime( $el -> lesson_duration ) ); ?> минут</p>
                 </div>
                 <div class="lesson_video">
                     <video controls>

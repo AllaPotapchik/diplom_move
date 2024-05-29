@@ -15,14 +15,19 @@ class LessonController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        $lesson = DB ::table( 'lessons' )
-                     -> join( 'programs', 'lessons.program_id', '=', 'programs.program_id' )
-                     -> join( 'dance_types', 'lessons.dance_type_id', '=', 'dance_types.dance_type_id' )
-                     -> select( '*' )
-                     -> get();
+    public function index( $program_id ) {
+        $program = DB ::table( 'programs' ) -> where( 'program_id', $program_id ) -> first();
+        $lesson  = DB ::table( 'lessons' )
+                      -> join( 'programs', 'lessons.program_id', '=', 'programs.program_id' )
+                      -> join( 'dance_types', 'lessons.dance_type_id', '=', 'dance_types.dance_type_id' )
+                      -> where( 'lessons.program_id', $program_id )
+                      -> select( '*' )
+                      -> get();
 
-        return view( 'admin.lesson.index', compact( 'lesson' ) );
+        return view( 'admin.lesson.index', [
+            'lesson'  => $lesson,
+            'program' => $program
+        ] );
 
     }
 
@@ -55,9 +60,9 @@ class LessonController extends Controller {
         $new_lesson -> dance_type_id      = $request -> get( 'dance_type' );
         $new_lesson -> number             = $request -> number;
         $new_lesson -> lesson_description = $request -> description;
-        $new_lesson -> lesson_video              = 'lesson_video_' . $request -> number . $request -> get( 'program' )
-                                                   . '.' . $request -> file( 'lesson_video' ) -> getClientOriginalExtension();
-        $new_lesson -> duration           = $request -> duration;
+        $new_lesson -> lesson_video       =  'lesson_video_' . $request -> number . $request -> get( 'program' )
+                                                        . '.' . $request -> file( 'lesson_video' ) -> getClientOriginalExtension() ;
+        $new_lesson -> lesson_duration           = $request -> duration;
         $new_lesson -> equipment          = $request -> equipment;
 
         $path = $request -> file( 'lesson_video' ) -> storeAs( 'lesson_video', 'lesson_video_' . $request -> number . $request -> get( 'program' )
@@ -88,14 +93,19 @@ class LessonController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit( $lesson_id ) {
-        $dance_types = Dance_type ::all();
-        $program     = Program ::all();
-        $lesson      = DB ::table( 'lessons' ) -> where( 'lesson_id', $lesson_id ) -> first();
+        $dance_types         = Dance_type ::all();
+        $programs            = Program ::all();
+        $lesson              = DB ::table( 'lessons' ) -> where( 'lesson_id', $lesson_id ) -> first();
+        $selected_program    = DB ::table( 'programs' ) -> where( 'programs.program_id', $lesson -> program_id ) -> first();
+        $selected_dance_type = DB ::table( 'dance_types' ) -> where( 'dance_types.dance_type_id', $lesson -> dance_type_id ) -> first();
 
         return view( 'admin.lesson.update', [
-            'dance_types' => $dance_types,
-            'program'     => $program,
-            'lesson'      => $lesson,
+            'dance_types'         => $dance_types,
+            'programs'            => $programs,
+            'lesson'              => $lesson,
+            'selected_program'    => $selected_program,
+            'selected_dance_type' => $selected_dance_type,
+            'selected_duration'   => $lesson -> lesson_duration,
         ] );
     }
 
@@ -108,19 +118,34 @@ class LessonController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update( Request $request, $lesson_id ) {
-        DB ::table( 'lessons' ) -> where( 'lesson_id', $lesson_id )
-           -> update( [
-               'lesson_name'        => $request -> name,
-               'program_id'         => $request -> get( 'program' ),
-               'dance_type_id'      => $request -> get( 'dance_type' ),
-               'number'             => $request -> number,
-               'lesson_description' => $request -> description,
-               'lesson_video'              => 'lesson_video_' . $request -> number . $request -> get( 'program' ).$request->file( 'lesson_video' ) -> getClientOriginalExtension(),
-               'duration'           => $request -> duration,
-               'equipment'          => $request -> equipment
-           ] );
+        if($request -> file( 'lesson_video' )){
+            DB ::table( 'lessons' ) -> where( 'lesson_id', $lesson_id )
+               -> update( [
+                   'lesson_name'        => $request -> name,
+                   'program_id'         => $request -> get( 'program' ),
+                   'dance_type_id'      => $request -> get( 'dance_type' ),
+                   'number'             => $request -> number,
+                   'lesson_description' => $request -> description,
+                   'lesson_video'             => 'lesson_video_' . $request -> number . $request -> get( 'program' ) . $request -> file( 'lesson_video' ) -> getClientOriginalExtension(),
+                   'lesson_duration'           => $request -> duration,
+                   'equipment'          => $request -> equipment
+               ] );
+            $path = $request -> file( 'lesson_video' ) -> storeAs( 'lesson_video', 'lesson_video_' . $request -> number . $request -> get( 'program' ) . '.' . $request -> file( 'lesson_video' ) -> getClientOriginalExtension() );
 
-        $path = $request -> file( 'lesson_video' ) -> storeAs( 'lesson_video', 'lesson_video_' . $request -> number . $request -> get( 'program' ).'.'.$request->file( 'lesson_video' ) -> getClientOriginalExtension());
+        }else{
+            DB ::table( 'lessons' ) -> where( 'lesson_id', $lesson_id )
+               -> update( [
+                   'lesson_name'        => $request -> name,
+                   'program_id'         => $request -> get( 'program' ),
+                   'dance_type_id'      => $request -> get( 'dance_type' ),
+                   'number'             => $request -> number,
+                   'lesson_description' => $request -> description,
+//                   'lesson_video'             => 'lesson_video_' . $request -> number . $request -> get( 'program' ) . $request -> file( 'lesson_video' ) -> getClientOriginalExtension(),
+                   'lesson_duration'           => $request -> duration,
+                   'equipment'          => $request -> equipment
+               ] );
+        }
+
 
         return redirect() -> back() -> with( 'success', 'Урок обновлен' );
 
@@ -133,7 +158,7 @@ class LessonController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(  $lesson_id ) {
+    public function destroy( $lesson_id ) {
         DB ::table( 'lessons' ) -> where( 'lesson_id', $lesson_id )
            -> delete();
 

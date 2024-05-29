@@ -57,7 +57,6 @@ class RecordController extends Controller {
                                    -> where( 'id', '=', $schedule_id_for_record )
                                    -> first();
 
-//            dd( $current_schedule->level_id);
             $have_subscription = DB ::table( 'user_subscriptions' )
                                     -> where( 'user_id', Auth ::id() )
                                     -> where( 'dance_type_id', $current_schedule -> dance_type )
@@ -76,13 +75,12 @@ class RecordController extends Controller {
                 if ( $subscription_available_count -> available_count == 0 ) {
                     DB ::table( 'users_tariffs' )
                        -> where( 'tariff_type', 1 )
-                       -> where( 'user_dance_type', $subscription_available_count -> dance_type_id )
-                       -> delete();
+                       -> where( 'user_dance_type', $subscription_available_count -> dance_type_id );
 
                     DB ::table( 'user_subscriptions' )
                        -> where( 'order_id', $have_subscription -> order_id )
                        -> where( 'dance_type_id', $subscription_available_count -> dance_type_id )
-                       -> delete();
+                       -> update( [ 'status' => 0 ] );
                 }
 
                 return redirect() -> back() -> with( 'success', 'Вы записаны на урок, запись отобразиться в вашем личном кабинете' );
@@ -98,25 +96,33 @@ class RecordController extends Controller {
         $date_time  = $order_time[ 0 ] -> date . ' ' . $order_time[ 0 ] -> time;
         if ( strtotime( $date_time ) - time() >= 7200 ) {
             DB ::table( 'schedule' ) -> where( 'id', $schedule_id ) -> increment( 'available_count' );
-            $current_schedule = DB ::table( 'schedule' )
-                                   -> where( 'id', '=', $schedule_id )
-                                   -> first();
-
+            $current_schedule  = DB ::table( 'schedule' )
+                                    -> where( 'id', '=', $schedule_id )
+                                    -> first();
             $have_subscription = DB ::table( 'user_subscriptions' )
                                     -> where( 'user_id', Auth ::id() )
                                     -> where( 'dance_type_id', $current_schedule -> dance_type )
                                     -> where( 'level_id', $current_schedule -> level_id )
                                     -> first();
 
-            if ( $have_subscription ) {
+            if ( $have_subscription -> available_count == 0 ) {
                 DB ::table( 'user_subscriptions' )
                    -> where( 'order_id', $have_subscription -> order_id )
-                   -> increment( 'available_count' );
+                   -> increment( 'available_count');
 
+                DB ::table( 'user_subscriptions' )
+                   -> where( 'order_id', $have_subscription -> order_id )
+                   -> update(  [ 'status' => 1 ] );
                 DB ::table( 'records' ) -> where( 'record_id', $record_id ) -> delete();
 
                 return redirect() -> back() -> with( 'success', 'Запись отменена' );
+            } else {
+                DB ::table( 'user_subscriptions' )
+                   -> where( 'order_id', $have_subscription -> order_id )
+                   -> increment( 'available_count' );
             }
+            DB ::table( 'records' ) -> where( 'record_id', $record_id ) -> delete();
+
         } else {
             return redirect() -> back() -> with( 'error', 'Нельзя отменять занятие менее чем за 2 часа' );
         }

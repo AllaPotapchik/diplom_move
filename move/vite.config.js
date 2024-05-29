@@ -14,6 +14,7 @@ export default defineConfig({
                 'resources/js/pay.js',
                 'resources/js/slider.js',
                 'public/admin/admin.js',
+                'public/admin/dist/css/admin.css',
                 'resources/css/app.css',
                 'resources/css/index.css',
                 'resources/css/schedule.css',

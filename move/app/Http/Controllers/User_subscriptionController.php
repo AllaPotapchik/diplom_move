@@ -52,33 +52,34 @@ class User_subscriptionController extends Controller {
                                         -> where( 'tariff_type', 1 )
                                         -> first();
 
-        $count               = DB ::table( 'subscriptions' )
-                                  -> where( 'id', $request -> sub_id )
-                                  -> first();
+        $count = DB ::table( 'subscriptions' )
+                    -> where( 'id', $request -> sub_id )
+                    -> first();
 
         $have_online_program = DB ::table( 'users_tariffs' )
                                   -> join( 'programs', 'users_tariffs.program_id', 'programs.program_id' )
                                   -> where( 'user_id', Auth ::id() )
-                                  -> where( 'tariff_type', 3 )
+                                  -> whereIn( 'tariff_type', [2, 3] )
                                   -> where( 'user_dance_type', '=', $request -> dance_type )
                                   -> where( 'users_tariffs.level_id', '=', $request -> level_id )
                                   -> first();
 
         if ( $have_online_program ) {
-            return redirect() -> back() -> with( 'error', 'У вас уже есть "Онлайн++" на данное направление и уровень' );
+            return redirect() -> back() -> with( 'error', 'У вас есть онлайн программа на данное направление и уровень' );
         } elseif ( $have_subscription ) {
             return redirect() -> back() -> with( 'error', 'У вас уже есть данный абонемент' );
-        } elseif ($have_dance_type_and_level){
+        } elseif ( $have_dance_type_and_level ) {
             return redirect() -> back() -> with( 'error', 'У вас уже есть абонемент с таким направлением и уровнем' );
-        }
-        else {
+        } else {
             DB ::table( 'user_subscriptions' ) -> insert( [
                 [
                     'user_id'         => $id,
                     'subscription_id' => $request -> sub_id,
                     'dance_type_id'   => $request -> dance_type,
                     'level_id'        => $request -> level_id,
-                    'available_count' => $count -> subscription_count
+                    'available_count' => $count -> subscription_count,
+                    'end'             => date('Y-m-d H:i:s', strtotime('+ '.$count->duration. ' month')),
+
                 ]
             ] );
 
@@ -87,10 +88,11 @@ class User_subscriptionController extends Controller {
                     'user_id'         => $id,
                     'user_dance_type' => $request -> dance_type,
                     'tariff_type'     => 1,
-                    'start'           => null,
-                    'end'             => null,
+                    'start'           => date('Y-m-d H:i:s'),
+                    'end'             => date('Y-m-d H:i:s', strtotime('+ '.$count->duration. ' month')),
                     'is_check'        => false,
-                    'level_id'        => $request -> level_id                ]
+                    'level_id'        => $request -> level_id
+                ]
             ] );
         }
 

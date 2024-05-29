@@ -24,6 +24,7 @@ class ScheduleController extends Controller {
                        -> join( 'dance_types', 'schedule.dance_type', '=', 'dance_types.dance_type_id' )
                        -> join( 'levels', 'schedule.level_id', '=', 'levels.level_id' )
                        -> select( '*' )
+                       -> orderBy( 'schedule.id' )
                        -> get();
 
         return view( 'admin.schedule.index', compact( 'schedule' ) );
@@ -59,14 +60,15 @@ class ScheduleController extends Controller {
     public function store( Request $request ) {
 //        dd($request -> dance_type);
         $new_schedule_record                    = new Schedule();
-        $new_schedule_record -> dance_type      = $request -> get('dance_type');
-        $new_schedule_record -> teacher_id      = $request -> get('teacher');
-        $new_schedule_record -> level_id        = $request -> get('level');
-        $new_schedule_record -> day_id          = $request -> get('day');
+        $new_schedule_record -> dance_type      = $request -> get( 'dance_type' );
+        $new_schedule_record -> teacher_id      = $request -> get( 'teacher' );
+        $new_schedule_record -> level_id        = $request -> get( 'level' );
+        $new_schedule_record -> day_id          = $request -> get( 'day' );
         $new_schedule_record -> time            = $request -> time;
         $new_schedule_record -> available_count = $request -> count;
 
         $new_schedule_record -> save();
+
         return redirect() -> back() -> with( 'success', 'Запись добавлена' );
 
     }
